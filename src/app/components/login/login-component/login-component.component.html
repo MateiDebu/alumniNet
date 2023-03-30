@@ -1,0 +1,32 @@
+<h1 class="pageTitle">Comunitatea Alumni</h1>
+
+<div class="formControl">
+
+    <div class="inputField">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input class="inputText" matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+    
+    <div class="inputField">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input  class="inputText" matInput [type]="hide ? 'password' : 'text'">
+        </mat-form-field>
+    </div>
+
+    <div class="inputField">
+        <button class="buttonLogIn" mat-raised-button color="primary">Conectează-te</button>
+    </div>
+    <div class="inputField" id="link1">
+        <a href="https://www.w3schools.com/"> Ai uitat parola? </a>
+    </div>
+
+    <hr>
+    <div class="inputField" >
+        <button mat-raised-button color="accent" class="buttonRegister">Creează un cont nou</button>
+    </div>
+    
+</div>
