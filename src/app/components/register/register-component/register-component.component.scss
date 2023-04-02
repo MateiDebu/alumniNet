@@ -1,0 +1,26 @@
+.formControl{
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 5%;
+    text-align: center;
+    margin-top: 5%;
+  }
+
+  .mat-form-field{
+   width: 40%;
+   margin:1%;
+  }
+
+  .buttonLogIn{
+    width: 70%;
+ } 
+
+ #errorMessage{
+    width: 60%;
+    align-items: center;
+    text-align: center;
+    margin:0 auto;
+    color:red;
+    font-size: 70%;
+ }

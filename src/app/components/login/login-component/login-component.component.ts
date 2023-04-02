@@ -10,17 +10,22 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponentComponent implements OnInit {
    
-  constructor( ) { }
+  constructor( private router:Router) { }
   email = new FormControl('', [Validators.required, Validators.email]);
   hide=true;
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Trebuie să introduceți un mail';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Mail-ul nu este valid' : '';
   }
+
+  goToRegister(){
+    this.router.navigate(['register']);
+  }
+
   ngOnInit(): void {
   }
 

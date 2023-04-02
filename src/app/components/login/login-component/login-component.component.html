@@ -4,7 +4,7 @@
 
     <div class="inputField">
         <mat-form-field appearance="fill">
-            <mat-label>Enter your email</mat-label>
+            <mat-label>Introduceți email-ul</mat-label>
             <input class="inputText" matInput placeholder="pat@example.com" [formControl]="email" required>
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
@@ -12,7 +12,7 @@
     
     <div class="inputField">
         <mat-form-field appearance="fill">
-          <mat-label>Enter your password</mat-label>
+          <mat-label>Introduceți parola</mat-label>
           <input  class="inputText" matInput [type]="hide ? 'password' : 'text'">
         </mat-form-field>
     </div>
@@ -26,7 +26,7 @@
 
     <hr>
     <div class="inputField" >
-        <button mat-raised-button color="accent" class="buttonRegister">Creează un cont nou</button>
+        <button mat-raised-button color="accent" class="buttonRegister" (click)="goToRegister()" target="_blank">Creează un cont nou</button>
     </div>
     
 </div>
