@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<header>
+    <div class="homeButtons"> 
+        <button mat-icon-button color="primary">
+            <mat-icon class="buttonStyle" (click)="goToHomePage()">home</mat-icon>
+        </button>
+          <button class="buttonStyle" mat-button color="primary" (click)=" goToEditProfilePage()">Actualizare profil</button>
+          <button class="buttonStyle" mat-button color="primary" (click)="goToSearchPage()">Căutare absolvenți</button>
+          <button class="buttonStyle" mat-button color="warn"    (click)="goToLoginPage()" >Părăsește contul</button>
+    </div>
+</header>
+<body>
+    <div *ngIf="showHomePage" >
+        <div class="homeText">
+            <h1>Bine ați venit!</h1>
+            <h1>Comunitatea Alumni </h1>
+        </div>
+    </div>
+    <div *ngIf="showEditPage">
+        <app-edit-profile-component></app-edit-profile-component>
+    </div>
+    <div *ngIf="showSearchPage">
+        <app-search-component></app-search-component>
+    </div> 
+</body>
