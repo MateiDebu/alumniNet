@@ -3,6 +3,79 @@
         <h1>Editare profil</h1>
     </div>
 
-   
+    <div class="allInformation">
 
+        <div class="generalInformation" >
+            <p class="titleInfo">Informații generale</p>
+
+            <mat-form-field appearance="fill" class="info">
+                <mat-label>Adaugă informații despre tine</mat-label>
+                <textarea matInput placeholder="Eu sunt..."></textarea>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="info">
+                <mat-label>Încarcă o imagine</mat-label>
+                <input matInput>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button color="accent" class="saveButtons">Salvează</button>
+        </div>
+
+        <div class="occupationInformation" >
+            <p class="titleInfo">Informații despre ocupația actuală</p>
+            
+            <mat-form-field appearance="fill" class="info">
+                <mat-label>Nume organizație</mat-label>
+                <input matInput  #nameCompany >
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="info"> 
+                <mat-label>Funcție/ocupatie</mat-label>
+                <input matInput #occupation >
+              </mat-form-field>
+              <br>
+              <button mat-raised-button color="accent" class="saveButtons" id="marginButton">Salvează</button>
+        </div>
+
+        <div class="studiesInformation" >
+            <p class="titleInfo">Informații despre studi </p>
+
+            <mat-form-field appearance="fill" class="info">
+                <mat-label>Anul absolvirii</mat-label>
+                <input matInput #yearCheck maxlength="4" minlength="4" matInput>
+                <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="info">
+                <mat-label>Facultatea absolvită</mat-label>
+                <input matInput  #collegeCheck >
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="info"> 
+                <mat-label>Specializare abolvită</mat-label>
+                <input matInput #specialization >
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="info">
+                <mat-label>Ciclu de studiu</mat-label>
+                <mat-select>
+                  <mat-option value="Licență">Licență</mat-option>
+                  <mat-option value="Master">Master</mat-option>
+                  <mat-option value="Doctorat">Doctorat</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+              <mat-form-field appearance="fill" class="info">
+                <mat-label>Forma de învățământ</mat-label>
+                <mat-select>
+                  <mat-option value="Învățământ cu frecvență">Învățământ cu frecvență</mat-option>
+                  <mat-option value="Învățământ la distanță">Învățământ la distanță</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button color="accent" class="saveButtons">Salvează</button>
+             
+        </div>
+    </div>
 </div>

@@ -11,6 +11,7 @@ import { SearchComponentComponent } from './search-component/search-component.co
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {MatInputModule } from '@angular/material/input';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
   ]
 })
 export class HomeModule { }

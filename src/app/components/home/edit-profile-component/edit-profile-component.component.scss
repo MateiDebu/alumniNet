@@ -2,3 +2,53 @@
     text-align: center;
     margin:2%;
 }
+
+.allInformation{
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.generalInformation{
+    border:2px solid black;
+    border-radius: 3%;
+    width: 30%;
+    padding: 1%;
+    float:left;
+    text-align: center;
+    margin-right:1%;
+    
+}
+.studiesInformation{
+    border:2px solid black;
+    border-radius: 3%;
+    width: 31%;
+    padding: 1%;
+    margin:auto;
+    text-align: center;
+}
+.occupationInformation{
+    border:2px solid black;
+    border-radius: 3%;
+    width: 30%;
+    padding: 1%;
+    float:right;
+    text-align: center;
+    margin-left:1%;
+}
+
+.titleInfo{
+    font-size: 150%;
+}
+
+.info{
+    width: 70%; 
+    margin-top:2%;
+}
+
+.saveButtons{
+    width: 40%;
+}
+
+#marginButton{
+    margin-bottom: 15px;
+}
