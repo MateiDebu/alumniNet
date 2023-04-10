@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register-component',
@@ -9,17 +10,15 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponentComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email : string='';
+  password :string ='';
   hide=true;
 
   lastNameCheck:string;
   firstNameCheck:string;
-  collegeCheck:string;
   emailCheck:string;
-  specializationCheck:string;
   passwordCheck:string;
   passwordRepeatCheck:string;
-  yearCheck:string;
   valid: boolean = false;
   empty:boolean=false;
   validConfirmation: boolean=false;
@@ -27,15 +26,12 @@ export class RegisterComponentComponent implements OnInit {
   errorDisplayPassword:boolean=true;
   errorDisplay:boolean=true;
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private auth :AuthService) {
     this.lastNameCheck='';
     this.firstNameCheck='';
-    this.collegeCheck='';
     this.emailCheck='';
-    this.specializationCheck='';
     this.passwordCheck='';
     this.passwordRepeatCheck='';
-    this.yearCheck='';
    }
 
   ngOnInit(): void {
@@ -53,20 +49,10 @@ export class RegisterComponentComponent implements OnInit {
   setRepeatPassword(passwordRepeatCheck:string){
     this.passwordRepeatCheck=passwordRepeatCheck;
   }
-  setSpecialization(specializationCheck:string){
-    this.specializationCheck=specializationCheck;
-  }
-  setCollege(collegeCheck:string)
-  {
-    this.collegeCheck=collegeCheck;
-  }
   setEmail(emailCheck:string){
     this.emailCheck=emailCheck;
   }
-  setYear(yearCheck:string){
-    this.yearCheck=yearCheck;
-  }
-
+ 
   passwordVerification(passwordCheck:string){
     if(
       passwordCheck.match(
@@ -106,13 +92,10 @@ export class RegisterComponentComponent implements OnInit {
     this.setEmail(this.emailCheck);
     this.setPassword(this.passwordCheck);
     this.setRepeatPassword(this.passwordRepeatCheck);
-    this.setSpecialization(this.specializationCheck);
-    this.setCollege(this.collegeCheck);
-    this.setYear(this.yearCheck);
-
+  
     console.log ("first name ", this.firstNameCheck );
-    if(this.lastNameCheck=='' || this.firstNameCheck=='' || this.collegeCheck== '' ||
-     this.passwordCheck=='' || this.passwordRepeatCheck=='' || this.emailCheck==''|| this.specializationCheck=='' || this.yearCheck==''){
+    if(this.lastNameCheck=='' || this.firstNameCheck=='' || 
+     this.passwordCheck=='' || this.passwordRepeatCheck=='' || this.emailCheck==''){
       this.empty=false;
       this.errorDisplay=false;
     }else
@@ -122,17 +105,15 @@ export class RegisterComponentComponent implements OnInit {
     }
   }
   
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Trebuie să introduceți un mail';
-    }
-  
-    return this.email.hasError('email') ? 'Mail-ul nu este valid' : '';
-  }
 
-  goLogInPage(){
+  register(){
       this.isEmpty();
-      if(this.valid && this.empty && this.validConfirmation)
-                this.router.navigate(['']);
+      if(this.valid && this.empty && this.validConfirmation){
+        this.auth.register(this.email,this.password);
+        this.email='';
+        this.password='';
+      }
+      else
+         alert('Te rog completeaza toate campurile.')
   }
 }

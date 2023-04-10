@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home-component',
@@ -12,7 +13,7 @@ export class HomeComponentComponent implements OnInit {
   showSearchPage=false;
   showHomePage=true;
 
-  constructor(private router:Router) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +37,7 @@ export class HomeComponentComponent implements OnInit {
   }
 
   goToLoginPage(){
-    this.router.navigate(['']);
+    this.auth.logout();
   }
   
 }

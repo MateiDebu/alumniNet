@@ -6,12 +6,13 @@
         <mat-label>Prenume</mat-label>
         <input matInput required #firstNameCheck (keyup)="setFirstName(firstNameCheck.value)">
       </mat-form-field>
-       
+       <!--
           <mat-form-field appearance="fill">
             <mat-label>Anul absolviri</mat-label>
             <input matInput #yearCheck maxlength="4" minlength="4" matInput required  (keyup)="setYear(yearCheck.value)">
             <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
-          </mat-form-field>
+          </mat-form-field>   
+        -->
     </div>
 
     <div>
@@ -19,30 +20,29 @@
         <mat-label>Nume</mat-label>
         <input matInput required #lastNameCheck (keyup)="setLastName(lastNameCheck.value)">
       </mat-form-field>
-
+     <!-- 
           <mat-form-field appearance="fill">
             <mat-label>Facultatea absolvită</mat-label>
             <input matInput  required #collegeCheck (keyup)="setCollege(collegeCheck.value)">
           </mat-form-field>
-
+       -->
     </div>
     <div class="inputField">
         <mat-form-field appearance="fill">
             <mat-label>Introduceți email-ul</mat-label>
-            <input class="inputText" matInput placeholder="pat@example.com" [formControl]="email" required #emailCheck (keyup)="setEmail(emailCheck.value)">
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <input class="inputText" matInput placeholder="pat@example.com" required #emailCheck (keyup)="setEmail(emailCheck.value)" name="email" [(ngModel)]="email">
         </mat-form-field>
-
+     <!--
         <mat-form-field appearance="fill">
           <mat-label>Specializare absolvită</mat-label>
           <input matInput required #specializationCheck (keyup)="setSpecialization(specializationCheck.value)">
         </mat-form-field>
-
+      -->
     </div>
     <div class="inputField">
         <mat-form-field appearance="fill">
           <mat-label>Introduceți parola</mat-label>
-          <input  class="inputText" matInput [type]="hide ? 'password' : 'text'" required #passwordCheck (keyup)="passwordVerification(passwordCheck.value)" (keyup)="setPassword(passwordCheck.value)">
+          <input  class="inputText" matInput [type]="hide ? 'password' : 'text'" required #passwordCheck (keyup)="passwordVerification(passwordCheck.value)" (keyup)="setPassword(passwordCheck.value)" name="password" [(ngModel)]="password">
         </mat-form-field>
         <div id="errorMessage" *ngIf="!valid && !errorDisplayPassword">
           <div>Parola trebuie să fie formată din minim șase litere, cel puțin una mică și una mare, cel puțin o cifră și cel puțin un simbol special! </div>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="inputField" >
-        <button mat-raised-button color="accent" class="buttonRegister" (click)="goLogInPage()" target="_blank">Înregistrare</button>
+        <button mat-raised-button color="accent" class="buttonRegister" (click)="register()" target="_blank">Înregistrare</button>
         <div id="errorMessage" *ngIf="!empty  && !errorDisplay">
           <br>
           <div>Atenție! Toate câmpurile trebuie completate!</div>

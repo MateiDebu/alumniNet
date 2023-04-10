@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-component',
@@ -10,27 +11,32 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponentComponent implements OnInit {
    
-  constructor( private router:Router) { }
-  email = new FormControl('', [Validators.required, Validators.email]);
+  constructor(private auth : AuthService, private router: Router) { }
+  email : string = '';
+  password : string = '';
   hide=true;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Trebuie să introduceți un mail';
+  login(){
+    if(this.email == ''){
+      alert('Te rog introdu email-ul');
+      return;
     }
 
-    return this.email.hasError('email') ? 'Mail-ul nu este valid' : '';
+    if(this.password == ''){
+      alert('Te rog introdu parola');
+      return;
+    }
+
+    this.auth.login(this.email,this.password);
+    this.email='';
+    this.password='';
+
   }
 
   goToRegister(){
     this.router.navigate(['register']);
   }
 
-  goToHomePage(){
-    this.router.navigate(['home']);
-  }
-
   ngOnInit(): void {
   }
-
 }
