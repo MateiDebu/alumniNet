@@ -1,20 +1,26 @@
+.pageTitle{
+   text-align: center;
+   margin-top: 6%;
+ }
+
 .formControl{
-    margin: auto;
-    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 30%;
     border: 3px solid black;
     border-radius: 3%;
     padding: 5%;
     text-align: center;
-    margin-top: 5%;
+    
   }
 
   .mat-form-field{
-   width: 40%;
+   width: 70%;
    margin:1%;
   }
 
   .buttonRegister{
-    width: 30%;
+    width: 40%;
  } 
 
  #errorMessage{

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Faculty } from 'src/app/models/faculty.mode';
 import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-register-component',
@@ -10,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponentComponent implements OnInit {
 
+  fac: Faculty[]=[];
   email : string='';
   password :string ='';
   hide=true;
@@ -26,12 +29,13 @@ export class RegisterComponentComponent implements OnInit {
   errorDisplayPassword:boolean=true;
   errorDisplay:boolean=true;
 
-  constructor(private router:Router, private auth :AuthService) {
+  constructor( private dataService: DataService,private router:Router, private auth :AuthService) {
     this.lastNameCheck='';
     this.firstNameCheck='';
     this.emailCheck='';
     this.passwordCheck='';
     this.passwordRepeatCheck='';
+    
    }
 
   ngOnInit(): void {
@@ -115,5 +119,13 @@ export class RegisterComponentComponent implements OnInit {
       }
       else
          alert('Te rog completeaza toate campurile.')
+  }
+
+  register1(){
+    this.dataService.GetFacultyById(2).subscribe( res => {
+      this.fac=res;
+    })
+
+    console.log(this.fac);
   }
 }

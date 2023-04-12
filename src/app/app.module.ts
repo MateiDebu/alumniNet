@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule} from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
+import { AppSetting } from './settings/app.settings';
+import { AuthService } from './services/auth.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AppSetting,
+  HttpClient,
+  AuthService,
+  DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,5 +3,5 @@ import { environment } from "../../environments/environment";
 
 @Injectable()
     export class AppSetting{
-        get ApiPath() : string { return environment.apiPath;}
+        get ApiPath() : string { return environment.apiPath; }
     }
