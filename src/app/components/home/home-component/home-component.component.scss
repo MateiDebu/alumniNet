@@ -16,8 +16,27 @@
 }
 
 .homeText{
-    margin-top:2%;
+    margin: 1%;
+}
+
+.profileInformation{
+    border:2px solid black;
+    border-radius: 0%;
+    width: 47%;
+    padding: 1%;
+    float:left;
     text-align: center;
 }
 
+.postsInformation{
+    border:2px solid black;
+    border-radius: 0%;
+    width: 47%;
+    padding: 1%;
+    float:right;
+    text-align: center;
+}
 
+.buttonPost{
+    width: 40%;
+}

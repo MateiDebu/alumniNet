@@ -8,6 +8,8 @@ import { FinishedStudy } from "../models/finished-study.mode";
 import { Profile } from "../models/profile.mode";
 import { Specialization } from "../models/specialization.mode";
 import { User } from "../models/user.mode";
+import { StudyProgram } from "../models/study-program.mode";
+import { LearningSchedule } from "../models/learning-schedule.mode";
 
 @Injectable({
     providedIn:'root'
@@ -25,6 +27,42 @@ export class DataService{
     let param1=new HttpParams().set('id', facultyId);
     return this.httpClient.get<Faculty[]>(this.appSettings.ApiPath + "Faculty/GetFacultyById", {params:param1});
    }
+
+   //methods for specialization
+   public GetAllSpecializations(): Observable<Specialization[]>{
+    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetAllSpecializations');
+   }
+
+   public GetSpecializationsByFacultyId(facultyId:number):Observable<Specialization[]>{
+    let param1=new HttpParams().set('facultyId', facultyId);
+    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetSpecializationsByFacultyId',{params:param1});
+   }
+
+   public GetSpecializationsById(id:number):Observable<Specialization[]>{
+    let param1=new HttpParams().set('id', id);
+    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetSpecializationsById',{params:param1});
+   }
+
+   //methods for studyProgram
+   public GetAllStudyProgram():Observable<StudyProgram[]>{
+    return this.httpClient.get<StudyProgram[]>(this.appSettings.ApiPath+"StudyProgram/GetAllStudyProgram");
+   }
+
+   public GetStudyProgramById(learningScheduleId: number):Observable<StudyProgram[]>{
+    let param1=new HttpParams().set('learningScheduleId', learningScheduleId);
+    return this.httpClient.get<StudyProgram[]>(this.appSettings.ApiPath + "StudyProgram/GetStudyProgramById", {params:param1});
+   }
+
+   //methods for learningSchedule
+   public GetAllLearningSchedule():Observable<LearningSchedule[]>{
+    return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath+"LearningSchedule/GetAllLearningSchedule");
+   }
+
+   public GetLearningScheduleById(learningScheduleId: number):Observable<LearningSchedule[]>{
+    let param1=new HttpParams().set('learningScheduleId', learningScheduleId);
+    return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath + "LearningSchedule/GetLearningScheduleById", {params:param1});
+   }
+
 
    //methods for experience
    public GetExperienceById(experienceId: number):Observable<Experience[]>{
@@ -95,21 +133,7 @@ export class DataService{
     return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId', {params:param1,param2,param3,param4});
    }
 
-   //methods for specialization
-   public GetAllSpecializations(): Observable<Specialization[]>{
-    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetAllSpecializations');
-   }
-
-   public GetSpecializationsByFacultyId(facultyId:number):Observable<Specialization[]>{
-    let param1=new HttpParams().set('facultyId', facultyId);
-    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetSpecializationsByFacultyId',{params:param1});
-   }
-
-   public GetSpecializationsById(id:number):Observable<Specialization[]>{
-    let param1=new HttpParams().set('id', id);
-    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetSpecializationsById',{params:param1});
-   }
-
+   
    //methods for user
    public GetAllUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers');

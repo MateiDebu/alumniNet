@@ -12,8 +12,18 @@
 <body>
     <div *ngIf="showHomePage" >
         <div class="homeText">
-            <h1>Bine ați venit!</h1>
-            <h1>Comunitatea Alumni </h1>
+            <div class="profileInformation">
+                <h1>Bine ai venit,</h1>
+                <h1>{{ setName() }}</h1>
+                <img src="{{ setPath() }}"/>
+                <p>{{ setDescription() }}</p>
+                <button class="buttonPost" mat-raised-button color="primary" (click)="goToEditProfilePage()">Actualizează profilul</button>
+            </div>
+            <div class="postsInformation">
+                <h1>Postările tale</h1>
+                <hr>
+                <button class="buttonPost" mat-raised-button color="primary" >Adaugă o postare</button>
+            </div>
         </div>
     </div>
     <div *ngIf="showEditPage">

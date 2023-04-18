@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home-component',
@@ -9,13 +10,30 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponentComponent implements OnInit {
 
+  firstNameUser:string='Matei';
+  lastNameUser:string='Debu';
+  description:string='eu sunt din brasov si ...'
+
+
   showEditPage=false;
   showSearchPage=false;
   showHomePage=true;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private dataService:DataService) { }
 
   ngOnInit(): void {
+  }
+
+  setName(){
+    return this.firstNameUser+' '+this.lastNameUser;
+  }
+
+  setPath(){
+
+  }
+
+  setDescription(){
+    return this.description;
   }
 
   goToHomePage(){

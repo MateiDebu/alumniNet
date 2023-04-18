@@ -68,18 +68,15 @@
 
               <mat-form-field appearance="fill" class="info">
                 <mat-label>Forma de învățământ</mat-label>
-                <mat-select>
-                  <mat-option value="Învățământ cu frecvență">Învățământ cu frecvență</mat-option>
-                  <mat-option value="Învățământ la distanță">Învățământ la distanță</mat-option>
+                <mat-select >
+                  <mat-option *ngFor="let lS of learningSchedules" value="{{lS.scheduleName}}">{{lS.scheduleName}}</mat-option>
                 </mat-select>
               </mat-form-field>
 
               <mat-form-field appearance="fill" class="info">
                 <mat-label>Ciclu de studiu</mat-label>
-                <mat-select>
-                  <mat-option value="Licență">Licență</mat-option>
-                  <mat-option value="Master">Master</mat-option>
-                  <mat-option value="Doctorat">Doctorat</mat-option>
+                <mat-select >
+                  <mat-option *ngFor="let studyProgram of studyPrograms" value="{{studyProgram.programName}}">{{studyProgram.programName}}</mat-option>
                 </mat-select>
               </mat-form-field>
 
