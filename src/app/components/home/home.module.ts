@@ -14,11 +14,13 @@ import {MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 
 
+
 @NgModule({
   declarations: [
     HomeComponentComponent,
     EditProfileComponentComponent,
-    SearchComponentComponent
+    SearchComponentComponent,
+
   ],
   imports: [
     CommonModule,

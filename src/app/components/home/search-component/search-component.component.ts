@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Faculty } from 'src/app/models/faculty.mode';
+import { Specialization } from 'src/app/models/specialization.mode';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-search-component',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponentComponent implements OnInit {
 
-  constructor() { }
+  faculties: Faculty[]=[];
+  specializations:Specialization[]=[];
+  showAdvancedSearch=false;
+  showSearch=true;
 
-  ngOnInit(): void {
+  constructor(private dataService: DataService) { 
+    this.showAdvancedSearch=false;
+    this.showSearch=true;
   }
 
+  ngOnInit(): void {
+    this.dataService.GetAllFaculties().subscribe(( faculties: Faculty[]) => {
+      this.faculties=faculties;
+  })
+  }
+
+  specializationsFaculty(facultyId:number){
+    this.dataService.GetSpecializationsByFacultyId(facultyId).subscribe((specializations : Specialization[]) => {
+      this.specializations=specializations;
+    })
+  }
+
+  goToAdvancedSearch(){
+    this.showAdvancedSearch=true;
+    this.showSearch=false;
+  }
 }

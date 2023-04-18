@@ -1,10 +1,35 @@
 <h1 class="textSearch">Aici poți căuta un absolvent al Universității Transilvania</h1>
+
 <div class="searchBar">
-  <div>
-    <mat-form-field appearance="fill" class="searchBarInput">
-      <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
-      <input matInput placeholder="Nume absolvent">
-    </mat-form-field>
+  <div class="searchElements">
+    <div>
+      <mat-form-field appearance="fill" class="searchBarInput">
+        <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
+        <input matInput placeholder="Nume absolvent">
+      </mat-form-field>
+    </div>
+      <button mat-raised-button color="accent" class="searchButton"> Caută </button>
+      <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
+      <hr>
+      <div *ngIf="showAdvancedSearch" class="advancedElements">
+        <h2 class="textAdvancedSearch"> Selectați câmpurile după care să se realizeze căutarea</h2>
+        <mat-form-field appearance="fill" class="info">
+          <mat-label>Facultate</mat-label>
+          <mat-select >
+            <mat-option *ngFor="let faculty of faculties" value="{{faculty.facultyName}}" (onSelectionChange)="specializationsFaculty(faculty.facultyId)">{{faculty.facultyName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" class="info">
+          <mat-label>Specializare</mat-label>
+          <mat-select >
+            <mat-option *ngFor="let s of specializations" value="{{s.specializationName}}">{{s.specializationName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="searchAdvancedButton"> Caută </button>
+      </div>
   </div>
-    <button mat-raised-button color="accent" class="searchButton"> Caută </button>
+  <div class="displayResults">
+    <h2 class="resultsText">Rezultatele căutărilor</h2>
+  </div>
 </div>
