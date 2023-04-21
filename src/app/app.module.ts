@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AppSetting } from './settings/app.settings';
 import { AuthService } from './services/auth.service';
 import { DataService } from './services/data.service';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DataService } from './services/data.service';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
+    AngularFireAuthModule
   ],
   providers: [AppSetting,
   HttpClient,

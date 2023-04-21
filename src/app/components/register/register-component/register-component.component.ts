@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Faculty } from 'src/app/models/faculty.mode';
+import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -11,7 +12,6 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./register-component.component.scss']
 })
 export class RegisterComponentComponent implements OnInit {
-
   fac: Faculty[]=[];
   email : string='';
   password :string ='';
@@ -97,7 +97,6 @@ export class RegisterComponentComponent implements OnInit {
     this.setPassword(this.passwordCheck);
     this.setRepeatPassword(this.passwordRepeatCheck);
   
-    console.log ("first name ", this.firstNameCheck );
     if(this.lastNameCheck=='' || this.firstNameCheck=='' || 
      this.passwordCheck=='' || this.passwordRepeatCheck=='' || this.emailCheck==''){
       this.empty=false;
@@ -111,9 +110,13 @@ export class RegisterComponentComponent implements OnInit {
   
 
   register(){
+      let newUser=new User();
+      newUser.firstName=this.firstNameCheck;
+      newUser.lastName=this.lastNameCheck;
+      newUser.email=this.email;
       this.isEmpty();
       if(this.valid && this.empty && this.validConfirmation){
-        this.auth.register(this.email,this.password);
+        this.auth.createUser(this.email,this.password,newUser);
         this.email='';
         this.password='';
       }
@@ -121,11 +124,4 @@ export class RegisterComponentComponent implements OnInit {
          alert('Te rog completeaza toate campurile.')
   }
 
-  register1(){
-    this.dataService.GetFacultyById(2).subscribe( res => {
-      this.fac=res;
-    })
-
-    console.log(this.fac);
-  }
 }

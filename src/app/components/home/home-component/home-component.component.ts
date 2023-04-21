@@ -55,7 +55,7 @@ export class HomeComponentComponent implements OnInit {
   }
 
   goToLoginPage(){
-    this.auth.logout();
+    //this.auth.logout();
   }
   
 }

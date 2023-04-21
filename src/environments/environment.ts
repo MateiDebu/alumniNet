@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase : {
-    apiKey: "AIzaSyBVWqRkeEN28FBCg4521lq8a4sLBrdiZCs",
-    authDomain: "alumninet-ab4d2.firebaseapp.com",
-    projectId: "alumninet-ab4d2",
-    storageBucket: "alumninet-ab4d2.appspot.com",
-    messagingSenderId: "865730677534",
-    appId: "1:865730677534:web:15ebe0ab89975791cc570f"
+    apiKey: "AIzaSyBAOl0HJhPyLYrGQCkbo1Ae-Byc6Fwny_Q",
+    authDomain: "alumniauth-4a276.firebaseapp.com",
+    projectId: "alumniauth-4a276",
+    storageBucket: "alumniauth-4a276.appspot.com",
+    messagingSenderId: "113225677443",
+    appId: "1:113225677443:web:ad4b0ba269f77f1fd879b6"
   },
   apiPath:"https://localhost:7290/api/",
 };

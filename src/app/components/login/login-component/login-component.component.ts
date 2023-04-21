@@ -3,6 +3,7 @@ import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-login-component',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponentComponent implements OnInit {
    
-  constructor(private auth : AuthService, private router: Router) { }
+  constructor(private auth : AuthService, private router: Router, private dataService: DataService) { }
   email : string = '';
   password : string = '';
   hide=true;
@@ -27,7 +28,7 @@ export class LoginComponentComponent implements OnInit {
       return;
     }
 
-    this.auth.login(this.email,this.password);
+   //this.auth.login(this.email,this.password);
     this.email='';
     this.password='';
 

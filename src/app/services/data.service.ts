@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams} from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AppSetting } from "../settings/app.settings";
 import { Observable } from 'rxjs';
@@ -10,6 +10,17 @@ import { Specialization } from "../models/specialization.mode";
 import { User } from "../models/user.mode";
 import { StudyProgram } from "../models/study-program.mode";
 import { LearningSchedule } from "../models/learning-schedule.mode";
+import { Post } from "../models/post.mode";
+
+const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods' : 'DELETE, POST, GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
+      //'Authorization': 'my-auth-token'
+    })
+  };
 
 @Injectable({
     providedIn:'root'
@@ -45,7 +56,7 @@ export class DataService{
 
    //methods for studyProgram
    public GetAllStudyProgram():Observable<StudyProgram[]>{
-    return this.httpClient.get<StudyProgram[]>(this.appSettings.ApiPath+"StudyProgram/GetAllStudyProgram");
+    return this.httpClient.get<StudyProgram[]>(this.appSettings.ApiPath+"StudyProgram/GetAllStudyPrograms");
    }
 
    public GetStudyProgramById(learningScheduleId: number):Observable<StudyProgram[]>{
@@ -55,7 +66,7 @@ export class DataService{
 
    //methods for learningSchedule
    public GetAllLearningSchedule():Observable<LearningSchedule[]>{
-    return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath+"LearningSchedule/GetAllLearningSchedule");
+    return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath+"LearningSchedule/GetAllLearningSchedules");
    }
 
    public GetLearningScheduleById(learningScheduleId: number):Observable<LearningSchedule[]>{
@@ -63,21 +74,15 @@ export class DataService{
     return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath + "LearningSchedule/GetLearningScheduleById", {params:param1});
    }
 
-
    //methods for experience
    public GetExperienceById(experienceId: number):Observable<Experience[]>{
     let param1=new HttpParams().set('ExperienceId', experienceId);
     return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetExperienceById", {params:param1});
    }
 
-   public AddNewExperienceForUser(experienceId: number, jobTitle: string, companyName: string, startData:number, endData:number, userId: number):Observable<Experience[]>{
-    let param1=new HttpParams().set('ExperienceId', experienceId);
-    let param2=new HttpParams().set('JobTitle',jobTitle);
-    let param3=new HttpParams().set('CompanyName',companyName);
-    let param4=new HttpParams().set('StartData',startData);
-    let param5=new HttpParams().set('EndData',endData);
+   public AddNewExperienceForUser(experience: Experience,userId: number):Observable<Experience[]>{
     let param6=new HttpParams().set('userId', userId);
-    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/AddNewExperienceForUser", {params:param1, param2,param3,param4,param5,param6});
+    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/AddNewExperienceForUser",experience,{params:param6});
    }
 
    public GetAllExperiencesForUser(userId: number):Observable<Experience[]>{
@@ -85,13 +90,8 @@ export class DataService{
     return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetAllExperiencesForUser", {params:param1});
    }
 
-   public UpdateExperience(experienceId: number, jobTitle: string, companyName: string, startData:number, endData:number):Observable<Experience[]>{
-    let param1=new HttpParams().set('ExperienceId', experienceId);
-    let param2=new HttpParams().set('JobTitle',jobTitle);
-    let param3=new HttpParams().set('CompanyName',companyName);
-    let param4=new HttpParams().set('StartData',startData);
-    let param5=new HttpParams().set('EndData',endData);
-    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/UpdateExperience", {params:param1, param2,param3,param4,param5});
+   public UpdateExperience(experience: Experience):Observable<Experience[]>{
+    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/UpdateExperience", experience);
    }
 
    //methods for finishedStudy
@@ -109,14 +109,8 @@ export class DataService{
     return this.httpClient.get<FinishedStudy[]>(this.appSettings.ApiPath+'FinishedStudy/GetFinishedStudyByProfileId');
    }
 
-   public UpdateFinishedStudy(finishedStudyId: number, specializationId: number, learningScheduleId: number, studyProgramId:number,year:number, profileId:number):Observable<FinishedStudy[]>{
-    let param1=new HttpParams().set('FinishedStudyId', finishedStudyId);
-    let param2=new HttpParams().set('SpecializationId',specializationId);
-    let param3=new HttpParams().set('LearningScheduleId',learningScheduleId);
-    let param4=new HttpParams().set('StudyProgramId',specializationId);
-    let param5=new HttpParams().set('Year',year);
-    let param6=new HttpParams().set('ProfileId',profileId);
-    return this.httpClient.put<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/UpdateFinishedStudy", {params:param1, param2,param3,param4,param5,param6});
+   public UpdateFinishedStudy(finishedStudy:FinishedStudy):Observable<FinishedStudy[]>{
+    return this.httpClient.put<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/UpdateFinishedStudy", finishedStudy);
    }
 
    //methods for profile
@@ -125,15 +119,21 @@ export class DataService{
     return this.httpClient.get<Profile[]>(this.appSettings.ApiPath+'Profile/GetProfileByUserId', {params:param1});
    }
 
-   public UpdateProfileByUserId(userId:number, profileId:number, profilePicture:string, description:string):Observable<Profile[]>{
-    let param1=new HttpParams().set('ProfileId',profileId);
-    let param2=new HttpParams().set('userId', userId);
-    let param3=new HttpParams().set('ProfilePicture',profilePicture);
-    let param4=new HttpParams().set('Description',description);
-    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId', {params:param1,param2,param3,param4});
+   public UpdateProfileByUserId(profile:Profile, userId:number):Observable<Profile[]>{
+    let param1=new HttpParams().set('userId', userId);  
+    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile, {params:param1});
    }
 
-   
+   public UpdateProfilePictureByUserId(profilePicture:string){
+    let param1=new HttpParams().set('profilePicture',profilePicture);
+    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{params:param1});
+   }
+
+   public UpdateProfileDescriptionByUserId(profileDescription:string){
+    let param1=new HttpParams().set('profileDescription',profileDescription);
+    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',{params:param1});
+   }
+
    //methods for user
    public GetAllUsers():Observable<User[]>{
     return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers');
@@ -142,5 +142,19 @@ export class DataService{
    public GetUserById(id:number):Observable<User[]>{
     let param1=new HttpParams().set('id', id);
     return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetUserById',{params:param1});
+   }
+
+   public AddUser(user:User, token:string){
+      var headers =new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      });
+      var requestOptions={headers:headers};
+      return this.httpClient.post(this.appSettings.ApiPath+'User/AddUser',user, requestOptions);
+   }
+
+   //methods for post
+   public GetAllPostsSorted(): Observable<Post[]>{
+    return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetAllPostsSorted");
    }
 }
