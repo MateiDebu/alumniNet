@@ -139,9 +139,13 @@ export class DataService{
     return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers');
    }
 
-   public GetUserById(id:number):Observable<User[]>{
-    let param1=new HttpParams().set('id', id);
-    return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetUserById',{params:param1});
+   public GetUserById(token:string):Observable<User>{
+    var headers =new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    var requestOptions={headers:headers};
+    return this.httpClient.get<User>(this.appSettings.ApiPath+'User/GetUserById',requestOptions);
    }
 
    public AddUser(user:User, token:string){

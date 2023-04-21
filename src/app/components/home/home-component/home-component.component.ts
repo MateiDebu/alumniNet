@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -14,6 +15,8 @@ export class HomeComponentComponent implements OnInit {
   lastNameUser:string='Debu';
   description:string='eu sunt din brasov si ...'
 
+  user: User = new User;
+
 
   showEditPage=false;
   showSearchPage=false;
@@ -22,9 +25,14 @@ export class HomeComponentComponent implements OnInit {
   constructor(private auth: AuthService, private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.dataService.GetUserById(this.auth.userToken).subscribe((user:User)=>{
+      this.user=user;
+     });
   }
 
   setName(){
+    this.firstNameUser=this.user.firstName.charAt(0).toUpperCase()+this.user.firstName.slice(1);
+    this.lastNameUser=this.user.lastName.charAt(0).toUpperCase()+this.user.lastName.slice(1);
     return this.firstNameUser+' '+this.lastNameUser;
   }
 
@@ -55,7 +63,6 @@ export class HomeComponentComponent implements OnInit {
   }
 
   goToLoginPage(){
-    //this.auth.logout();
-  }
-  
+    this.auth.logout();
+  }  
 }
