@@ -6,7 +6,6 @@ import { DataService } from './data.service';
 import { User } from '../models/user.mode';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class AuthService {
   auth=getAuth(this.app);
   userToken:string='';
 
-  constructor(private dataServie:DataService,private router:Router) { }
+  constructor(private dataService:DataService,private router:Router) { }
   loggedIn =false;
 
   isAuthenticated(){
@@ -35,7 +34,8 @@ export class AuthService {
   createUser(email:string, password:string, newUser:User){
     createUserWithEmailAndPassword(this.auth,email,password).then(userCredential =>{
         userCredential.user?.getIdToken().then((idToken)=>{
-        this.dataServie.AddUser(newUser,idToken).subscribe(res=>{
+        this.dataService.userToken=idToken;
+        this.dataService.AddUser(newUser).subscribe(res=>{
           if(res)
           {
               this.router.navigate(['login']);
@@ -57,6 +57,7 @@ export class AuthService {
     signInWithEmailAndPassword(this.auth,email,password).then(userCredential => {
       userCredential.user?.getIdToken().then((idToken)=>{
       this.userToken=idToken;
+      this.dataService.userToken=idToken;
       this.loggedIn=true;
       this.router.navigate(['home']);
     }).catch(error => {

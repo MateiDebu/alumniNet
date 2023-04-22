@@ -17,7 +17,46 @@
                 <h1>{{ setName() }}</h1>
                 <img src="{{ setPath() }}"/>
                 <p>{{ setDescription() }}</p>
-                <button class="buttonPost" mat-raised-button color="primary" (click)="goToEditProfilePage()">Actualizează profilul</button>
+                <button mat-raised-button color="accent" class="openButtons" (click)="openFinishedStudys()">Studii efectuate</button>
+                <button mat-raised-button color="accent" class="openButtons" (click)="openExperience()">Experiență profesională</button>
+                <div *ngIf="showFinishedStudys">
+                    <br>
+                    <table class="designTable">      <!--*ngIf="prieteni.length > 0"-->
+                        <tr>
+                          <th>Facultate</th>
+                          <th>Program de studiu</th>
+                          <th>Specializare</th>
+                          <th>Anul terminari</th>
+                        </tr>
+                        <tr > <!--*ngFor="let p of prieteni"-->
+                          <td>Facultatea de matematica si informatica</td>
+                          <td>Licenta</td>
+                          <td>Informatica</td>
+                          <td>2023</td>
+                        </tr>
+                      </table>
+                      <button mat-raised-button color="primary" class="closeButtons" (click)="close()">Închide</button>
+                    <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
+                   
+                </div>
+
+                <div *ngIf="showExperience">
+                    <br>
+                    <table class="designTable">      <!--*ngIf="prieteni.length > 0"-->
+                        <tr>
+                          <th>Firmă</th>
+                          <th>Poziție ocupată</th>
+                          <th>Perioadă</th>
+                        </tr>
+                        <tr > <!--*ngFor="let p of prieteni"-->
+                          <td>Firma de IT</td>
+                          <td>bibliotecar</td>
+                          <td>2023-prezent</td>
+                        </tr>
+                      </table>
+                      <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>
+                    <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
+                </div>        
             </div>
             <div class="postsInformation">
                 <h1>Postările tale</h1>

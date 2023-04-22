@@ -13,6 +13,7 @@ import { AppSetting } from './settings/app.settings';
 import { AuthService } from './services/auth.service';
 import { DataService } from './services/data.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   providers: [AppSetting,
   HttpClient,
   AuthService,
-  DataService],
+  DataService,
+  AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

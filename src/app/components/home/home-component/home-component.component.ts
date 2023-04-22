@@ -11,12 +11,14 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HomeComponentComponent implements OnInit {
 
-  firstNameUser:string='Matei';
-  lastNameUser:string='Debu';
+  firstNameUser:string='';
+  lastNameUser:string='';
   description:string='eu sunt din brasov si ...'
 
   user: User = new User;
 
+  showFinishedStudys=false;
+  showExperience=false;
 
   showEditPage=false;
   showSearchPage=false;
@@ -25,7 +27,7 @@ export class HomeComponentComponent implements OnInit {
   constructor(private auth: AuthService, private dataService:DataService) { }
 
   ngOnInit(): void {
-    this.dataService.GetUserById(this.auth.userToken).subscribe((user:User)=>{
+    this.dataService.GetUserById().subscribe((user:User)=>{
       this.user=user;
      });
   }
@@ -34,6 +36,21 @@ export class HomeComponentComponent implements OnInit {
     this.firstNameUser=this.user.firstName.charAt(0).toUpperCase()+this.user.firstName.slice(1);
     this.lastNameUser=this.user.lastName.charAt(0).toUpperCase()+this.user.lastName.slice(1);
     return this.firstNameUser+' '+this.lastNameUser;
+  }
+
+  openFinishedStudys(){
+    this.showFinishedStudys=true;
+    this.showExperience=false;
+  }
+
+  openExperience(){
+    this.showExperience=true;
+    this.showFinishedStudys=false;
+  }
+
+  close(){
+    this.showExperience=false;
+    this.showFinishedStudys=false;
   }
 
   setPath(){

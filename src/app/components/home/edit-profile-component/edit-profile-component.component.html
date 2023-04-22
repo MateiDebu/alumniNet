@@ -10,15 +10,15 @@
 
             <mat-form-field appearance="fill" class="info">
                 <mat-label>Adaugă informații despre tine</mat-label>
-                <textarea matInput placeholder="Eu sunt..."></textarea>
+                <textarea matInput placeholder="Eu sunt..." [(ngModel)]="description"></textarea>
             </mat-form-field>
             
             <mat-form-field appearance="fill" class="info">
                 <mat-label>Încarcă o imagine</mat-label>
-                <input matInput>
+                <input matInput  [(ngModel)]="picturePath" type="text">
               </mat-form-field>
               <br>
-              <button mat-raised-button color="accent" class="saveButtons">Salvează</button>
+              <button mat-raised-button color="accent" class="saveButtons" (click)="updateProfile()">Salvează</button>
         </div>
 
         <div class="occupationInformation" >

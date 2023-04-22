@@ -11,16 +11,8 @@ import { User } from "../models/user.mode";
 import { StudyProgram } from "../models/study-program.mode";
 import { LearningSchedule } from "../models/learning-schedule.mode";
 import { Post } from "../models/post.mode";
+import { map } from 'rxjs/operators';
 
-const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods' : 'DELETE, POST, GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
-      //'Authorization': 'my-auth-token'
-    })
-  };
 
 @Injectable({
     providedIn:'root'
@@ -29,6 +21,20 @@ const httpOptions = {
 export class DataService{
     constructor( private httpClient : HttpClient, private appSettings:AppSetting){}
 
+    userToken:string='';
+    setTokenUser(userToken:string){
+      this.userToken=userToken;
+    }
+
+    setHttpHeader(){
+      var headers =new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.userToken}`
+      });
+      var requestOptions={headers:headers};
+      return requestOptions;
+    }
+    
    //methods for faculty
    public GetAllFaculties():Observable<Faculty[]>{
     return this.httpClient.get<Faculty[]>(this.appSettings.ApiPath+"Faculty/GetAllFaculties");
@@ -45,8 +51,9 @@ export class DataService{
    }
 
    public GetSpecializationsByFacultyId(facultyId:number):Observable<Specialization[]>{
+    var httpOptions=this.setHttpHeader();
     let param1=new HttpParams().set('facultyId', facultyId);
-    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetSpecializationsByFacultyId',{params:param1});
+    return this.httpClient.get<Specialization[]>(this.appSettings.ApiPath+'Specialization/GetSpecializationsByFacultyId',{ headers: httpOptions.headers, params: param1 });
    }
 
    public GetSpecializationsById(id:number):Observable<Specialization[]>{
@@ -56,7 +63,8 @@ export class DataService{
 
    //methods for studyProgram
    public GetAllStudyProgram():Observable<StudyProgram[]>{
-    return this.httpClient.get<StudyProgram[]>(this.appSettings.ApiPath+"StudyProgram/GetAllStudyPrograms");
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<StudyProgram[]>(this.appSettings.ApiPath+"StudyProgram/GetAllStudyPrograms",httpOptions);
    }
 
    public GetStudyProgramById(learningScheduleId: number):Observable<StudyProgram[]>{
@@ -66,7 +74,8 @@ export class DataService{
 
    //methods for learningSchedule
    public GetAllLearningSchedule():Observable<LearningSchedule[]>{
-    return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath+"LearningSchedule/GetAllLearningSchedules");
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<LearningSchedule[]>(this.appSettings.ApiPath+"LearningSchedule/GetAllLearningSchedules",httpOptions);
    }
 
    public GetLearningScheduleById(learningScheduleId: number):Observable<LearningSchedule[]>{
@@ -120,18 +129,21 @@ export class DataService{
    }
 
    public UpdateProfileByUserId(profile:Profile, userId:number):Observable<Profile[]>{
+    var httpOptions=this.setHttpHeader();
     let param1=new HttpParams().set('userId', userId);  
     return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile, {params:param1});
    }
 
    public UpdateProfilePictureByUserId(profilePicture:string){
+    var httpOptions=this.setHttpHeader();
     let param1=new HttpParams().set('profilePicture',profilePicture);
-    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{params:param1});
+    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{ headers: httpOptions.headers, params: param1 });
    }
 
    public UpdateProfileDescriptionByUserId(profileDescription:string){
+    var httpOptions=this.setHttpHeader();
     let param1=new HttpParams().set('profileDescription',profileDescription);
-    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',{params:param1});
+    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',{ headers: httpOptions.headers, params: param1 });
    }
 
    //methods for user
@@ -139,22 +151,14 @@ export class DataService{
     return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers');
    }
 
-   public GetUserById(token:string):Observable<User>{
-    var headers =new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-    var requestOptions={headers:headers};
-    return this.httpClient.get<User>(this.appSettings.ApiPath+'User/GetUserById',requestOptions);
+   public GetUserById():Observable<User>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<User>(this.appSettings.ApiPath+'User/GetUserById',httpOptions);
    }
 
-   public AddUser(user:User, token:string){
-      var headers =new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      });
-      var requestOptions={headers:headers};
-      return this.httpClient.post(this.appSettings.ApiPath+'User/AddUser',user, requestOptions);
+   public AddUser(user:User){
+    var httpOptions=this.setHttpHeader();
+      return this.httpClient.post(this.appSettings.ApiPath+'User/AddUser',user, httpOptions);
    }
 
    //methods for post
