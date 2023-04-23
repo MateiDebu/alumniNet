@@ -37,6 +37,13 @@ export class LoginComponentComponent implements OnInit {
     this.router.navigate(['register']);
   }
 
+  forgetPassword(){
+    if(this.email == ''){
+      alert('Email-ul nu este bun');
+    }else
+    this.auth.recoverPassword(this.email);
+  }
+
   ngOnInit(): void {
   }
 }

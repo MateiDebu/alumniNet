@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 import { DataService } from './data.service';
@@ -64,6 +64,15 @@ export class AuthService {
          alert("Câmpurile completate nu sunt valide");
     });
   });
+  }
+
+  recoverPassword(email: string){
+    sendPasswordResetEmail(this.auth,email).then(() => {
+      alert("S-a trimis un mail pentru recuperarea parolei")
+    })
+    .catch((error) => {
+      alert("Operația de recuperare a parolei a eșuat");
+    });
   }
 
   logout(){
