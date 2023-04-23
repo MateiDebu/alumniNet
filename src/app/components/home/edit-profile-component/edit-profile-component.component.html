@@ -26,28 +26,28 @@
             
             <mat-form-field appearance="fill" class="info">
                 <mat-label>Nume organizație</mat-label>
-                <input matInput  #nameCompany >
+                <input matInput [(ngModel)]="companyName">
               </mat-form-field>
 
               <mat-form-field appearance="fill" class="info"> 
                 <mat-label>Funcție/ocupatie</mat-label>
-                <input matInput #occupation >
+                <input matInput [(ngModel)]="jobTitle">
               </mat-form-field>
 
               <mat-form-field appearance="fill" class="info">
                 <mat-label>Din anul</mat-label>
-                <input matInput #yearCheck1 maxlength="4" minlength="4" matInput type="number">
-                <mat-hint align ="end">{{yearCheck1.value.length}} / 4 </mat-hint>
+                <input matInput  type="number" [(ngModel)]="startDate">
               </mat-form-field>
+
+              <p class="textFinishYear">Dacă încă lucrați la acest loc de muncă următorul câmp nu trebuie completat</p>
 
               <mat-form-field appearance="fill" class="info">
                 <mat-label>Până în anul</mat-label>
-                <input matInput #yearCheck2 maxlength="4" minlength="4" matInput type="number">
-                <mat-hint align ="end">{{yearCheck2.value.length}} / 4 </mat-hint>
+                <input matInput type="number" [(ngModel)]="endDate">
               </mat-form-field>
 
               <br>
-              <button mat-raised-button color="accent" class="saveButtons" id="marginButton">Salvează</button>
+              <button mat-raised-button color="accent" class="saveButtons" id="marginButton" (click)="addNewExperience()">Salvează</button>
         </div>
 
         <div class="studiesInformation" >

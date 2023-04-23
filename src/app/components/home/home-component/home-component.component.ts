@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Experience } from 'src/app/models/experience.mode';
+import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
+import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
@@ -16,6 +19,9 @@ export class HomeComponentComponent implements OnInit {
   description:string='eu sunt din brasov si ...'
 
   user: User = new User;
+  experience:Experience[]=[];
+  studies:FinishedStudy[]=[];
+  finishStudyDetailed:FinishedStudyDetailed[]=[];
 
   showFinishedStudys=false;
   showExperience=false;
@@ -30,6 +36,20 @@ export class HomeComponentComponent implements OnInit {
     this.dataService.GetUserById().subscribe((user:User)=>{
       this.user=user;
      });
+
+    this.dataService.GetAllExperiencesForUser().subscribe((experience:Experience[])=>{
+      this.experience=experience;
+    });
+
+    this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
+      this.finishStudyDetailed=finishStudyDetailed;
+    });
+
+    console.log(this.finishStudyDetailed);
+  }
+
+  setFaculty(id:number){
+    return this.dataService.GetFacultyById(id).subscribe();
   }
 
   setName(){

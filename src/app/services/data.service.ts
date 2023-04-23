@@ -12,6 +12,7 @@ import { StudyProgram } from "../models/study-program.mode";
 import { LearningSchedule } from "../models/learning-schedule.mode";
 import { Post } from "../models/post.mode";
 import { map } from 'rxjs/operators';
+import { FinishedStudyDetailed } from "../models/finished-study-detailed.mode";
 
 
 @Injectable({
@@ -89,18 +90,19 @@ export class DataService{
     return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetExperienceById", {params:param1});
    }
 
-   public AddNewExperienceForUser(experience: Experience,userId: number):Observable<Experience[]>{
-    let param6=new HttpParams().set('userId', userId);
-    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/AddNewExperienceForUser",experience,{params:param6});
+   public AddNewExperienceForUser(experience: Experience):Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/AddNewExperienceForUser",experience,httpOptions);
    }
 
-   public GetAllExperiencesForUser(userId: number):Observable<Experience[]>{
-    let param1=new HttpParams().set('userId', userId);
-    return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetAllExperiencesForUser", {params:param1});
+   public GetAllExperiencesForUser():Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetAllExperiencesForUser", httpOptions);
    }
 
    public UpdateExperience(experience: Experience):Observable<Experience[]>{
-    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/UpdateExperience", experience);
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/UpdateExperience", experience,httpOptions);
    }
 
    //methods for finishedStudy
@@ -109,9 +111,9 @@ export class DataService{
     return this.httpClient.get<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/GetFinishedStudyById", {params:param1});
    }
 
-   public GetFinishedStudyByUserId(id: number):Observable<FinishedStudy[]>{
-    let param1=new HttpParams().set('id', id);
-    return this.httpClient.get<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/GetFinishedStudyByUserId", {params:param1});
+   public GetFinishedStudyByUserId():Observable<FinishedStudyDetailed[]>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<FinishedStudyDetailed[]>(this.appSettings.ApiPath + "FinishedStudy/GetFinishedStudyByUserId", httpOptions);
    }
 
    public UpdateFinishedStudySpecialization(finishedStudy:FinishedStudy):Observable<FinishedStudy[]>{

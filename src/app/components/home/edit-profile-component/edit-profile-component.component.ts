@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
+import { Experience } from 'src/app/models/experience.mode';
 import { Faculty } from 'src/app/models/faculty.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { LearningSchedule } from 'src/app/models/learning-schedule.mode';
@@ -25,7 +26,12 @@ export class EditProfileComponentComponent implements OnInit {
   specializationId:number=0;
   learningScheduleId:number=0;
   studyProgramId:number=0;
-  finishStudyYear:number=0;
+  finishStudyYear!:number;
+
+  companyName:string='';
+  jobTitle:string='';
+  startDate!:number;
+  endDate!: number;
 
   constructor(private dataService:DataService) { }
 
@@ -101,6 +107,20 @@ export class EditProfileComponentComponent implements OnInit {
       }else
         alert("Toate câmpurile trebuie completate");
     });
+  }
+
+  addNewExperience(){
+    var experience=new Experience();
+    experience.companyName=this.companyName;
+    experience.jobTitle=this.jobTitle;
+    experience.startDate=this.startDate;
+    experience.endDate=this.endDate;
+    console.log(experience);
+    this.dataService.AddNewExperienceForUser(experience).subscribe((res)=>{
+            if(res){
+              alert("Experiența a fost adăugată cu succes");
+            }else alert("Experiența nu s-a putut adăuga");
+          });
   }
 
 }

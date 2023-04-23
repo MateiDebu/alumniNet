@@ -21,18 +21,18 @@
                 <button mat-raised-button color="accent" class="openButtons" (click)="openExperience()">Experiență profesională</button>
                 <div *ngIf="showFinishedStudys">
                     <br>
-                    <table class="designTable">      <!--*ngIf="prieteni.length > 0"-->
+                    <table class="designTable" *ngIf="finishStudyDetailed.length > 0">      
                         <tr>
                           <th>Facultate</th>
                           <th>Program de studiu</th>
                           <th>Specializare</th>
                           <th>Anul terminari</th>
                         </tr>
-                        <tr > <!--*ngFor="let p of prieteni"-->
-                          <td>Facultatea de matematica si informatica</td>
-                          <td>Licenta</td>
-                          <td>Informatica</td>
-                          <td>2023</td>
+                        <tr *ngFor="let finishStudy of finishStudyDetailed"> 
+                          <td>Facultate</td>
+                          <td>{{finishStudy.studyPrograms[finishStudy.studyProgramId].programName}}</td>
+                          <td>{{finishStudy.specializations[finishStudy.specializationId].specializationName}}/td>
+                          <td>{{finishStudy.year}}</td>
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons" (click)="close()">Închide</button>
@@ -42,16 +42,17 @@
 
                 <div *ngIf="showExperience">
                     <br>
-                    <table class="designTable">      <!--*ngIf="prieteni.length > 0"-->
+                    <table class="designTable" *ngIf="experience.length > 0">      
                         <tr>
                           <th>Firmă</th>
                           <th>Poziție ocupată</th>
                           <th>Perioadă</th>
                         </tr>
-                        <tr > <!--*ngFor="let p of prieteni"-->
-                          <td>Firma de IT</td>
-                          <td>bibliotecar</td>
-                          <td>2023-prezent</td>
+                        <tr *ngFor="let exp of experience"> 
+                          <td>{{exp.companyName}}</td>
+                          <td>{{exp.jobTitle}}</td>
+                          <td *ngIf="exp.endDate!=null">{{exp.startDate + '-'+ exp.endDate }}</td>
+                          <td *ngIf="exp.endDate==null">{{exp.startDate + '-prezent' }}</td>
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>
