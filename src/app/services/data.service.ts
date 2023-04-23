@@ -114,36 +114,50 @@ export class DataService{
     return this.httpClient.get<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/GetFinishedStudyByUserId", {params:param1});
    }
 
-   public GetFinishedStudyByProfileId():Observable<FinishedStudy[]>{
-    return this.httpClient.get<FinishedStudy[]>(this.appSettings.ApiPath+'FinishedStudy/GetFinishedStudyByProfileId');
+   public UpdateFinishedStudySpecialization(finishedStudy:FinishedStudy):Observable<FinishedStudy[]>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.put<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/UpdateFinishedStudySpecialization", finishedStudy,httpOptions);
    }
 
    public UpdateFinishedStudy(finishedStudy:FinishedStudy):Observable<FinishedStudy[]>{
-    return this.httpClient.put<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/UpdateFinishedStudy", finishedStudy);
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.put<FinishedStudy[]>(this.appSettings.ApiPath + "FinishedStudy/UpdateFinishedStudy", finishedStudy,httpOptions);
+   }
+
+   public AddFinishedStudy(finishedStudy:FinishedStudy){
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.post(this.appSettings.ApiPath + "FinishedStudy/AddFinishedStudy", finishedStudy,httpOptions);
+   }
+
+   public DeleteFinishedStudy(id:number){
+    var httpOptions=this.setHttpHeader();
+    let param1=new HttpParams().set('id', id);  
+    return this.httpClient.delete(this.appSettings.ApiPath+"FinishedStudy/DeleteFinishedStudy",{ headers: httpOptions.headers, params: param1 })
    }
 
    //methods for profile
-   public GetProfileByUserId(userId:number):Observable<Profile[]>{
-    let param1=new HttpParams().set('userId', userId);
-    return this.httpClient.get<Profile[]>(this.appSettings.ApiPath+'Profile/GetProfileByUserId', {params:param1});
+   public GetProfileByUserId():Observable<Profile[]>{
+
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<Profile[]>(this.appSettings.ApiPath+'Profile/GetProfileByUserId', httpOptions);
    }
 
-   public UpdateProfileByUserId(profile:Profile, userId:number):Observable<Profile[]>{
+   public UpdateProfileByUserId(profile:Profile):Observable<Profile[]>{
     var httpOptions=this.setHttpHeader();
-    let param1=new HttpParams().set('userId', userId);  
-    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile, {params:param1});
+    console.log(profile);
+    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile,httpOptions);
    }
 
-   public UpdateProfilePictureByUserId(profilePicture:string){
+
+   public UpdateProfilePictureByUserId(profilePicture:string):Observable<any>{
     var httpOptions=this.setHttpHeader();
-    let param1=new HttpParams().set('profilePicture',profilePicture);
-    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{ headers: httpOptions.headers, params: param1 });
+    return this.httpClient.put<any>(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{profilePicture},httpOptions);
    }
 
    public UpdateProfileDescriptionByUserId(profileDescription:string){
     var httpOptions=this.setHttpHeader();
     let param1=new HttpParams().set('profileDescription',profileDescription);
-    return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',{ headers: httpOptions.headers, params: param1 });
+    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',httpOptions,{ params: param1 });
    }
 
    //methods for user
@@ -157,7 +171,7 @@ export class DataService{
    }
 
    public AddUser(user:User){
-    var httpOptions=this.setHttpHeader();
+      var httpOptions=this.setHttpHeader();
       return this.httpClient.post(this.appSettings.ApiPath+'User/AddUser',user, httpOptions);
    }
 

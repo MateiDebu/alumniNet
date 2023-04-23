@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { Faculty } from 'src/app/models/faculty.mode';
+import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { LearningSchedule } from 'src/app/models/learning-schedule.mode';
 import { Profile } from 'src/app/models/profile.mode';
 import { Specialization } from 'src/app/models/specialization.mode';
@@ -20,6 +21,11 @@ export class EditProfileComponentComponent implements OnInit {
   studyPrograms: StudyProgram[]=[];
   description:string='';
   picturePath:string='';
+
+  specializationId:number=0;
+  learningScheduleId:number=0;
+  studyProgramId:number=0;
+  finishStudyYear:number=0;
 
   constructor(private dataService:DataService) { }
 
@@ -44,16 +50,57 @@ export class EditProfileComponentComponent implements OnInit {
     })
   }
 
+  setSpecializationId(id:number){
+    this.specializationId=id;
+  }
+
+  setLearningScheduleId(id:number){
+    this.learningScheduleId=id;
+  }
+
+  setStudyProgramId(id:number){
+    this.studyProgramId=id;
+  }
+
   updateProfile(){
     var profile=new Profile()
     if(this.description!='' && this.picturePath!=''){
       profile.description=this.description;
       profile.profilePicture=this.picturePath;
-      //this.dataService.UpdateProfileByUserId(profile).subscribe();
+      this.dataService.UpdateProfileByUserId(profile).subscribe((res) =>{
+        if(res){
+          alert("Profilul a fost actualizat cu succes");
+        }else
+        alert("Profilul nu a putut fi actualizat");
+      });
     }else if(this.description!='' && this.picturePath==''){
-      this.dataService.UpdateProfileDescriptionByUserId(this.description).subscribe();
+      this.dataService.UpdateProfileDescriptionByUserId(this.description).subscribe((res)=> {
+        if(res){
+          alert("Descrierea ta a fost actualizată cu succes");
+        }else{
+          alert("Descrierea nu s-a putut actualiza");
+        }
+      });
     }else if(this.picturePath!='' && this.description=='')
-      this.dataService.UpdateProfilePictureByUserId(this.picturePath).subscribe();
+      this.dataService.UpdateProfilePictureByUserId(this.picturePath).subscribe((res)=>{
+        if(res){
+          alert("Poza a fost schimbată cu succes");
+        }else alert("Poza nu s-a putut actualiza");
+      });
+  }
+   
+  addStudies(){
+    var finishedStudy=new FinishedStudy();
+    finishedStudy.specializationId=this.specializationId;
+    finishedStudy.learningScheduleId=this.learningScheduleId;
+    finishedStudy.studyProgramId=this.studyProgramId;
+    finishedStudy.year=this.finishStudyYear;
+    this.dataService.AddFinishedStudy(finishedStudy).subscribe((res)=>{
+      if(res){
+        alert("Studile au fost adăgate cu succes");
+      }else
+        alert("Toate câmpurile trebuie completate");
+    });
   }
 
 }
