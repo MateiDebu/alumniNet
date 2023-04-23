@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Experience } from 'src/app/models/experience.mode';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
+import { Post } from 'src/app/models/post.mode';
 import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
@@ -29,6 +30,12 @@ export class HomeComponentComponent implements OnInit {
   showEditPage=false;
   showSearchPage=false;
   showHomePage=true;
+  addPost=false;
+  closeButtonPost=true;
+
+  imagePathPost:string='';
+  textPost:string='';
+  titlePost:string='';
 
   constructor(private auth: AuthService, private dataService:DataService) { }
 
@@ -102,4 +109,28 @@ export class HomeComponentComponent implements OnInit {
   goToLoginPage(){
     this.auth.logout();
   }  
+
+  openNewPost(){
+    this.addPost=true;
+    this.closeButtonPost=false;
+  }
+
+  addNewPost(){
+    var newPost=new Post();
+    newPost.imagePath=this.imagePathPost;
+    newPost.text=this.textPost;
+    newPost.title=this.titlePost;
+    this.dataService.AddNewPostForUser(newPost).subscribe((res)=> {
+      if(res){
+        alert("Postarea a fost adăugată cu succes");
+      }else{
+        alert("Postarea nu a putut fi adăugată");
+      }
+    });
+  }
+
+  closePost(){
+    this.addPost=false;
+    this.closeButtonPost=true;
+  }
 }

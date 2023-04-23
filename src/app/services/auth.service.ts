@@ -70,7 +70,7 @@ export class AuthService {
     sendPasswordResetEmail(this.auth,email).then(() => {
       alert("S-a trimis un mail pentru recuperarea parolei")
     })
-    .catch((error) => {
+    .catch(() => {
       alert("Operația de recuperare a parolei a eșuat");
     });
   }

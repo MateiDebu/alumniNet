@@ -36,8 +36,7 @@
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons" (click)="close()">Închide</button>
-                    <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
-                   
+                      <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>  
                 </div>
 
                 <div *ngIf="showExperience">
@@ -56,13 +55,34 @@
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>
-                    <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
+                      <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
                 </div>        
             </div>
             <div class="postsInformation">
                 <h1>Postările tale</h1>
                 <hr>
-                <button class="buttonPost" mat-raised-button color="primary" >Adaugă o postare</button>
+                <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="primary" (click)="openNewPost()">Adaugă o postare</button>
+                <div *ngIf="addPost">
+                  <div class="formPost">
+                    <mat-form-field appearance="fill" class="info">
+                      <mat-label>Titlu postare</mat-label>
+                      <input matInput  [(ngModel)]="titlePost" >
+                    </mat-form-field>
+  
+                    <mat-form-field appearance="fill" class="info">
+                      <mat-label>Adaugă o descriere postări</mat-label>
+                      <textarea matInput [(ngModel)]="textPost"></textarea>
+                    </mat-form-field>
+  
+                    <mat-form-field appearance="fill" class="info">
+                      <mat-label>Încarcă o imagine</mat-label>
+                      <input matInput [(ngModel)]="imagePathPost">
+                    </mat-form-field>
+                    <br>
+                    <button class="buttonNewPost" mat-raised-button color="accent" (click)="addNewPost()">Adaugă o postare</button>
+                    <button class="buttonClosePost" mat-raised-button color="primary" (click)="closePost()">Închide</button>
+                  </div>
+                </div>
             </div>
         </div>
     </div>

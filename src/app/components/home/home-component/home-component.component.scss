@@ -58,6 +58,12 @@ th, td{
     width: 25%;
 }
 
+td{
+    border:1px solid black;
+    padding:1%;
+}
+
+
 .closeButtons{
     width: 15%;
     float:right;
@@ -72,4 +78,27 @@ th, td{
     margin-top:2%;
     margin-bottom: 2%;
     margin-right:2%;
+}
+
+.formPost{
+    text-align: center;
+    width: 80%;
+    padding: 2%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mat-form-field{
+    width: 60%;
+}
+
+.buttonNewPost{
+    width: 30%;
+    margin:1%;
+    font-size: 100%;
+}
+
+.buttonClosePost{
+    width: 20%;
+    margin:1%;
 }

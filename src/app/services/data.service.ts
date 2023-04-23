@@ -181,4 +181,10 @@ export class DataService{
    public GetAllPostsSorted(): Observable<Post[]>{
     return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetAllPostsSorted");
    }
+
+   public AddNewPostForUser(newPost:Post){
+    var httpOptions=this.setHttpHeader();
+    console.log(newPost);
+    return this.httpClient.post(this.appSettings.ApiPath+'Post/AddNewPostForUser',newPost, httpOptions);
+   }
 }
