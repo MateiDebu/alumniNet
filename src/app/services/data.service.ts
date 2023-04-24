@@ -146,7 +146,6 @@ export class DataService{
 
    public UpdateProfileByUserId(profile:Profile):Observable<Profile[]>{
     var httpOptions=this.setHttpHeader();
-    console.log(profile);
     return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile,httpOptions);
    }
 
@@ -182,9 +181,8 @@ export class DataService{
     return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetAllPostsSorted");
    }
 
-   public AddNewPostForUser(newPost:Post){
+   public AddNewPostForUser( newPost: Post):Observable<Post[]>{
     var httpOptions=this.setHttpHeader();
-    console.log(newPost);
-    return this.httpClient.post(this.appSettings.ApiPath+'Post/AddNewPostForUser',newPost, httpOptions);
+    return this.httpClient.post<Post[]>(this.appSettings.ApiPath+'Post/AddNewPostForUser',<Post>newPost, httpOptions);
    }
 }

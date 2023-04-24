@@ -1,6 +1,6 @@
 export class Post{
     postId:number=0;
-    imagePath:string='';
+    image:string='';
     text:string='';
     title:string='';
     date!:Date;

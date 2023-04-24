@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { read } from 'fs';
 import { Experience } from 'src/app/models/experience.mode';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
@@ -33,7 +34,7 @@ export class HomeComponentComponent implements OnInit {
   addPost=false;
   closeButtonPost=true;
 
-  imagePathPost:string='';
+  imageUrl:string='';
   textPost:string='';
   titlePost:string='';
 
@@ -53,6 +54,12 @@ export class HomeComponentComponent implements OnInit {
     });
 
     console.log(this.finishStudyDetailed);
+  }
+
+  onFileSelected(event:any){
+    if (event.target.files.length > 0) {
+      this.imageUrl = event.target.files[0].name;
+    }
   }
 
   setFaculty(id:number){
@@ -117,10 +124,10 @@ export class HomeComponentComponent implements OnInit {
 
   addNewPost(){
     var newPost=new Post();
-    newPost.imagePath=this.imagePathPost;
-    newPost.text=this.textPost;
     newPost.title=this.titlePost;
-    this.dataService.AddNewPostForUser(newPost).subscribe((res)=> {
+    newPost.text=this.textPost;
+    newPost.image=this.imageUrl;
+    this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
       if(res){
         alert("Postarea a fost adăugată cu succes");
       }else{

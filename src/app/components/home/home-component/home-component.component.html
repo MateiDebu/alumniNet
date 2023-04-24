@@ -73,12 +73,13 @@
                       <mat-label>Adaugă o descriere postări</mat-label>
                       <textarea matInput [(ngModel)]="textPost"></textarea>
                     </mat-form-field>
-  
-                    <mat-form-field appearance="fill" class="info">
-                      <mat-label>Încarcă o imagine</mat-label>
-                      <input matInput [(ngModel)]="imagePathPost">
-                    </mat-form-field>
                     <br>
+                    <p>Poți adăuga și o imagine postări tale</p>
+                    <input style="display:none"  type="file" (change)="onFileSelected($event)" #fileInput>
+                    <button type="button" class="addImage" mat-raised-button  (click)="fileInput.click()">Alege o fotografie</button>  
+                    <p *ngIf="imageUrl!=''">Imaginea a fost încărcată cu succes</p>
+                    <br>
+
                     <button class="buttonNewPost" mat-raised-button color="accent" (click)="addNewPost()">Adaugă o postare</button>
                     <button class="buttonClosePost" mat-raised-button color="primary" (click)="closePost()">Închide</button>
                   </div>

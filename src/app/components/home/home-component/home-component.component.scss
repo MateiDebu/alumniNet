@@ -51,7 +51,9 @@
 .designTable{
     width: 95%;
     text-align: center;
-    border: 2px;
+    border: 1px solid black;
+    padding: 2%;
+    background-color: rgb(233, 230, 230);
 }
 
 th, td{
@@ -59,7 +61,6 @@ th, td{
 }
 
 td{
-    border:1px solid black;
     padding:1%;
 }
 
@@ -101,4 +102,9 @@ td{
 .buttonClosePost{
     width: 20%;
     margin:1%;
+}
+
+.addImage{
+    width: 30%;
+    margin:2%;
 }
