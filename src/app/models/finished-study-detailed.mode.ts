@@ -1,5 +1,5 @@
 import { LearningSchedule } from "./learning-schedule.mode";
-import { Specialization } from "./specialization.mode";
+import { SpecializationFaculty } from "./specialization-faculties.mode";
 import { StudyProgram } from "./study-program.mode";
 
 export class FinishedStudyDetailed{
@@ -8,7 +8,7 @@ export class FinishedStudyDetailed{
     learningScheduleId:number=0;
     studyProgramId:number=0;
     year: number=0;
-    learningSchedules:LearningSchedule[]=[];
-    specializations:Specialization[]=[];
-    studyPrograms:StudyProgram[]=[];
+    learningSchedule?:LearningSchedule;
+    specialization?:SpecializationFaculty;
+    studyProgram?:StudyProgram;
 }

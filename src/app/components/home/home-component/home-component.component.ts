@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { read } from 'fs';
 import { Experience } from 'src/app/models/experience.mode';
+import { Faculty } from 'src/app/models/faculty.mode';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { Post } from 'src/app/models/post.mode';
@@ -38,6 +39,7 @@ export class HomeComponentComponent implements OnInit {
   textPost:string='';
   titlePost:string='';
 
+
   constructor(private auth: AuthService, private dataService:DataService) { }
 
   ngOnInit(): void {
@@ -51,19 +53,14 @@ export class HomeComponentComponent implements OnInit {
 
     this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
       this.finishStudyDetailed=finishStudyDetailed;
+      console.log(this.finishStudyDetailed);
     });
-
-    console.log(this.finishStudyDetailed);
   }
 
   onFileSelected(event:any){
     if (event.target.files.length > 0) {
       this.imageUrl = event.target.files[0].name;
     }
-  }
-
-  setFaculty(id:number){
-    return this.dataService.GetFacultyById(id).subscribe();
   }
 
   setName(){

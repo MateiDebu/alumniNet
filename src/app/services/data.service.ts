@@ -41,9 +41,9 @@ export class DataService{
     return this.httpClient.get<Faculty[]>(this.appSettings.ApiPath+"Faculty/GetAllFaculties");
    }
 
-   public GetFacultyById(facultyId: number):Observable<Faculty[]>{
+   public GetFacultyById(facultyId: number):Observable<Faculty>{
     let param1=new HttpParams().set('id', facultyId);
-    return this.httpClient.get<Faculty[]>(this.appSettings.ApiPath + "Faculty/GetFacultyById", {params:param1});
+    return this.httpClient.get<Faculty>(this.appSettings.ApiPath + "Faculty/GetFacultyById", {params:param1});
    }
 
    //methods for specialization
@@ -139,7 +139,6 @@ export class DataService{
 
    //methods for profile
    public GetProfileByUserId():Observable<Profile[]>{
-
     var httpOptions=this.setHttpHeader();
     return this.httpClient.get<Profile[]>(this.appSettings.ApiPath+'Profile/GetProfileByUserId', httpOptions);
    }

@@ -25,13 +25,15 @@
                         <tr>
                           <th>Facultate</th>
                           <th>Program de studiu</th>
+                          <th>Forma de învățământ</th>
                           <th>Specializare</th>
                           <th>Anul terminari</th>
                         </tr>
                         <tr *ngFor="let finishStudy of finishStudyDetailed"> 
-                          <td>Facultate</td>
-                          <td>{{finishStudy.studyPrograms[finishStudy.studyProgramId].programName}}</td>
-                          <td>{{finishStudy.specializations[finishStudy.specializationId].specializationName}}/td>
+                          <td>{{finishStudy.specialization?.faculty?.facultyName}}</td>
+                          <td>{{finishStudy.studyProgram?.programName}}</td>
+                          <td>{{finishStudy.learningSchedule?.scheduleName}}</td>
+                          <td>{{finishStudy.specialization?.specializationName}}</td>
                           <td>{{finishStudy.year}}</td>
                         </tr>
                       </table>
