@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, sendPasswordResetEmail,onAuthStateChanged} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 import { DataService } from './data.service';
@@ -15,9 +15,17 @@ export class AuthService {
   app=initializeApp(environment.firebase)
   auth=getAuth(this.app);
   userToken:string='';
+  loggedIn!:boolean;
 
-  constructor(private dataService:DataService,private router:Router) { }
-  loggedIn =false;
+  constructor(private dataService:DataService,private router:Router) {
+    this.loggedIn=Boolean(localStorage.getItem('logIn'));    
+    this.setTokenReloadPage();
+    dataService.setTokenUser(this.userToken);
+  }
+
+  setTokenReloadPage(){
+    var tokenFireBase=localStorage.getItem('fireBaseToken');
+    this.userToken = tokenFireBase !== null ? tokenFireBase : '';}
 
   isAuthenticated(){
     const promise=new Promise(
@@ -59,8 +67,10 @@ export class AuthService {
       this.userToken=idToken;
       this.dataService.userToken=idToken;
       this.loggedIn=true;
+      localStorage.setItem('logIn',this.loggedIn.toString());
+      localStorage.setItem('fireBaseToken',idToken.toString());
       this.router.navigate(['home']);
-    }).catch(error => {
+    }).catch(() => {
          alert("Câmpurile completate nu sunt valide");
     });
   });
@@ -78,5 +88,6 @@ export class AuthService {
   logout(){
     this.loggedIn=false;
     this.router.navigate(['login']);
+    localStorage.clear();
   }
 }

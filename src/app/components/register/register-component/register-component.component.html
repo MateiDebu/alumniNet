@@ -1,19 +1,11 @@
 <body>
-  <h1 class="pageTitle">Înregistrare Alumni</h1>
+  <h1 class="pageTitle">ÎNREGISTRARE</h1>
   <div class="formControl">
     <div>
-
       <mat-form-field appearance="fill">
         <mat-label>Prenume</mat-label>
         <input matInput required #firstNameCheck (keyup)="setFirstName(firstNameCheck.value)">
       </mat-form-field>
-       <!--
-          <mat-form-field appearance="fill">
-            <mat-label>Anul absolviri</mat-label>
-            <input matInput #yearCheck maxlength="4" minlength="4" matInput required  (keyup)="setYear(yearCheck.value)">
-            <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
-          </mat-form-field>   
-        -->
     </div>
 
     <div>
@@ -21,24 +13,12 @@
         <mat-label>Nume</mat-label>
         <input matInput required #lastNameCheck (keyup)="setLastName(lastNameCheck.value)">
       </mat-form-field>
-     <!-- 
-          <mat-form-field appearance="fill">
-            <mat-label>Facultatea absolvită</mat-label>
-            <input matInput  required #collegeCheck (keyup)="setCollege(collegeCheck.value)">
-          </mat-form-field>
-       -->
     </div>
     <div class="inputField">
         <mat-form-field appearance="fill">
             <mat-label>Introduceți email-ul</mat-label>
             <input class="inputText" matInput placeholder="pat@example.com" required #emailCheck (keyup)="setEmail(emailCheck.value)" name="email" [(ngModel)]="email">
         </mat-form-field>
-     <!--
-        <mat-form-field appearance="fill">
-          <mat-label>Specializare absolvită</mat-label>
-          <input matInput required #specializationCheck (keyup)="setSpecialization(specializationCheck.value)">
-        </mat-form-field>
-      -->
     </div>
     <div class="inputField">
         <mat-form-field appearance="fill">
@@ -62,11 +42,13 @@
     </div>
 
     <div class="inputField" >
-        <button mat-raised-button color="accent" class="buttonRegister" (click)="register()" target="_blank">Înregistrare</button>
+        <button mat-raised-button color="primary" class="buttonRegister" (click)="register()" target="_blank">Înregistrare</button>
         <div id="errorMessage" *ngIf="!empty  && !errorDisplay">
           <br>
           <div>Atenție! Toate câmpurile trebuie completate!</div>
       </div>
     </div>
+    <hr>
+    <button class="buttonLogIn" type="button"  mat-raised-button color="accent" (click)="goToLoginPage()">Înapoi la pagina de autentificare</button>
 </div>
 </body>

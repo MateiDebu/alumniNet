@@ -9,7 +9,7 @@
     width: 30%;
     border: 3px solid black;
     border-radius: 3%;
-    padding: 5%;
+    padding: 4%;
     text-align: center;
     
   }
@@ -20,7 +20,8 @@
   }
 
   .buttonRegister{
-    width: 40%;
+    width: 70%;
+    margin-bottom: 2%;
  } 
 
  #errorMessage{
@@ -30,4 +31,9 @@
     margin:0 auto;
     color:red;
     font-size: 70%;
+ }
+
+ .buttonLogIn{
+   margin:2%;
+   width: 60%;
  }

@@ -20,7 +20,9 @@ import { FinishedStudyDetailed } from "../models/finished-study-detailed.mode";
 })
 
 export class DataService{
-    constructor( private httpClient : HttpClient, private appSettings:AppSetting){}
+    constructor( private httpClient : HttpClient, private appSettings:AppSetting){
+      
+    }
 
     userToken:string='';
     setTokenUser(userToken:string){

@@ -124,4 +124,8 @@ export class RegisterComponentComponent implements OnInit {
          alert('Te rog completeaza toate campurile.')
   }
 
+  goToLoginPage(){
+    this.router.navigate(['login']);
+  }
+
 }

@@ -46,15 +46,6 @@ export class HomeComponentComponent implements OnInit {
     this.dataService.GetUserById().subscribe((user:User)=>{
       this.user=user;
      });
-
-    this.dataService.GetAllExperiencesForUser().subscribe((experience:Experience[])=>{
-      this.experience=experience;
-    });
-
-    this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
-      this.finishStudyDetailed=finishStudyDetailed;
-      console.log(this.finishStudyDetailed);
-    });
   }
 
   onFileSelected(event:any){
@@ -72,11 +63,18 @@ export class HomeComponentComponent implements OnInit {
   openFinishedStudys(){
     this.showFinishedStudys=true;
     this.showExperience=false;
+    this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
+      this.finishStudyDetailed=finishStudyDetailed;
+    });
+    
   }
 
   openExperience(){
     this.showExperience=true;
     this.showFinishedStudys=false;
+    this.dataService.GetAllExperiencesForUser().subscribe((experience:Experience[])=>{
+      this.experience=experience;
+    });
   }
 
   close(){
@@ -102,12 +100,16 @@ export class HomeComponentComponent implements OnInit {
     this.showEditPage=true;
     this.showSearchPage=false;
     this.showHomePage=false;
+    this.showExperience=false;
+    this.showFinishedStudys=false;
   }
 
   goToSearchPage(){
     this.showEditPage=false;
     this.showSearchPage=true;
     this.showHomePage=false;
+    this.showExperience=false;
+    this.showFinishedStudys=false;
   }
 
   goToLoginPage(){
