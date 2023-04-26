@@ -187,6 +187,11 @@ export class DataService{
     return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetAllPostsSorted");
    }
 
+   public GetPostsByUserId():Observable<Post[]>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetPostsByUserId",httpOptions);
+   }
+
    public AddNewPostForUser( newPost: Post):Observable<Post[]>{
     var httpOptions=this.setHttpHeader();
     return this.httpClient.post<Post[]>(this.appSettings.ApiPath+'Post/AddNewPostForUser',<Post>newPost, httpOptions);

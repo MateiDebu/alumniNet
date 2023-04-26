@@ -36,6 +36,7 @@ export class HomeComponentComponent implements OnInit {
   showHomePage=true;
   addPost=false;
   closeButtonPost=true;
+  showPosts=true;
 
   imageUrl:string='';
   textPost:string='';
@@ -75,7 +76,14 @@ export class HomeComponentComponent implements OnInit {
 
   onFileSelected(event:any){
     if (event.target.files.length > 0) {
-      this.imageUrl = event.target.files[0].name;
+      var file = event.target.files[0];
+    }
+
+    var reader=new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = (result) => {
+      this.imageUrl = reader.result as string;
     }
   }
 
@@ -144,6 +152,13 @@ export class HomeComponentComponent implements OnInit {
   openNewPost(){
     this.addPost=true;
     this.closeButtonPost=false;
+    this.showPosts=false;
+  }
+
+  closePost(){
+    this.addPost=false;
+    this.closeButtonPost=true;
+    this.showPosts=true;
   }
 
   addNewPost(){
@@ -158,10 +173,9 @@ export class HomeComponentComponent implements OnInit {
         alert("Postarea nu a putut fi adăugată");
       }
     });
-  }
 
-  closePost(){
-    this.addPost=false;
     this.closeButtonPost=true;
+    this.showPosts=true;
+    this.addPost=false;
   }
 }

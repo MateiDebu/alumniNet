@@ -15,7 +15,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog-component/confirmation-dialog.component';
-
+import { PostComponentComponent } from './post-component/post-component.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog-component/con
     EditProfileComponentComponent,
     SearchComponentComponent,
     ConfirmationDialogComponent,
+    PostComponentComponent,
 
   ],
   imports: [
@@ -35,7 +37,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog-component/con
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
   ]
 })
 export class HomeModule { }

@@ -30,11 +30,16 @@
                           <th>Promoția</th>
                         </tr>
                         <tr *ngFor="let finishStudy of finishStudyDetailed"> 
-                          <td>{{finishStudy.specialization?.faculty?.facultyName}}</td>
-                          <td>{{finishStudy.studyProgram?.programName}}</td>
-                          <td>{{finishStudy.learningSchedule?.scheduleName}}</td>
-                          <td>{{finishStudy.specialization?.specializationName}}</td>
-                          <td>{{finishStudy.year}}</td>
+                          <td>{{finishStudy.specialization?.faculty?.facultyName}}
+                          </td>
+                          <td>{{finishStudy.studyProgram?.programName}}
+                          </td>
+                          <td>{{finishStudy.learningSchedule?.scheduleName}}
+                          </td>
+                          <td>{{finishStudy.specialization?.specializationName}}
+                          </td>
+                          <td>{{finishStudy.year}}
+                          </td>
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons" (click)="close()">Închide</button>
@@ -65,6 +70,9 @@
                 <h1>Postările tale</h1>
                 <hr>
                 <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="primary" (click)="openNewPost()">Adaugă o postare</button>
+                <div *ngIf="showPosts">
+                  <app-post-component></app-post-component>
+                </div>
                 <div *ngIf="addPost">
                   <div class="formPost">
                     <mat-form-field appearance="fill" class="info">
@@ -80,7 +88,7 @@
                     <p>Poți adăuga și o imagine postări tale</p>
                     <input style="display:none"  type="file" (change)="onFileSelected($event)" #fileInput>
                     <button type="button" class="addImage" mat-raised-button  (click)="fileInput.click()">Alege o fotografie</button>  
-                    <p *ngIf="imageUrl!=''">Imaginea a fost încărcată cu succes</p>
+                    <p *ngIf="imageUrl!=''">{{imageUrl}} Imaginea a fost încărcată cu succes</p>
                     <br>
 
                     <button class="buttonNewPost" mat-raised-button color="accent" (click)="addNewPost()">Adaugă o postare</button>

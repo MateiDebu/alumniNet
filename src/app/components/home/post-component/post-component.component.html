@@ -1,0 +1,48 @@
+<div class="designTableDiv">
+      <table class="designTable" *ngIf="posts.length > 0">      
+        <tr *ngFor="let post of posts "> 
+          <td> <div>
+                  <h2 class="titlePost">{{post.title}}</h2>
+                  <p  class="textPost" >{{post.text}} </p>
+              </div>  
+              <div>
+                <hr>
+                <button mat-mini-fab color="warn" [matMenuTriggerFor]="menu">
+                  <mat-icon>menu</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="showUpdateTitlePost()" (click)="setIsActive(post.postId)">Editează titlul postari</button>
+                  <button mat-menu-item (click)="showUpdateTextPost()"  (click)="setIsActive(post.postId)">Editează textul postări</button>
+                  <button mat-menu-item (click)="showUpdateImagePost()" (click)="setIsActive(post.postId)">Editează poza postări</button>
+                  <button mat-menu-item (click)="deletePost(post.postId)">Șterge postarea</button>
+                </mat-menu>
+              </div> 
+              <div *ngIf="showTitleEditor && active==post.postId " class="editorsDiv">
+                <mat-form-field appearance="fill" class="info">
+                  <mat-label>Adaugă noul titlu aici</mat-label>
+                  <input matInput  [(ngModel)]="titlePost" >
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" closeEditors()">Actualizează titlul</button>
+              </div>
+              <div *ngIf="showTextEditor  && active==post.postId ">
+                <br>
+                <mat-form-field appearance="fill" class="info">
+                  <mat-label>Adaugă noua descriere aici</mat-label>
+                  <textarea matInput [(ngModel)]="textPost" ></textarea>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" closeEditors()">Actualizează descrierea</button>
+              </div> 
+              <div *ngIf="showImageEditor  && active==post.postId ">
+                <p>imagine aici</p>
+                <br>
+                <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" closeEditors()">Actualizează poza</button>
+              </div>
+          </td>
+        </tr>
+      </table>
+</div>
