@@ -54,6 +54,10 @@ export class HomeComponentComponent implements OnInit {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       height: '240px',
+      data : {
+        title: 'Confirmare ștergere',
+        message: 'Sigur doriți să ștergeți experiența selectată?',
+      }
     });
     console.log(id);
     dialogRef.afterClosed().subscribe(result => {
