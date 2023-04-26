@@ -107,6 +107,12 @@ export class DataService{
     return this.httpClient.post<Experience[]>(this.appSettings.ApiPath + "Experience/UpdateExperience", experience,httpOptions);
    }
 
+   public DeleteExperience(experienceId:number){
+    var httpOptions=this.setHttpHeader();
+    let param1=new HttpParams().set('experienceId', experienceId);
+    return this.httpClient.delete(this.appSettings.ApiPath +"Experience/DeleteExperience",{ headers: httpOptions.headers, params: param1 });
+   }
+
    //methods for finishedStudy
    public GetFinishedStudyById(id: number):Observable<FinishedStudy[]>{
     let param1=new HttpParams().set('id', id);
@@ -133,10 +139,9 @@ export class DataService{
     return this.httpClient.post(this.appSettings.ApiPath + "FinishedStudy/AddFinishedStudy", finishedStudy,httpOptions);
    }
 
-   public DeleteFinishedStudy(id:number){
+   public DeleteFinishedStudy(experienceId:number){
     var httpOptions=this.setHttpHeader();
-    let param1=new HttpParams().set('id', id);  
-    return this.httpClient.delete(this.appSettings.ApiPath+"FinishedStudy/DeleteFinishedStudy",{ headers: httpOptions.headers, params: param1 })
+    return this.httpClient.delete(this.appSettings.ApiPath+"FinishedStudy/DeleteFinishedStudy");
    }
 
    //methods for profile
@@ -159,7 +164,7 @@ export class DataService{
    public UpdateProfileDescriptionByUserId(profileDescription:string){
     var httpOptions=this.setHttpHeader();
     let param1=new HttpParams().set('profileDescription',profileDescription);
-    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',httpOptions,{ params: param1 });
+    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',{profileDescription},httpOptions);
    }
 
    //methods for user

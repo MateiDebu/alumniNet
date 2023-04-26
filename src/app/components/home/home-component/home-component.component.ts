@@ -9,6 +9,8 @@ import { Post } from 'src/app/models/post.mode';
 import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog-component/confirmation-dialog.component';
 
 @Component({
   selector: 'app-home-component',
@@ -39,13 +41,32 @@ export class HomeComponentComponent implements OnInit {
   textPost:string='';
   titlePost:string='';
 
-
-  constructor(private auth: AuthService, private dataService:DataService) { }
+  constructor(private auth: AuthService, private dataService:DataService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.dataService.GetUserById().subscribe((user:User)=>{
       this.user=user;
      });
+  }
+
+  openDeleteDialog(id:number){
+    
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      height: '240px',
+    });
+    console.log(id);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.dataService.DeleteExperience(id).subscribe((res)=>{
+          if(res){
+            alert("Ștergerea s-a efectuat cu succes");
+          }else
+            alert("Ștergerea nu s-a putut efectua");
+          
+        });
+        this.showExperience=false;
+      }});
   }
 
   onFileSelected(event:any){

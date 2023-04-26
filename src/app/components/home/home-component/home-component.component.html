@@ -54,6 +54,7 @@
                           <td>{{exp.jobTitle}}</td>
                           <td *ngIf="exp.endDate!=null">{{exp.startDate + '-'+ exp.endDate }}</td>
                           <td *ngIf="exp.endDate==null">{{exp.startDate + '-prezent' }}</td>
+                          <td> <div> <button mat-raised-button color="warn" (click)="openDeleteDialog(exp.experienceId)" >Șterge</button></div>  </td>
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>

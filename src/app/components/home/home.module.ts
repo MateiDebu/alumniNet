@@ -13,6 +13,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './confirmation-dialog-component/confirmation-dialog.component';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponentComponent,
     EditProfileComponentComponent,
     SearchComponentComponent,
+    ConfirmationDialogComponent,
 
   ],
   imports: [
@@ -32,7 +35,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    
+    MatDialogModule
   ]
 })
 export class HomeModule { }
