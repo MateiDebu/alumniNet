@@ -196,4 +196,52 @@ export class DataService{
     var httpOptions=this.setHttpHeader();
     return this.httpClient.post<Post[]>(this.appSettings.ApiPath+'Post/AddNewPostForUser',<Post>newPost, httpOptions);
    }
+
+   public UpdatePostImage(id:number, image:string){
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        postId: id,
+        postImage:image
+      }
+    });
+    return this.httpClient.put<Post[]>(this.appSettings.ApiPath+'Post/UpdatePostImage',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
+
+   public UpdatePostTitle(id:number, title:string){
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        postId: id,
+        postTitle:title
+      }
+    });
+    return this.httpClient.put<Post[]>(this.appSettings.ApiPath+'Post/UpdatePostTitle',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
+
+   public UpdatePostText(id:number, text:string):Observable<Post[]>{
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        postId: id,
+        postText:text
+      }
+    });
+    return this.httpClient.put<Post[]>(this.appSettings.ApiPath+'Post/UpdatePostText',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
+
+   public DeletePost(postId:number){
+    var httpOptions=this.setHttpHeader();
+    var param1=new HttpParams().set('postId',postId);
+    return this.httpClient.delete(this.appSettings.ApiPath+'Post/DeletePost', {headers: httpOptions.headers, params: param1 });
+   }
 }

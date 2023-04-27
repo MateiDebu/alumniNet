@@ -20,27 +20,27 @@
               <div *ngIf="showTitleEditor && active==post.postId " class="editorsDiv">
                 <mat-form-field appearance="fill" class="info">
                   <mat-label>Adaugă noul titlu aici</mat-label>
-                  <input matInput  [(ngModel)]="titlePost" >
+                  <input matInput  [(ngModel)]="postTitle" >
                 </mat-form-field>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-                <button mat-raised-button color="accent"  class="updateButtons"(click)=" closeEditors()">Actualizează titlul</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateTitlePost(post.postId)">Actualizează titlul</button>
               </div>
               <div *ngIf="showTextEditor  && active==post.postId ">
                 <br>
                 <mat-form-field appearance="fill" class="info">
                   <mat-label>Adaugă noua descriere aici</mat-label>
-                  <textarea matInput [(ngModel)]="textPost" ></textarea>
+                  <textarea matInput [(ngModel)]="postText" ></textarea>
                 </mat-form-field>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-                <button mat-raised-button color="accent"  class="updateButtons"(click)=" closeEditors()">Actualizează descrierea</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateDescriptionPost(post.postId)">Actualizează descrierea</button>
               </div> 
               <div *ngIf="showImageEditor  && active==post.postId ">
                 <p>imagine aici</p>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-                <button mat-raised-button color="accent"  class="updateButtons"(click)=" closeEditors()">Actualizează poza</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateImagePost(post.postId)">Actualizează poza</button>
               </div>
           </td>
         </tr>

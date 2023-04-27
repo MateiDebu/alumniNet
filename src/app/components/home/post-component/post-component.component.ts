@@ -14,21 +14,23 @@ export class PostComponentComponent implements OnInit {
   showImageEditor=false;
   
 
-  titlePost:string='';
-  textPost:string='';
+  postTitle:string='';
+  postText:string='';
 
   active:number=0;
 
 
   posts:Post[]=[];
-  constructor(private dataService:DataService) {
+  constructor(private dataService:DataService) {}
+
+  ngOnInit(): void {
+   this.refreshPosts();
+  }
+
+  refreshPosts(){
     this.dataService.GetPostsByUserId().subscribe((posts:Post[])=>{
       this.posts=posts;
     });
-   }
-
-  ngOnInit(): void {
-  
   }
 
   showUpdateTitlePost(){
@@ -48,16 +50,34 @@ export class PostComponentComponent implements OnInit {
   }
 
   deletePost(id:number){
+    this.dataService.DeletePost(id).subscribe((res)=>{
+      if(res){
+        alert('Ștergerea s-a realizat cu succes');
+      }else
+        alert('Ștergerea nu s-a putut realiza');
+    });
+
+    this.refreshPosts();
 
   }
-  updateDescriptionPost(id:number){
-
+  updateDescriptionPost(postId:number){
+    this.dataService.UpdatePostText(postId, this.postText).subscribe((res)=>{
+      if(res){
+        alert('Schimbarea descrieri s-a reaalizat cu succes');
+      }else
+       alert('Schimbarea descrieri nu s-a putut efectua')
+    });
   }
-  updateTitlePost(id:number){
-
+  updateTitlePost(postId:number){
+    this.dataService.UpdatePostTitle(postId, this.postTitle).subscribe((res)=>{
+      if(res){
+        alert('Schimbarea titlului s-a reaalizat cu succes');
+      }else
+       alert('Schimbarea titlului nu s-a putut efectua')
+    });
   }
+
   updateImagePost(id:number){
-
   }
 
   closeEditors(){
