@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { read } from 'fs';
 import { Experience } from 'src/app/models/experience.mode';
-import { Faculty } from 'src/app/models/faculty.mode';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { Post } from 'src/app/models/post.mode';
 import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog-component/confirmation-dialog.component';
 
 @Component({
@@ -34,13 +31,6 @@ export class HomeComponentComponent implements OnInit {
   showEditPage=false;
   showSearchPage=false;
   showHomePage=true;
-  addPost=false;
-  closeButtonPost=true;
-  showPosts=true;
-
-  imageUrl:string='';
-  textPost:string='';
-  titlePost:string='';
 
   constructor(private auth: AuthService, private dataService:DataService, private dialog:MatDialog) { }
 
@@ -60,7 +50,7 @@ export class HomeComponentComponent implements OnInit {
         message: 'Sigur doriți să ștergeți experiența selectată?',
       }
     });
-    console.log(id);
+    
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.dataService.DeleteExperience(id).subscribe((res)=>{
@@ -72,19 +62,6 @@ export class HomeComponentComponent implements OnInit {
         });
         this.showExperience=false;
       }});
-  }
-
-  onFileSelected(event:any){
-    if (event.target.files.length > 0) {
-      var file = event.target.files[0];
-    }
-
-    var reader=new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = (result) => {
-      this.imageUrl = reader.result as string;
-    }
   }
 
   setName(){
@@ -116,7 +93,6 @@ export class HomeComponentComponent implements OnInit {
   }
 
   setPath(){
-
   }
 
   setDescription(){
@@ -148,34 +124,4 @@ export class HomeComponentComponent implements OnInit {
   goToLoginPage(){
     this.auth.logout();
   }  
-
-  openNewPost(){
-    this.addPost=true;
-    this.closeButtonPost=false;
-    this.showPosts=false;
-  }
-
-  closePost(){
-    this.addPost=false;
-    this.closeButtonPost=true;
-    this.showPosts=true;
-  }
-
-  addNewPost(){
-    var newPost=new Post();
-    newPost.title=this.titlePost;
-    newPost.text=this.textPost;
-    newPost.image=this.imageUrl;
-    this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
-      if(res){
-        alert("Postarea a fost adăugată cu succes");
-      }else{
-        alert("Postarea nu a putut fi adăugată");
-      }
-    });
-
-    this.closeButtonPost=true;
-    this.showPosts=true;
-    this.addPost=false;
-  }
 }

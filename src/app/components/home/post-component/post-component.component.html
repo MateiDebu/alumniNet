@@ -1,4 +1,30 @@
-<div class="designTableDiv">
+ <h1>Postările tale</h1>
+         <hr>
+         <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="primary" (click)="openNewPost()">Adaugă o postare</button>
+            <div *ngIf="addPost">
+              <div class="formPost">
+                 <mat-form-field appearance="fill" class="info">
+                    <mat-label>Titlu postare</mat-label>
+                    <input matInput  [(ngModel)]="titlePostAdd" >
+                  </mat-form-field>
+  
+                 <mat-form-field appearance="fill" class="info">
+                   <mat-label>Adaugă o descriere postări</mat-label>
+                    <textarea matInput [(ngModel)]="textPostAdd"></textarea>
+                  </mat-form-field>
+                 <br>
+                  <p>Poți adăuga și o imagine postări tale</p>
+                  <input style="display:none"  type="file" (change)="onFileSelected($event)" #fileInput>
+                  <button type="button" class="addImage" mat-raised-button  (click)="fileInput.click()">Alege o fotografie</button>  
+                  <p *ngIf="imageUrlAdd!=''">{{imageUrlAdd}} Imaginea a fost încărcată cu succes</p>
+
+                  <br>
+                    <button class="buttonNewPost"   mat-raised-button color="accent"  (click)="addNewPost()">Adaugă postarea</button>
+                    <button class="buttonClosePost" mat-raised-button color="primary" (click)="closePost()" >Închide</button>
+                  </div>
+             </div>
+             <br>
+<div class="designTableDiv" *ngIf="showPosts">
       <table class="designTable" *ngIf="posts.length > 0">      
         <tr *ngFor="let post of posts "> 
           <td> <div>
@@ -14,7 +40,7 @@
                   <button mat-menu-item (click)="showUpdateTitlePost()" (click)="setIsActive(post.postId)">Editează titlul postari</button>
                   <button mat-menu-item (click)="showUpdateTextPost()"  (click)="setIsActive(post.postId)">Editează textul postări</button>
                   <button mat-menu-item (click)="showUpdateImagePost()" (click)="setIsActive(post.postId)">Editează poza postări</button>
-                  <button mat-menu-item (click)="deletePost(post.postId)">Șterge postarea</button>
+                  <button mat-menu-item (click)="openDeleteDialog(post.postId)">Șterge postarea</button>
                 </mat-menu>
               </div> 
               <div *ngIf="showTitleEditor && active==post.postId " class="editorsDiv">
@@ -22,6 +48,8 @@
                   <mat-label>Adaugă noul titlu aici</mat-label>
                   <input matInput  [(ngModel)]="postTitle" >
                 </mat-form-field>
+                <br>
+                <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
                 <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateTitlePost(post.postId)">Actualizează titlul</button>
@@ -32,6 +60,8 @@
                   <mat-label>Adaugă noua descriere aici</mat-label>
                   <textarea matInput [(ngModel)]="postText" ></textarea>
                 </mat-form-field>
+                <br>
+                <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
                 <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateDescriptionPost(post.postId)">Actualizează descrierea</button>

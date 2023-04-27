@@ -67,33 +67,8 @@
                 </div>        
             </div>
             <div class="postsInformation">
-                <h1>Postările tale</h1>
-                <hr>
-                <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="primary" (click)="openNewPost()">Adaugă o postare</button>
-                <div *ngIf="showPosts">
+                <div>
                   <app-post-component></app-post-component>
-                </div>
-                <div *ngIf="addPost">
-                  <div class="formPost">
-                    <mat-form-field appearance="fill" class="info">
-                      <mat-label>Titlu postare</mat-label>
-                      <input matInput  [(ngModel)]="titlePost" >
-                    </mat-form-field>
-  
-                    <mat-form-field appearance="fill" class="info">
-                      <mat-label>Adaugă o descriere postări</mat-label>
-                      <textarea matInput [(ngModel)]="textPost"></textarea>
-                    </mat-form-field>
-                    <br>
-                    <p>Poți adăuga și o imagine postări tale</p>
-                    <input style="display:none"  type="file" (change)="onFileSelected($event)" #fileInput>
-                    <button type="button" class="addImage" mat-raised-button  (click)="fileInput.click()">Alege o fotografie</button>  
-                    <p *ngIf="imageUrl!=''">{{imageUrl}} Imaginea a fost încărcată cu succes</p>
-                    <br>
-
-                    <button class="buttonNewPost" mat-raised-button color="accent" (click)="addNewPost()">Adaugă o postare</button>
-                    <button class="buttonClosePost" mat-raised-button color="primary" (click)="closePost()">Închide</button>
-                  </div>
                 </div>
             </div>
         </div>
