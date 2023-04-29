@@ -113,6 +113,61 @@ export class DataService{
     return this.httpClient.delete(this.appSettings.ApiPath +"Experience/DeleteExperience",{ headers: httpOptions.headers, params: param1 });
    }
 
+   public UpdateExperienceCompanyName(id:number, company:string):Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        experienceId: id,
+        companyName:company
+      }
+    });
+    return this.httpClient.put<Experience[]>(this.appSettings.ApiPath+'Experience/UpdateExperienceCompanyName',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
+
+   public UpdateExperienceJobTitle(id:number, job:string):Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        experienceId: id,
+        jobTitle:job
+      }
+    });
+    return this.httpClient.put<Experience[]>(this.appSettings.ApiPath+'Experience/UpdateExperienceJobTitle',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
+
+   public UpdateExperienceStartDate(id:number, date:number):Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        experienceId: id,
+        startDate:date
+      }
+    });
+    return this.httpClient.put<Experience[]>(this.appSettings.ApiPath+'Experience/UpdateExperienceStartDate',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
+
+   public UpdateExperienceEndDate(id:number, date:number):Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    const httpParams =new HttpParams({
+      fromObject:{
+        experienceId: id,
+        endDate:date
+      }
+    });
+    return this.httpClient.put<Experience[]>(this.appSettings.ApiPath+'Experience/UpdateExperienceEndDate',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
+   }
    //methods for finishedStudy
    public GetFinishedStudyById(id: number):Observable<FinishedStudy[]>{
     let param1=new HttpParams().set('id', id);

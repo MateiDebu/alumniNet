@@ -1,37 +1,67 @@
-<div>
+<h1>Experiență profesională</h1>
+<div class="allComp">
     <br>
     <table class="designTable" *ngIf="experience.length > 0">      
-        <tr>
-          <th  class="firstColumn">Firmă</th>
-          <th  class="firstColumn">Firmă Poziția ocupată</th>
-          <th  class="secondColumn">Perioadă</th>
-        </tr>
         <tr *ngFor="let exp of experience"> 
-          <td  class="firstColumn">{{exp.companyName}}</td>    
-          <td class="firstColumn"> {{exp.jobTitle}}</td>   
-          <td *ngIf="exp.endDate!=null" class="secondColumn">{{exp.startDate + '-'+ exp.endDate }}</td>
-          <td *ngIf="exp.endDate==null" class="secondColumn">{{exp.startDate + '-prezent' }}</td>
-          <td> <div> <button mat-mini-fab   color="warn" [matMenuTriggerFor]="menu">
-            <mat-icon class="material-icons md-20">edit</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateCompany()">Editează firma</button>
-            <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateJob()">Editează poziția acupată</button>
-            <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateDate()">Editează perioada</button>
-            <button mat-menu-item  (click)="openDeleteDialog(exp.experienceId)">Șterge postarea</button>
-          </mat-menu></div> 
-          <div *ngIf="showCompanyEditor && active==exp.experienceId " class="editorsDiv">
-            <mat-form-field appearance="fill" class="info">
-              <mat-label>Adaugă noul titlu aici</mat-label>
-              <input matInput  [(ngModel)]="company" >
-            </mat-form-field>
-            <br>
-            <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
-            <br>
-            <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-            <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateCompany(exp.experienceId)">Actualizează titlul</button>
-          </div>
+        <td class="firstColumn"><mat-icon aria-hidden="false" aria-label="Example home icon" class="material-icons orange" fontIcon="work">work</mat-icon>
+          A lucrat la  <b>{{' '+exp.companyName+' '}}</b>  unde a ocupat funcția de <b>{{' '+exp.jobTitle+' '}}</b>  în perioada  <b *ngIf="exp.endDate!=null">{{exp.startDate + '-'+ exp.endDate }}</b> 
+            <b  *ngIf="exp.endDate==null">{{exp.startDate + '-prezent' }}</b>
+        </td>    
+          <td class="secondColumn"> 
+            <div>
+              <div class="buttonToUpdateMenu"> <button mat-mini-fab   color="warn" [matMenuTriggerFor]="menu">
+                <mat-icon class="material-icons md-20">edit</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateCompany()">Editează firma</button>
+                <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateJob()">Editează poziția acupată</button>
+                <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateDate()">Editează perioada</button>
+                <button mat-menu-item  (click)="openDeleteDialog(exp.experienceId)">Șterge postarea</button>
+              </mat-menu>
+            </div> 
+              <div *ngIf="showCompanyEditor && active==exp.experienceId " class="editorsDiv">
+                <mat-form-field appearance="fill" class="info">
+                  <mat-label>Adaugă noul nume al companiei aici</mat-label>
+                  <input matInput  [(ngModel)]="company" >
+                </mat-form-field>
+                <br>
+                <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
+                <br>
+                <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateCompany(exp.experienceId)">Actualizează companie</button>
+                <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+              </div>
+              <div *ngIf="showJobEditor && active==exp.experienceId " class="editorsDiv">
+                <mat-form-field appearance="fill" class="info">
+                  <mat-label>Adaugă noul post</mat-label>
+                  <input matInput  [(ngModel)]="jobTitle" >
+                </mat-form-field>
+                <br>
+                <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
+                <br>
+                <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateJobTitle(exp.experienceId)">Actualizează postul</button>
+                <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+              </div>
+              <div *ngIf="showDateEditor && active==exp.experienceId " class="editorsDiv">
+                <mat-form-field appearance="fill" class="infoDate">
+                  <mat-label>Început perioadă</mat-label>
+                  <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="startDate">
+                  <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="infoDate">
+                  <mat-label>Sfârșit perioadă</mat-label>
+                  <input matInput #yearCheck2 maxlength="4" type="number" [(ngModel)]="endDate">
+                  <mat-hint align ="end">{{yearCheck2.value.length}} / 4 </mat-hint>
+                </mat-form-field>
+                <br>
+                <p *ngIf="showMessageError" class="messageError">Te rog să completezi cel puțin un câmp</p>
+                <br>
+                <button mat-raised-button color="accent"  class="buttonModified"(click)=" updatePeriod(exp.experienceId)">Actualizează perioada</button>
+                <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+              </div>
+            </div>
         </td>
         </tr>
       </table>
 </div>        
+<hr>

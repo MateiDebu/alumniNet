@@ -21,9 +21,9 @@ export class ExperienceComponentComponent implements OnInit {
 
   active:number=0;
   company:string='';
-  job:string='';
-  startDate:number=0;
-  endDate:number=0;
+  jobTitle:string='';
+  startDate!:number;
+  endDate!:number;
 
   constructor(private dataService:DataService, private dialog:MatDialog) { }
 
@@ -62,15 +62,20 @@ export class ExperienceComponentComponent implements OnInit {
 
   showUpdateCompany(){
     this.showCompanyEditor=true;
+    this.showJobEditor=false;
+    this.showDateEditor=false;
   }
 
   showUpdateJob(){
     this.showJobEditor=true;
+    this.showDateEditor=false;
  
   }
 
   showUpdateDate(){ 
     this.showDateEditor=true;
+    this.showCompanyEditor=false;
+    this.showJobEditor=false;
   }
   
   setIsActive(active:number){
@@ -83,12 +88,86 @@ export class ExperienceComponentComponent implements OnInit {
     this.showJobEditor=false;
     this.showDateEditor=false;
     this.company='';
-    this.job='';
-    this.startDate=0;
-    this.endDate=0;
+    this.jobTitle='';
+    this.startDate!;
+    this.endDate!;
   }
 
   updateCompany(id:number){
+    if(this.company!=''){
+      this.dataService.UpdateExperienceCompanyName(id, this.company).subscribe((res)=>{
+        if(res){
+          alert('Schimbarea numelui companiei s-a realizat cu succes');
+          this.company='';
+          this.getAllExperience();
+        }else
+         alert('Schimbarea numelui companiei nu s-a putut efectua')
+      });
+    }else
+      this.showMessageError=true; 
+   }
 
+  updateJobTitle(id:number){
+    if(this.jobTitle!=''){
+      this.dataService.UpdateExperienceJobTitle(id, this.jobTitle).subscribe((res)=>{
+        if(res){
+          alert('Schimbarea postului s-a realizat cu succes');
+          this.jobTitle='';
+          this.getAllExperience();
+        }else
+         alert('Schimbarea postului nu s-a putut efectua')
+      });
+    }else
+      this.showMessageError=true; 
+   }
+
+  updatePeriod(id:number){
+    var isOkStartDate=false;
+    var isOkEndDate=false;
+    if(this.endDate==null && this.startDate==0){
+      this.showMessageError=true;
+    }else if(this.startDate!=null && this.endDate!=null){
+      this.dataService.UpdateExperienceStartDate(id, this.startDate).subscribe((res)=>{
+        if(res){
+          console.log('Data de început s-a schimbat cu succes');
+          isOkStartDate=true;
+        }else{
+          console.log('Data de început nu s-a putut actualiza');
+        }});
+
+        this.dataService.UpdateExperienceEndDate(id, this.endDate).subscribe((res)=>{
+          if(res){
+            console.log('Data de sfârsit s-a schimbat cu succes');
+            isOkEndDate=true;
+          }else{
+            console.log('Data de sfârsit nu s-a putut actualiza');
+          }});
+
+          if(isOkEndDate && isOkStartDate){
+            alert('Schimbarea de perioadă s-a executat cu succes');
+            this.startDate!;
+            this.endDate!;
+            this.getAllExperience();
+          } else
+            alert('Schimbarea de perioadă nu s-a putut efectua');
+    }else if(this.startDate!=null){
+      this.dataService.UpdateExperienceStartDate(id, this.startDate).subscribe((res)=>{
+        if(res){
+          alert('Data de început s-a schimbat cu succes');
+          this.startDate!;
+          this.getAllExperience();
+          }else{
+          alert('Data de început nu s-a putut actualiza');
+        }});
+    }else if(this.endDate!=null){
+      this.dataService.UpdateExperienceEndDate(id, this.endDate).subscribe((res)=>{
+        if(res){
+          alert('Data de sfârsit s-a schimbat cu succes');
+          this.endDate!;
+          this.getAllExperience();
+        }else{
+          alert('Data de sfârsit nu s-a putut actualiza');
+        }});
+    }
   }
 }
