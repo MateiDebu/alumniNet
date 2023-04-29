@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Experience } from 'src/app/models/experience.mode';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
-import { Post } from 'src/app/models/post.mode';
 import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../confirmation-dialog-component/confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-home-component',
@@ -21,7 +18,6 @@ export class HomeComponentComponent implements OnInit {
   description:string='eu sunt din brasov si ...'
 
   user: User = new User;
-  experience:Experience[]=[];
   studies:FinishedStudy[]=[];
   finishStudyDetailed:FinishedStudyDetailed[]=[];
 
@@ -32,36 +28,12 @@ export class HomeComponentComponent implements OnInit {
   showSearchPage=false;
   showHomePage=true;
 
-  constructor(private auth: AuthService, private dataService:DataService, private dialog:MatDialog) { }
+  constructor(private auth: AuthService, private dataService:DataService) { }
 
   ngOnInit(): void {
     this.dataService.GetUserById().subscribe((user:User)=>{
       this.user=user;
      });
-  }
-
-  openDeleteDialog(id:number){
-    
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '350px',
-      height: '240px',
-      data : {
-        title: 'Confirmare ștergere',
-        message: 'Sigur doriți să ștergeți experiența selectată?',
-      }
-    });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.dataService.DeleteExperience(id).subscribe((res)=>{
-          if(res){
-            alert("Ștergerea s-a efectuat cu succes");
-          }else
-            alert("Ștergerea nu s-a putut efectua");
-          
-        });
-        this.showExperience=false;
-      }});
   }
 
   setName(){
@@ -82,9 +54,6 @@ export class HomeComponentComponent implements OnInit {
   openExperience(){
     this.showExperience=true;
     this.showFinishedStudys=false;
-    this.dataService.GetAllExperiencesForUser().subscribe((experience:Experience[])=>{
-      this.experience=experience;
-    });
   }
 
   close(){

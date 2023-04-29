@@ -1,0 +1,47 @@
+.designTable{
+    width: 100%;
+    text-align: center;
+    background-color: rgb(143, 203, 143);
+    border-radius: 2%;
+}
+
+.firstColumn{
+    width: 25%;
+    padding:1%;
+}
+
+.secondColumn{
+    width: 20%;
+    padding:1%;
+}
+
+th{
+    padding-top: 3%;
+    padding-bottom: 1%;
+    margin-left: 10px;
+}
+
+
+.closeButtons{
+    width: 15%;
+    float:right;
+    margin-top:2%;
+    margin-bottom: 2%;
+    margin-right: 10%;
+}
+
+.buttonModified{
+    width: 25%;
+    float:right;
+    margin-top:2%;
+    margin-bottom: 2%;
+    margin-right:2%;
+}
+
+.material-icons.md-20 { 
+    font-size: 20px;
+}
+
+.info{
+    width: 100%;
+}

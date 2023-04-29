@@ -17,6 +17,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog-component/confirmation-dialog.component';
 import { PostComponentComponent } from './post-component/post-component.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { ExperienceComponentComponent } from './experience-component/experience-component.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {MatMenuModule} from '@angular/material/menu';
     SearchComponentComponent,
     ConfirmationDialogComponent,
     PostComponentComponent,
-
+    ExperienceComponentComponent,
   ],
   imports: [
     CommonModule,

@@ -6,13 +6,18 @@
 }
 
 .buttonStyle{
-    font-size: larger;
+    font-size:medium;
     margin: 1%;
 }
 
-.mat-icon{
-    font-size: 180%;
-    margin-bottom: 5px;
+.material-icons.md-36 { 
+    font-size: 40px;
+}
+
+.mat-icon-button{
+    float:left;
+    margin-left:5%;
+    margin-top:0.5%;
 }
 
 .homeText{

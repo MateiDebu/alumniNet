@@ -2,7 +2,7 @@
 <header>
     <div class="homeButtons"> 
         <button mat-icon-button >
-            <mat-icon class="buttonStyle" (click)="goToHomePage()">home</mat-icon>
+            <mat-icon class="material-icons md-36" (click)="goToHomePage()">home</mat-icon>
         </button>
           <button class="buttonStyle" mat-button  (click)="goToEditProfilePage()">Actualizare profil</button>
           <button class="buttonStyle" mat-button  (click)="goToSearchPage()">Căutare absolvenți</button>
@@ -47,21 +47,7 @@
                 </div>
 
                 <div *ngIf="showExperience">
-                    <br>
-                    <table class="designTable" *ngIf="experience.length > 0">      
-                        <tr>
-                          <th>Firmă</th>
-                          <th>Poziție ocupată</th>
-                          <th>Perioadă</th>
-                        </tr>
-                        <tr *ngFor="let exp of experience"> 
-                          <td>{{exp.companyName}}</td>
-                          <td>{{exp.jobTitle}}</td>
-                          <td *ngIf="exp.endDate!=null">{{exp.startDate + '-'+ exp.endDate }}</td>
-                          <td *ngIf="exp.endDate==null">{{exp.startDate + '-prezent' }}</td>
-                          <td> <div> <button mat-raised-button color="warn" (click)="openDeleteDialog(exp.experienceId)" >Șterge</button></div>  </td>
-                        </tr>
-                      </table>
+                      <app-experience-component></app-experience-component>
                       <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>
                       <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
                 </div>        

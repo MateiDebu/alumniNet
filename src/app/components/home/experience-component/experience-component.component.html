@@ -1,0 +1,37 @@
+<div>
+    <br>
+    <table class="designTable" *ngIf="experience.length > 0">      
+        <tr>
+          <th  class="firstColumn">Firmă</th>
+          <th  class="firstColumn">Firmă Poziția ocupată</th>
+          <th  class="secondColumn">Perioadă</th>
+        </tr>
+        <tr *ngFor="let exp of experience"> 
+          <td  class="firstColumn">{{exp.companyName}}</td>    
+          <td class="firstColumn"> {{exp.jobTitle}}</td>   
+          <td *ngIf="exp.endDate!=null" class="secondColumn">{{exp.startDate + '-'+ exp.endDate }}</td>
+          <td *ngIf="exp.endDate==null" class="secondColumn">{{exp.startDate + '-prezent' }}</td>
+          <td> <div> <button mat-mini-fab   color="warn" [matMenuTriggerFor]="menu">
+            <mat-icon class="material-icons md-20">edit</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateCompany()">Editează firma</button>
+            <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateJob()">Editează poziția acupată</button>
+            <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateDate()">Editează perioada</button>
+            <button mat-menu-item  (click)="openDeleteDialog(exp.experienceId)">Șterge postarea</button>
+          </mat-menu></div> 
+          <div *ngIf="showCompanyEditor && active==exp.experienceId " class="editorsDiv">
+            <mat-form-field appearance="fill" class="info">
+              <mat-label>Adaugă noul titlu aici</mat-label>
+              <input matInput  [(ngModel)]="company" >
+            </mat-form-field>
+            <br>
+            <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
+            <br>
+            <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
+            <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateCompany(exp.experienceId)">Actualizează titlul</button>
+          </div>
+        </td>
+        </tr>
+      </table>
+</div>        
