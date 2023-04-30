@@ -1,0 +1,33 @@
+<div class="occupationInformation" >
+    <p class="titleInfo">Informații despre ocupația actuală</p>
+    <hr>
+    <mat-form-field appearance="fill" class="info">
+        <mat-label>Nume organizație</mat-label>
+        <input matInput [(ngModel)]="companyName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="info"> 
+        <mat-label>Funcție/ocupatie</mat-label>
+        <input matInput [(ngModel)]="jobTitle">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="info">
+        <mat-label>Din anul</mat-label>
+        <input matInput  type="number" [(ngModel)]="startDate">
+      </mat-form-field>
+
+      <p class="textFinishYear">Dacă încă lucrați la acest loc de muncă următorul câmp nu trebuie completat</p>
+
+      <mat-form-field appearance="fill" class="info">
+        <mat-label>Până în anul</mat-label>
+        <input matInput type="number" [(ngModel)]="endDate">
+      </mat-form-field>
+
+      <br>
+      <div class="buttonsDesign">
+        <mat-dialog-actions >
+            <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true" (click)="addNewExperience()">Salvează</button>
+            <button mat-raised-button  class="buttonActions"  color="warn"    [mat-dialog-close]="false">Închide</button>
+        </mat-dialog-actions>
+      </div>
+</div>

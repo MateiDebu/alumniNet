@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { AddExperienceComponentComponent } from '../add-experience-component/add-experience-component.component';
 
 
 @Component({
@@ -28,7 +30,7 @@ export class HomeComponentComponent implements OnInit {
   showSearchPage=false;
   showHomePage=true;
 
-  constructor(private auth: AuthService, private dataService:DataService) { }
+  constructor(private auth: AuthService, private dataService:DataService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.dataService.GetUserById().subscribe((user:User)=>{
@@ -93,4 +95,20 @@ export class HomeComponentComponent implements OnInit {
   goToLoginPage(){
     this.auth.logout();
   }  
+
+  openAddExperienceDialog(){
+    
+    let dialogRef = this.dialog.open(AddExperienceComponentComponent, {
+      width: '420px',
+      height: '520px',
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log('Adaugarea s-a făcut cu succes!');
+        this.showExperience=false;
+      }else
+        console.log('Adaugarea nu s-a putut face');
+      });
+  }
 }

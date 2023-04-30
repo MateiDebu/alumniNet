@@ -43,13 +43,13 @@
                         </tr>
                       </table>
                       <button mat-raised-button color="primary" class="closeButtons" (click)="close()">Închide</button>
-                      <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>  
+                      <button class="buttonModified" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>  
                 </div>
 
                 <div *ngIf="showExperience">
                       <app-experience-component></app-experience-component>
                       <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>
-                      <button class="buttonModifie" mat-raised-button color="accent" (click)="goToEditProfilePage()">Actualizează profilul</button>
+                      <button class="buttonModified" mat-raised-button color="accent" (click)="openAddExperienceDialog()">Adaugă o nouă experiență profesională</button>
                 </div>        
             </div>
             <div class="postsInformation">

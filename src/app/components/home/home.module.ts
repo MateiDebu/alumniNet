@@ -18,6 +18,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog-component/con
 import { PostComponentComponent } from './post-component/post-component.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ExperienceComponentComponent } from './experience-component/experience-component.component';
+import { AddExperienceComponentComponent } from './add-experience-component/add-experience-component.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ExperienceComponentComponent } from './experience-component/experience-
     ConfirmationDialogComponent,
     PostComponentComponent,
     ExperienceComponentComponent,
+    AddExperienceComponentComponent,
   ],
   imports: [
     CommonModule,
