@@ -1,0 +1,46 @@
+<div class="studiesInformation" >
+    <p class="titleInfo">Informații despre studi </p>
+    <hr>
+    <br>
+    <mat-form-field appearance="fill" class="info">
+        <mat-label>Anul absolvirii</mat-label>
+        <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="finishStudyYear">
+        <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="info">
+        <mat-label>Facultate</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let faculty of faculties" value="{{faculty.facultyName}}" (click)="specializationsFaculty(faculty.facultyId)">{{faculty.facultyName}}</mat-option>
+        </mat-select>
+      </mat-form-field> 
+
+      <mat-form-field appearance="fill" class="info">
+        <mat-label>Forma de învățământ</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let lS of learningSchedules" value="{{lS.scheduleName}}" (click)="setLearningScheduleId(lS.learningScheduleId)">{{lS.scheduleName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="info">
+        <mat-label>Ciclu de studiu</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let studyProgram of studyPrograms" value="{{studyProgram.programName}}" (click)="setStudyProgramId(studyProgram.studyProgramId)">{{studyProgram.programName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="info">
+        <mat-label>Specializare</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let s of specializations" value="{{s.specializationName}}" (click)="setSpecializationId(s.specializationId)">{{s.specializationName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br>
+      <div class="buttonsDesign">
+        <mat-dialog-actions >
+            <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true" (click)="addStudies()">Salvează</button>
+            <button mat-raised-button  class="buttonActions"  color="warn"    [mat-dialog-close]="false">Închide</button>
+        </mat-dialog-actions>
+      </div> 
+</div>

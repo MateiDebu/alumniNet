@@ -19,6 +19,7 @@ import { PostComponentComponent } from './post-component/post-component.componen
 import {MatMenuModule} from '@angular/material/menu';
 import { ExperienceComponentComponent } from './experience-component/experience-component.component';
 import { AddExperienceComponentComponent } from './add-experience-component/add-experience-component.component';
+import { AddStudiesComponentComponent } from './add-studies-component/add-studies-component.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AddExperienceComponentComponent } from './add-experience-component/add-
     PostComponentComponent,
     ExperienceComponentComponent,
     AddExperienceComponentComponent,
+    AddStudiesComponentComponent,
   ],
   imports: [
     CommonModule,

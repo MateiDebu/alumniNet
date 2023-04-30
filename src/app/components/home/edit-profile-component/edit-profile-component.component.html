@@ -22,35 +22,6 @@
               <button mat-raised-button color="accent" class="saveButtons" (click)="updateProfile()">Salvează</button>
         </div>
 
-        <div class="occupationInformation" >
-            <p class="titleInfo">Informații despre ocupația actuală</p>
-            
-            <mat-form-field appearance="fill" class="info">
-                <mat-label>Nume organizație</mat-label>
-                <input matInput [(ngModel)]="companyName">
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" class="info"> 
-                <mat-label>Funcție/ocupatie</mat-label>
-                <input matInput [(ngModel)]="jobTitle">
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" class="info">
-                <mat-label>Din anul</mat-label>
-                <input matInput  type="number" [(ngModel)]="startDate">
-              </mat-form-field>
-
-              <p class="textFinishYear">Dacă încă lucrați la acest loc de muncă următorul câmp nu trebuie completat</p>
-
-              <mat-form-field appearance="fill" class="info">
-                <mat-label>Până în anul</mat-label>
-                <input matInput type="number" [(ngModel)]="endDate">
-              </mat-form-field>
-
-              <br>
-              <button mat-raised-button color="accent" class="saveButtons" id="marginButton" (click)="addNewExperience()">Salvează</button>
-        </div>
-
         <div class="studiesInformation" >
             <p class="titleInfo">Informații despre studi </p>
 

@@ -6,6 +6,7 @@ import { User } from 'src/app/models/user.mode';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { AddExperienceComponentComponent } from '../add-experience-component/add-experience-component.component';
+import { AddStudiesComponentComponent } from '../add-studies-component/add-studies-component.component';
 
 
 @Component({
@@ -111,4 +112,24 @@ export class HomeComponentComponent implements OnInit {
         console.log('Adaugarea nu s-a putut face');
       });
   }
+
+  openAddStudiesDialog(){
+    
+    let dialogRef = this.dialog.open(AddStudiesComponentComponent, {
+      width: '440px',
+      height: '540px',
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log('Adaugarea s-a făcut cu succes!');
+        this.showFinishedStudys=false;
+      }else
+        console.log('Adaugarea nu s-a putut face');
+      });
+  }
+
 }
+
+
+//expand_more

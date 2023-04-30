@@ -69,7 +69,7 @@ export class ExperienceComponentComponent implements OnInit {
   showUpdateJob(){
     this.showJobEditor=true;
     this.showDateEditor=false;
- 
+    this.showCompanyEditor=false;
   }
 
   showUpdateDate(){ 
