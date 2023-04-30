@@ -4,7 +4,6 @@
         <button mat-icon-button >
             <mat-icon class="material-icons md-36" (click)="goToHomePage()">home</mat-icon>
         </button>
-          <button class="buttonStyle" mat-button  (click)="goToEditProfilePage()">Actualizare profil</button>
           <button class="buttonStyle" mat-button  (click)="goToSearchPage()">Căutare absolvenți</button>
           <button class="buttonStyle" mat-button  (click)="goToLoginPage()" >Părăsește contul</button>
     </div>
@@ -24,24 +23,18 @@
                     <div  class="allCompForStudies">
                         <br>
                         <table class="designTable" *ngIf="finishStudyDetailed.length > 0">      
-                            <tr>
-                              <th>Facultate</th>
-                              <th>Program de studiu</th>
-                              <th>Forma de învățământ</th>
-                              <th>Specializare</th>
-                              <th>Promoția</th>
-                            </tr>
                             <tr *ngFor="let finishStudy of finishStudyDetailed"> 
-                              <td><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">school</mat-icon>
-                               A învățat la <b>{{' '+finishStudy.specialization?.faculty?.facultyName+' '}} </b> 
-                              </td>
-                              <td>{{finishStudy.studyProgram?.programName}}
-                              </td>
-                              <td>{{finishStudy.learningSchedule?.scheduleName}}
-                              </td>
-                              <td>{{finishStudy.specialization?.specializationName}}
-                              </td>
-                              <td>{{finishStudy.year}}
+                              <td class="textEditStudies">
+                                <div class="firstLineText">
+                                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">school</mat-icon>
+                                    A învățat la <b>{{' '+finishStudy.specialization?.faculty?.facultyName+' '}} </b> 
+                                    <button *ngIf="viewMoreButton" mat-icon-button (click)="viewMore()" (click)="setIsActive(finishStudy.finishedStudyId)" class="expandButton"> <mat-icon>expand_more</mat-icon> </button>
+                                </div>
+                              <div *ngIf="viewMoreInformation && finishStudy.finishedStudyId==active ">
+                                Programul de studii <b>{{' '+finishStudy.studyProgram?.programName+' '}}</b> la <b>{{' '+finishStudy.learningSchedule?.scheduleName+' '}}</b>, 
+                                specializarea <b>{{' '+finishStudy.specialization?.specializationName+' '}}</b>. Promoția <b>{{' '+finishStudy.year}}</b>  
+                                <button mat-icon-button (click)="viewLess()" class="expandButton"> <mat-icon>expand_less</mat-icon> </button>
+                              </div>
                               </td>
                             </tr>
                           </table>
@@ -64,9 +57,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div *ngIf="showEditPage">
-        <app-edit-profile-component></app-edit-profile-component>
     </div>
     <div *ngIf="showSearchPage">
         <app-search-component></app-search-component>

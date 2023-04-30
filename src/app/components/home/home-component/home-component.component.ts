@@ -27,9 +27,12 @@ export class HomeComponentComponent implements OnInit {
   showFinishedStudys=false;
   showExperience=false;
 
-  showEditPage=false;
   showSearchPage=false;
   showHomePage=true;
+
+  viewMoreInformation=false;
+  viewMoreButton=true;
+  active!:number;
 
   constructor(private auth: AuthService, private dataService:DataService,private dialog:MatDialog) { }
 
@@ -57,11 +60,13 @@ export class HomeComponentComponent implements OnInit {
   openExperience(){
     this.showExperience=true;
     this.showFinishedStudys=false;
+    this.viewMoreInformation=false;
   }
 
   close(){
     this.showExperience=false;
     this.showFinishedStudys=false;
+    this.viewMoreInformation=false;
   }
 
   setPath(){
@@ -72,21 +77,11 @@ export class HomeComponentComponent implements OnInit {
   }
 
   goToHomePage(){
-    this.showEditPage=false;
     this.showSearchPage=false;
     this.showHomePage=true;
   }
 
-  goToEditProfilePage(){
-    this.showEditPage=true;
-    this.showSearchPage=false;
-    this.showHomePage=false;
-    this.showExperience=false;
-    this.showFinishedStudys=false;
-  }
-
   goToSearchPage(){
-    this.showEditPage=false;
     this.showSearchPage=true;
     this.showHomePage=false;
     this.showExperience=false;
@@ -129,7 +124,18 @@ export class HomeComponentComponent implements OnInit {
       });
   }
 
+  viewMore(){
+    this.viewMoreInformation=true;
+    this.viewMoreButton=false;
+  }
+
+  viewLess(){
+    this.viewMoreInformation=false;
+    this.viewMoreButton=true;
+  }
+
+  setIsActive(active:number){
+    this.active=active;
+  }
+
 }
-
-
-//expand_more

@@ -53,6 +53,7 @@ export class ExperienceComponentComponent implements OnInit {
         this.dataService.DeleteExperience(id).subscribe((res)=>{
           if(res){
             alert("Ștergerea s-a efectuat cu succes");
+            this.getAllExperience();
           }else
             alert("Ștergerea nu s-a putut efectua");
           

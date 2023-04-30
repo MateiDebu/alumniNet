@@ -15,57 +15,12 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./edit-profile-component.component.scss']
 })
 export class EditProfileComponentComponent implements OnInit {
-  
-  faculties: Faculty[]=[];
-  specializations:Specialization[]=[];
-  learningSchedules: LearningSchedule[]=[];
-  studyPrograms: StudyProgram[]=[];
   description:string='';
   picturePath:string='';
-
-  specializationId:number=0;
-  learningScheduleId:number=0;
-  studyProgramId:number=0;
-  finishStudyYear!:number;
-
-  companyName:string='';
-  jobTitle:string='';
-  startDate!:number;
-  endDate!: number;
 
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
-   this.dataService.GetAllFaculties().subscribe(( faculties: Faculty[]) => {
-     this.faculties=faculties;
-   })
-
-   this.dataService.GetAllLearningSchedule().subscribe((learningSchedules:LearningSchedule[])=>{
-    this.learningSchedules=learningSchedules;
-   })
-
-   this.dataService.GetAllStudyProgram().subscribe((studyPrograms: StudyProgram[])=>{
-    this.studyPrograms=studyPrograms;
-   })
-
-  }
-
-  specializationsFaculty(facultyId:number){
-    this.dataService.GetSpecializationsByFacultyId(facultyId).subscribe((specializations : Specialization[]) => {
-      this.specializations=specializations;
-    })
-  }
-
-  setSpecializationId(id:number){
-    this.specializationId=id;
-  }
-
-  setLearningScheduleId(id:number){
-    this.learningScheduleId=id;
-  }
-
-  setStudyProgramId(id:number){
-    this.studyProgramId=id;
   }
 
   updateProfile(){
@@ -94,33 +49,4 @@ export class EditProfileComponentComponent implements OnInit {
         }else alert("Poza nu s-a putut actualiza");
       });
   }
-   
-  addStudies(){
-    var finishedStudy=new FinishedStudy();
-    finishedStudy.specializationId=this.specializationId;
-    finishedStudy.learningScheduleId=this.learningScheduleId;
-    finishedStudy.studyProgramId=this.studyProgramId;
-    finishedStudy.year=this.finishStudyYear;
-    this.dataService.AddFinishedStudy(finishedStudy).subscribe((res)=>{
-      if(res){
-        alert("Studile au fost adăgate cu succes");
-      }else
-        alert("Toate câmpurile trebuie completate");
-    });
-  }
-
-  addNewExperience(){
-    var experience=new Experience();
-    experience.companyName=this.companyName;
-    experience.jobTitle=this.jobTitle;
-    experience.startDate=this.startDate;
-    experience.endDate=this.endDate;
-    console.log(experience);
-    this.dataService.AddNewExperienceForUser(experience).subscribe((res)=>{
-            if(res){
-              alert("Experiența a fost adăugată cu succes");
-            }else alert("Experiența nu s-a putut adăuga");
-          });
-  }
-
 }

@@ -54,25 +54,6 @@
     margin-right: 5%;
 }
 
-.designTable{
-    width: 100%;
-    text-align: center;
-    background-color: rgb(143, 203, 143);
-    border-radius: 2%;
-}
-
- td{
-    width: 25%;
-    padding:1%;
-}
-
-th{
-    padding-top: 3%;
-    padding-bottom: 1%;
-    margin-left: 10px;
-}
-
-
 .closeButtons{
     width: 15%;
     float:right;
@@ -119,7 +100,22 @@ th{
 }
 
 .allCompForStudies{
-    Overflow-y:scroll;
     width: 100%;
-    height: 396px;
+}
+
+.designTable{
+    width: 100%;
+}
+
+.textEditStudies{
+    text-align: justify;
+}
+
+.firstLineText{
+    width: 100%;
+    text-align: justify;
+}
+
+.expandButton{
+    float:right;
 }
