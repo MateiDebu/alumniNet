@@ -12,12 +12,19 @@
     <div *ngIf="showHomePage" >
         <div class="homeText">
             <div class="profileInformation">
-                <h1>Bine ai venit,</h1>
+                <h1>Bine ai venit!</h1>
                 <h1>{{ setName() }}</h1>
                 <img src="{{ setPath() }}"/>
-                <p>{{ setDescription() }}</p>
-                <button mat-raised-button color="accent" class="openButtons" (click)="openFinishedStudys()">Studii efectuate</button>
-                <button mat-raised-button color="accent" class="openButtons" (click)="openExperience()">Experiență profesională</button>
+                <div class="descriptionComp">
+                    <p>{{ setDescription() }}</p>
+                    <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}"  color="warn" (click)="goToEditProfile()" class="buttonModifyProfile">
+                        <mat-icon class="material-icons md-20">edit</mat-icon>
+                     </button>
+                </div>
+                <div>
+                    <button mat-raised-button color="accent" class="openButtons" (click)="openFinishedStudys()">Studii efectuate</button>
+                    <button mat-raised-button color="accent" class="openButtons" (click)="openExperience()">Experiență profesională</button>
+                </div>
                 <div *ngIf="showFinishedStudys">
                     <h1>Studii efectuate</h1>
                     <div  class="allCompForStudies">
@@ -26,13 +33,14 @@
                             <tr *ngFor="let finishStudy of finishStudyDetailed"> 
                               <td class="textEditStudies">
                                 <div class="firstLineText">
-                                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">school</mat-icon>
+                                    <mat-icon class="studyIcon" aria-hidden="false" aria-label="Example home icon" fontIcon="home">school</mat-icon>
                                     A învățat la <b>{{' '+finishStudy.specialization?.faculty?.facultyName+' '}} </b> 
                                     <button *ngIf="viewMoreButton" mat-icon-button (click)="viewMore()" (click)="setIsActive(finishStudy.finishedStudyId)" class="expandButton"> <mat-icon>expand_more</mat-icon> </button>
                                 </div>
                               <div *ngIf="viewMoreInformation && finishStudy.finishedStudyId==active ">
-                                Programul de studii <b>{{' '+finishStudy.studyProgram?.programName+' '}}</b> la <b>{{' '+finishStudy.learningSchedule?.scheduleName+' '}}</b>, 
-                                specializarea <b>{{' '+finishStudy.specialization?.specializationName+' '}}</b>. Promoția <b>{{' '+finishStudy.year}}</b>  
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Programul de studii <b>{{' '+finishStudy.studyProgram?.programName+' '}}</b> la <b>{{' '+finishStudy.learningSchedule?.scheduleName+' '}}</b>, 
+                                specializarea <b>{{' '+finishStudy.specialization?.specializationName+'.'}}</b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Promoția <b>{{' '+finishStudy.year}}</b>  
                                 <button mat-icon-button (click)="viewLess()" class="expandButton"> <mat-icon>expand_less</mat-icon> </button>
                               </div>
                               </td>
@@ -61,4 +69,8 @@
     <div *ngIf="showSearchPage">
         <app-search-component></app-search-component>
     </div> 
+
+    <div *ngIf="showEditProfile">
+        <app-edit-profile-component></app-edit-profile-component>
+    </div>
 </body>

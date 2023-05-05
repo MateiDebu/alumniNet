@@ -216,10 +216,17 @@ export class DataService{
     return this.httpClient.put<any>(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{profilePicture},httpOptions);
    }
 
-   public UpdateProfileDescriptionByUserId(profileDescription:string){
+   public UpdateProfileDescriptionByUserId(description:string){
     var httpOptions=this.setHttpHeader();
-    let param1=new HttpParams().set('profileDescription',profileDescription);
-    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',{profileDescription},httpOptions);
+    const httpParams =new HttpParams({
+      fromObject:{
+        profileDescription:description
+      }
+    });
+    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfileDescriptionByUserId',null, {
+      headers: httpOptions.headers,
+      params: httpParams
+    });
    }
 
    //methods for user

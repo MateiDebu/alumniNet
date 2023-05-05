@@ -29,6 +29,7 @@ export class HomeComponentComponent implements OnInit {
 
   showSearchPage=false;
   showHomePage=true;
+  showEditProfile=false;
 
   viewMoreInformation=false;
   viewMoreButton=true;
@@ -54,7 +55,6 @@ export class HomeComponentComponent implements OnInit {
     this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
       this.finishStudyDetailed=finishStudyDetailed;
     });
-    
   }
 
   openExperience(){
@@ -79,6 +79,13 @@ export class HomeComponentComponent implements OnInit {
   goToHomePage(){
     this.showSearchPage=false;
     this.showHomePage=true;
+    this.showEditProfile=false;
+  }
+
+  goToEditProfile(){
+    this.showEditProfile=true;
+    this.showSearchPage=false;
+    this.showHomePage=false;
   }
 
   goToSearchPage(){
