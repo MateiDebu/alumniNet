@@ -231,7 +231,8 @@ export class DataService{
 
    //methods for user
    public GetAllUsers():Observable<User[]>{
-    return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers');
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers',httpOptions);
    }
 
    public GetUserById():Observable<User>{

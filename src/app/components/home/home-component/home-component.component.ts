@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
 import { FinishedStudy } from 'src/app/models/finished-study.mode';
 import { User } from 'src/app/models/user.mode';
@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { AddExperienceComponentComponent } from '../add-experience-component/add-experience-component.component';
 import { AddStudiesComponentComponent } from '../add-studies-component/add-studies-component.component';
+import { EditProfileComponentComponent } from '../edit-profile-component/edit-profile-component.component';
 
 
 @Component({
@@ -29,7 +30,6 @@ export class HomeComponentComponent implements OnInit {
 
   showSearchPage=false;
   showHomePage=true;
-  showEditProfile=false;
 
   viewMoreInformation=false;
   viewMoreButton=true;
@@ -79,13 +79,6 @@ export class HomeComponentComponent implements OnInit {
   goToHomePage(){
     this.showSearchPage=false;
     this.showHomePage=true;
-    this.showEditProfile=false;
-  }
-
-  goToEditProfile(){
-    this.showEditProfile=true;
-    this.showSearchPage=false;
-    this.showHomePage=false;
   }
 
   goToSearchPage(){
@@ -99,11 +92,28 @@ export class HomeComponentComponent implements OnInit {
     this.auth.logout();
   }  
 
+  openEditProfile(){
+
+    let dialogRef=this.dialog.open(EditProfileComponentComponent, {
+      width: '360px',
+      height: '360px',
+      disableClose:true,
+    });
+
+    dialogRef.afterClosed().subscribe( result => {
+      if(result){
+        console.log('Editarea s-a realizat cu succes');
+      }else
+        console.log('Editarea nu s-a putut realiza');
+    });
+  }
+
   openAddExperienceDialog(){
     
     let dialogRef = this.dialog.open(AddExperienceComponentComponent, {
       width: '420px',
       height: '520px',
+      disableClose:true,
     });
     
     dialogRef.afterClosed().subscribe(result => {
@@ -120,6 +130,7 @@ export class HomeComponentComponent implements OnInit {
     let dialogRef = this.dialog.open(AddStudiesComponentComponent, {
       width: '440px',
       height: '540px',
+      disableClose:true,
     });
     
     dialogRef.afterClosed().subscribe(result => {

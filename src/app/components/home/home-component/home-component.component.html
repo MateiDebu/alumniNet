@@ -17,7 +17,7 @@
                 <img src="{{ setPath() }}"/>
                 <div class="descriptionComp">
                     <p>{{ setDescription() }}</p>
-                    <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}"  color="warn" (click)="goToEditProfile()" class="buttonModifyProfile">
+                    <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}"  color="warn" (click)="openEditProfile()" class="buttonModifyProfile">
                         <mat-icon class="material-icons md-20">edit</mat-icon>
                      </button>
                 </div>
@@ -69,8 +69,4 @@
     <div *ngIf="showSearchPage">
         <app-search-component></app-search-component>
     </div> 
-
-    <div *ngIf="showEditProfile">
-        <app-edit-profile-component></app-edit-profile-component>
-    </div>
 </body>

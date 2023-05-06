@@ -6,7 +6,6 @@
     <div class="allInformation">
 
         <div class="generalInformation" >
-            <p class="titleInfo">Informații generale</p>
 
             <mat-form-field appearance="fill" class="info">
                 <mat-label>Adaugă informații despre tine</mat-label>
@@ -18,7 +17,12 @@
                   <input type="file" >
                   </div>
               <br>
-              <button mat-raised-button color="accent" class="saveButtons" (click)="updateProfile()">Salvează</button>
+              <div class="buttonsDesign">
+                <mat-dialog-actions >
+                    <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true" (click)="updateProfile()">Salvează</button>
+                    <button mat-raised-button  class="buttonActions"  color="warn"    [mat-dialog-close]="false">Închide</button>
+                </mat-dialog-actions>
+              </div> 
         </div>
     </div>
 </div>

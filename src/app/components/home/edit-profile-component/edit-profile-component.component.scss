@@ -3,38 +3,17 @@
     margin:2%;
 }
 
-.allInformation{
-    margin-left: 1%;
-    margin-right: 1%;
-}
-
 .generalInformation{
-    border:2px solid black;
-    border-radius: 0%;
-    width: 30%;
+    width: 100%;
     padding: 1%;
-    float:left;
     text-align: center;
     margin-right:1%;
     
 }
 
-.titleInfo{
-    font-size: 150%;
-}
-
-.textFinishYear{
-    text-align: center;
-    margin:1%;
-}
-
 .info{
-    width: 70%; 
+    width: 90%; 
     margin-top:2%;
-}
-
-.saveButtons{
-    width: 40%;
 }
 
 #marginButton{
@@ -47,4 +26,9 @@
     text-align: center;
     margin-right: auto;
     margin-left:auto;
+}
+
+.buttonActions{
+    width: 40%;
+    margin-left:10%;
 }

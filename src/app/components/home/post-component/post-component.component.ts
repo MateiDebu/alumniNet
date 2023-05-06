@@ -45,6 +45,7 @@ export class PostComponentComponent implements OnInit {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       height: '240px',
+      disableClose:true,
       data : {
         title: 'Confirmare ștergere',
         message: 'Sigur doriți să ștergeți postarea ?',
