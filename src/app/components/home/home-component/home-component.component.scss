@@ -11,7 +11,7 @@
 }
 
 .material-icons.md-36 { 
-    font-size: 40px;
+    font-size: 36px;
 }
 
 .mat-icon-button{
@@ -20,26 +20,30 @@
     margin-top:0.5%;
 }
 
-.homeText{
-    margin: 1%;
-}
-
 .profileInformation{
-    border:2px solid black;
+    margin-top:1%;
+    margin-left: 1%;
     border-radius: 0%;
     width: 48%;
     padding: 0.5%;
     float:left;
     text-align: center;
+    background-color:rgb(202, 249, 202) ;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    border-radius: 2%;
 }
 
 .postsInformation{
-    border:2px solid black;
+    margin-top:1%;
+    margin-right: 1%;
     border-radius: 0%;
-    width: 47%;
+    width: 46%;
     padding: 1%;
     float:right;
     text-align: center;
+    background-color:rgb(202, 249, 202) ;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    border-radius: 2%;
 }
 
 .buttonPost{

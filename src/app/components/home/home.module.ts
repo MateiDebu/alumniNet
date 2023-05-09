@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ExperienceComponentComponent } from './experience-component/experience-component.component';
 import { AddExperienceComponentComponent } from './add-experience-component/add-experience-component.component';
 import { AddStudiesComponentComponent } from './add-studies-component/add-studies-component.component';
+import { FilterPipe } from 'src/app/utilities/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AddStudiesComponentComponent } from './add-studies-component/add-studie
     ExperienceComponentComponent,
     AddExperienceComponentComponent,
     AddStudiesComponentComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,

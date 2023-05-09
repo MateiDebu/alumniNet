@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Faculty } from 'src/app/models/faculty.mode';
 import { Specialization } from 'src/app/models/specialization.mode';
+import { User } from 'src/app/models/user.mode';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -14,10 +15,16 @@ export class SearchComponentComponent implements OnInit {
   specializations:Specialization[]=[];
   showAdvancedSearch=false;
   showSearch=true;
+  searchPeople:string='';
+
+  users:User[]=[];
 
   constructor(private dataService: DataService) { 
     this.showAdvancedSearch=false;
     this.showSearch=true;
+    this.dataService.GetAllUsers().subscribe((users:User[])=>{
+        this.users=users;
+    });
   }
 
   ngOnInit(): void {

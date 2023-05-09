@@ -1,12 +1,18 @@
-<h1 class="textSearch">Aici poți căuta un absolvent al Universității Transilvania</h1>
+<h1 class="textSearch">Aici poți căuta absolvenți ai Universității Transilvania</h1>
 
 <div class="searchBar">
   <div class="searchElements">
     <div>
       <mat-form-field appearance="fill" class="searchBarInput">
         <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
-        <input matInput placeholder="Nume absolvent">
+        <mat-icon matPrefix class="searchIcon" color="primary">person_search</mat-icon>
+        <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" >
       </mat-form-field>
+
+      <ul>
+        <li *ngFor="let user of users | usersFilter : searchPeople">{{user.firstName}} {{user.lastName}}</li>
+      </ul>
+
     </div>
       <button mat-raised-button color="accent" class="searchButton"> Caută </button>
       <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
@@ -28,8 +34,5 @@
         </mat-form-field>
         <button mat-raised-button color="primary" class="searchAdvancedButton"> Caută </button>
       </div>
-  </div>
-  <div class="displayResults">
-    <h2 class="resultsText">Rezultatele căutărilor</h2>
   </div>
 </div>
