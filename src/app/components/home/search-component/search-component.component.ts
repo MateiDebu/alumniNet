@@ -16,6 +16,8 @@ export class SearchComponentComponent implements OnInit {
   showAdvancedSearch=false;
   showSearch=true;
   searchPeople:string='';
+  
+  showResult=false;
 
   users:User[]=[];
 
@@ -43,4 +45,9 @@ export class SearchComponentComponent implements OnInit {
     this.showAdvancedSearch=true;
     this.showSearch=false;
   }
+
+  searchGraduates(){
+    this.showResult=true;
+  }
+
 }

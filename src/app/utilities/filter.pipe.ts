@@ -14,8 +14,7 @@ export class FilterPipe implements PipeTransform{
         searchText =searchText.toLowerCase();
 
         return users.filter(user => {
-            return user.firstName.toLowerCase()===searchText.toLowerCase() || user.lastName.toLowerCase()===searchText.toLowerCase() ||
-            (user.firstName.toLowerCase()+''===searchText.toLowerCase() && user.lastName.toLowerCase()===searchText.toLowerCase());
+            return user.firstName.toLowerCase()===searchText.toLowerCase() ;
         });
     }
 }
