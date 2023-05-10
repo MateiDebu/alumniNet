@@ -1,7 +1,7 @@
  <h1>Postările tale</h1>
          <hr>
          <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="primary" (click)="openNewPost()">Adaugă o postare</button>
-            <div *ngIf="addPost">
+            <div *ngIf="addPost" class="addPostDiv">
               <div class="formPost">
                  <mat-form-field appearance="fill" class="info">
                     <mat-label>Titlu postare</mat-label>

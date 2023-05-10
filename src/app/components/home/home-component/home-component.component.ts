@@ -19,7 +19,7 @@ export class HomeComponentComponent implements OnInit {
 
   firstNameUser:string='';
   lastNameUser:string='';
-  description:string='eu sunt din brasov si ...'
+  description:string='eu sunt din brasov si sunt absolvent al Universitati Transilvania Brasov'
 
   user: User = new User;
   studies:FinishedStudy[]=[];

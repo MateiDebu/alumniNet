@@ -8,7 +8,7 @@
           <button class="buttonStyle" mat-button  (click)="goToLoginPage()" >Părăsește contul</button>
     </div>
 </header>
-<body style="background-color:rgb(230, 255, 230) ;">
+<body style="background-color:#B7EFC5 ;">
     <div *ngIf="showHomePage" >
         <div class="homeText">
             <div class="profileInformation">
@@ -16,17 +16,18 @@
                 <h1>{{ setName() }}</h1>
                 <img src="{{ setPath() }}"/>
                 <div class="descriptionComp">
-                    <p>{{ setDescription() }}</p>
-                    <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}"  color="warn" (click)="openEditProfile()" class="buttonModifyProfile">
+                    <p class="descriptionProfile">{{ setDescription() }}</p>
+                </div>
+                <div class="buttonsOpen">
+                    <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudys()">Studii efectuate</button>
+                    <button mat-raised-button color="primary" class="openButtons" (click)="openExperience()">Experiență profesională</button>
+                    <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}" class="buttonProfileText"  color="warn" (click)="openEditProfile()" class="buttonModifyProfile">
                         <mat-icon class="material-icons md-20">edit</mat-icon>
                      </button>
                 </div>
-                <div>
-                    <button mat-raised-button color="accent" class="openButtons" (click)="openFinishedStudys()">Studii efectuate</button>
-                    <button mat-raised-button color="accent" class="openButtons" (click)="openExperience()">Experiență profesională</button>
-                </div>
                 <div *ngIf="showFinishedStudys">
-                    <h1>Studii efectuate</h1>
+                    <hr>
+                    <h2 class="studiesTitle">STUDII EFECTUATE</h2>
                     <div  class="allCompForStudies">
                         <br>
                         <table class="designTable" *ngIf="finishStudyDetailed.length > 0">      

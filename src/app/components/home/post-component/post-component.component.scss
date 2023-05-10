@@ -6,11 +6,19 @@
 
 .designTable{
     width: 100%;
+    border-radius: 5px;
+}
+
+.addPostDiv{
+    background-color: #6EDE8A;
+    border-radius: 5px;
 }
 
 td{
     padding:2%;
     border:2px solid black;
+    border-radius: 5px;
+    background-color: #B7EFC5;
 }
 
 .textPost{

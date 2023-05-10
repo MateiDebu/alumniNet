@@ -2,7 +2,7 @@
     text-align: center;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
-    background-color: rgb(143, 203, 143);
+    background-color: #4AD66D;
 }
 
 .buttonStyle{
@@ -28,9 +28,9 @@
     padding: 0.5%;
     float:left;
     text-align: center;
-    background-color:rgb(202, 249, 202) ;
+    background-color:#92E6A7 ;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-    border-radius: 2%;
+    border-radius: 5px;
 }
 
 .postsInformation{
@@ -41,9 +41,9 @@
     padding: 1%;
     float:right;
     text-align: center;
-    background-color:rgb(202, 249, 202) ;
+    background-color:#92E6A7 ;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-    border-radius: 2%;
+    border-radius: 5px;
 }
 
 .buttonPost{
@@ -52,10 +52,10 @@
 }
 
 .openButtons{
-    width: 35%;
+    width: 40%;
     margin-bottom:2%;
-    margin-left:5%;
-    margin-right: 5%;
+    margin-left:3%;
+    margin-right: 3%;
 }
 
 .closeButtons{
@@ -109,7 +109,11 @@
 
 .designTable{
     width: 100%;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    background-color:#6EDE8A ;
+    border-radius: 5px;
 }
+
 
 .textEditStudies{
     text-align: justify;
@@ -127,4 +131,26 @@
 
 .studyIcon{
     margin:1%;
+}
+
+.studiesTitle{
+    margin:0%;
+}
+
+.buttonProfileText{
+   float:right;
+}
+.buttonsOpen{
+    width: 100%;
+    margin-top:1%;
+}
+
+.descriptionProfile{
+    margin-left: 5%;
+    margin-top:3%;
+}
+
+.descriptionComp{
+    width: 50%;
+    margin: auto;
 }

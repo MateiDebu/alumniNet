@@ -8,16 +8,15 @@
         <mat-icon matPrefix class="searchIcon" color="primary">person_search</mat-icon>
         <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" >
       </mat-form-field>
-
-      <ul>
-        <li *ngFor="let user of users | usersFilter : searchPeople">{{user.firstName}} {{user.lastName}}</li>
-      </ul>
+      <button mat-flat-button color="primary" class="searchButton"><mat-icon style="font-size: 30px">search</mat-icon> </button>
 
     </div>
-      <button mat-raised-button color="accent" class="searchButton"> Caută </button>
+
+    <!--*ngFor="let user of users | usersFilter : searchPeople">{{user.firstName}} {{user.lastName}} -->
+
       <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
-      <hr>
       <div *ngIf="showAdvancedSearch" class="advancedElements">
+        <hr>
         <h2 class="textAdvancedSearch"> Selectați câmpurile după care să se realizeze căutarea</h2>
         <mat-form-field appearance="fill" class="info">
           <mat-label>Facultate</mat-label>
