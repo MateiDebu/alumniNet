@@ -1,26 +1,28 @@
 .pageTitle{
    text-align: center;
-   margin-top: 6%;
- }
+   padding-top: 6%;
+   color: white; 
+  }
 
 .formControl{
     margin-right: auto;
     margin-left: auto;
     width: 30%;
-    border: 3px solid black;
-    border-radius: 3%;
+    border: 2px solid black;
+    border-radius: 5px;
     padding: 4%;
     text-align: center;
+    background: white;
     
   }
 
   .mat-form-field{
-   width: 70%;
+   width: 80%;
    margin:1%;
   }
 
   .buttonRegister{
-    width: 70%;
+    width: 80%;
     margin-bottom: 2%;
  } 
 
@@ -35,5 +37,5 @@
 
  .buttonLogIn{
    margin:2%;
-   width: 60%;
+   width: 70%;
  }
