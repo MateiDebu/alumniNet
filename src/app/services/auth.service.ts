@@ -70,10 +70,10 @@ export class AuthService {
       localStorage.setItem('logIn',this.loggedIn.toString());
       localStorage.setItem('fireBaseToken',idToken.toString());
       this.router.navigate(['home']);
-    }).catch(() => {
-         alert("Câmpurile completate nu sunt valide");
     });
-  });
+    }).catch(() => {
+      alert("Adresa de mail sau parola nu sunt valide");
+    });
   }
 
   recoverPassword(email: string){

@@ -1,23 +1,38 @@
+body{
+    background: linear-gradient(0deg, #B7EFC5 0%, #0d8c2d 100%);
+}
+
+.marginTop{
+    margin:auto;
+    padding-bottom: 0.5%;
+}
+
 .homeButtons{
     text-align: center;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
-    background-color: #4AD66D;
+    background: radial-gradient(circle at top, #2990bc , #0d8c2d);
+    margin:auto;
+    width: 40%;
+    border-radius: 100px;
+    border:3px solid black;
 }
 
-.buttonStyle{
-    font-size:medium;
-    margin: 1%;
+.mat-icon-button {
+    margin-left:10%;
+    margin-right: 10%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.material-icons.md-40 { 
+    font-size: 38px;
+    color:black;
 }
 
 .material-icons.md-36 { 
-    font-size: 36px;
-}
-
-.mat-icon-button{
-    float:left;
-    margin-left:5%;
-    margin-top:0.5%;
+    font-size: 34px;
+    color:black;
 }
 
 .profileInformation{
@@ -105,6 +120,9 @@
 
 .allCompForStudies{
     width: 100%;
+    height: auto;
+    max-height: 364px;
+    overflow-y: auto;
 }
 
 .designTable{
@@ -127,10 +145,11 @@
 
 .expandButton{
     float:right;
+    margin:0%;
 }
 
 .studyIcon{
-    margin:1%;
+    margin:2%;
 }
 
 .studiesTitle{

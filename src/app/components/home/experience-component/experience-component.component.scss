@@ -1,5 +1,6 @@
 .designTable{
     width: 100%;
+   
 }
 
 .firstColumn{
@@ -39,7 +40,7 @@
 .buttonToUpdateMenu{
     width: 10%;
     float:right;
-    margin-right: 1%;
+    margin-right: 0%;
     margin-top:0.5%;
 }
 
@@ -59,9 +60,17 @@
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
     background-color: #6EDE8A;
     border-radius: 5px;
+    height: auto;
+    max-height: 348px;
+    overflow-y: auto;
+    
 }
 
 .infoDate{
     width: 40%;
     margin-left:5%;
+}
+
+.textLabel{
+    color:purple;
 }

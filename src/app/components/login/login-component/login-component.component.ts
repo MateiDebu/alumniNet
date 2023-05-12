@@ -19,7 +19,7 @@ export class LoginComponentComponent implements OnInit {
 
   login(){
     if(this.email == ''){
-      alert('Te rog introdu email-ul');
+      alert('Te rog introdu adresa de mail');
       return;
     }
 
@@ -39,7 +39,7 @@ export class LoginComponentComponent implements OnInit {
 
   forgetPassword(){
     if(this.email == ''){
-      alert('Email-ul nu este bun');
+      alert('Adresa de mail nu este buna');
     }else
     this.auth.recoverPassword(this.email);
   }

@@ -4,12 +4,12 @@
             <div *ngIf="addPost" class="addPostDiv">
               <div class="formPost">
                  <mat-form-field appearance="fill" class="info">
-                    <mat-label>Titlu postare</mat-label>
+                    <mat-label class="textLabel">Titlu postare</mat-label>
                     <input matInput  [(ngModel)]="titlePostAdd" >
                   </mat-form-field>
   
                  <mat-form-field appearance="fill" class="info">
-                   <mat-label>Adaugă o descriere postări</mat-label>
+                   <mat-label class="textLabel">Adaugă o descriere postări</mat-label>
                     <textarea matInput [(ngModel)]="textPostAdd"></textarea>
                   </mat-form-field>
                  <br>
@@ -45,7 +45,7 @@
               </div> 
               <div *ngIf="showTitleEditor && active==post.postId " class="editorsDiv">
                 <mat-form-field appearance="fill" class="info">
-                  <mat-label>Adaugă noul titlu aici</mat-label>
+                  <mat-label class="textLabel">Adaugă noul titlu </mat-label>
                   <input matInput  [(ngModel)]="postTitle" >
                 </mat-form-field>
                 <br>
@@ -57,7 +57,7 @@
               <div *ngIf="showTextEditor  && active==post.postId ">
                 <br>
                 <mat-form-field appearance="fill" class="info">
-                  <mat-label>Adaugă noua descriere aici</mat-label>
+                  <mat-label class="textLabel">Adaugă noua descriere aici</mat-label>
                   <textarea matInput [(ngModel)]="postText" ></textarea>
                 </mat-form-field>
                 <br>

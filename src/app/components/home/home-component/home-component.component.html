@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<header>
+<header style="background-color:#0d8c2d  ;">
+    <div class="marginTop"></div>
     <div class="homeButtons"> 
         <button mat-icon-button >
-            <mat-icon class="material-icons md-36" (click)="goToHomePage()">home</mat-icon>
+            <mat-icon class="material-icons md-40" (click)="goToHomePage()">account_circle</mat-icon>
         </button>
-          <button class="buttonStyle" mat-button  (click)="goToSearchPage()">Căutare absolvenți</button>
-          <button class="buttonStyle" mat-button  (click)="goToLoginPage()" >Părăsește contul</button>
+          <button mat-icon-button >
+            <mat-icon class="material-icons md-40" (click)="goToSearchPage()">person_search</mat-icon>
+        </button>
+          <button mat-icon-button >
+            <mat-icon class="material-icons md-36" (click)="goToLoginPage()">logout</mat-icon>
+        </button>
     </div>
 </header>
-<body style="background-color:#B7EFC5 ;">
+<body >
     <div *ngIf="showHomePage" >
         <div class="homeText">
             <div class="profileInformation">
@@ -22,7 +27,7 @@
                     <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudys()">Studii efectuate</button>
                     <button mat-raised-button color="primary" class="openButtons" (click)="openExperience()">Experiență profesională</button>
                     <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}" class="buttonProfileText"  color="warn" (click)="openEditProfile()" class="buttonModifyProfile">
-                        <mat-icon class="material-icons md-20">edit</mat-icon>
+                        <mat-icon class="material-icons md-20">manage_accounts</mat-icon>
                      </button>
                 </div>
                 <div *ngIf="showFinishedStudys">
@@ -49,14 +54,14 @@
                           </table>
                     </div>
                     <hr>
-                    <button mat-raised-button color="primary" class="closeButtons" (click)="close()">Închide</button>
+                    <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
                     <button class="buttonModified" mat-raised-button color="accent" (click)="openAddStudiesDialog()">Adaugă studii</button>  
                 </div>
                
 
                 <div *ngIf="showExperience">
                       <app-experience-component></app-experience-component>
-                      <button mat-raised-button color="primary" class="closeButtons"(click)="close()">Închide</button>
+                      <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
                       <button class="buttonModified" mat-raised-button color="accent" (click)="openAddExperienceDialog()">Adaugă o nouă experiență profesională</button>
                 </div>        
             </div>

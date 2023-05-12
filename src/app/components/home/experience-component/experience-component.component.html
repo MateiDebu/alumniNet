@@ -27,7 +27,7 @@
           <div class="EditForm">
             <div *ngIf="showCompanyEditor && active==exp.experienceId " class="editorsDiv">
               <mat-form-field appearance="fill" class="info">
-                <mat-label>Adaugă noul nume al companiei aici</mat-label>
+                <mat-label class="textLabel">Adaugă noul nume al companiei aici</mat-label>
                 <input matInput  [(ngModel)]="company" >
               </mat-form-field>
               <br>
@@ -38,7 +38,7 @@
             </div>
             <div *ngIf="showJobEditor && active==exp.experienceId " class="editorsDiv">
               <mat-form-field appearance="fill" class="info">
-                <mat-label>Adaugă noul post</mat-label>
+                <mat-label class="textLabel">Adaugă noul post</mat-label>
                 <input matInput  [(ngModel)]="jobTitle" >
               </mat-form-field>
               <br>
@@ -49,13 +49,13 @@
             </div>
             <div *ngIf="showDateEditor && active==exp.experienceId " class="editorsDiv">
               <mat-form-field appearance="fill" class="infoDate">
-                <mat-label>Început perioadă</mat-label>
+                <mat-label class="textLabel">Început perioadă</mat-label>
                 <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="startDate">
                 <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
               </mat-form-field>
 
               <mat-form-field appearance="fill" class="infoDate">
-                <mat-label>Sfârșit perioadă</mat-label>
+                <mat-label class="textLabel">Sfârșit perioadă</mat-label>
                 <input matInput #yearCheck2 maxlength="4" type="number" [(ngModel)]="endDate">
                 <mat-hint align ="end">{{yearCheck2.value.length}} / 4 </mat-hint>
               </mat-form-field>
