@@ -1,23 +1,18 @@
-<h1 class="textSearch">Aici poți căuta absolvenți ai Universității Transilvania</h1>
-
 <div class="searchBar">
   <div class="searchElements">
     <div>
-      <mat-form-field appearance="fill" class="searchBarInput">
-        <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
-        <mat-icon matPrefix class="searchIcon" color="primary">person_search</mat-icon>
-        <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" >
-      </mat-form-field>
-      <button mat-flat-button color="primary" class="searchButton" (click)=" searchGraduates()"><mat-icon style="font-size: 30px">search</mat-icon> </button>
-
-    </div>
-
-    <!-- -->
-
-      <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
-      <div *ngIf="showAdvancedSearch" class="advancedElements">
-        <hr>
-        <h2 class="textAdvancedSearch"> Selectați câmpurile după care să se realizeze căutarea</h2>
+      <div *ngIf="showSearch" style="text-align: center;">
+        <mat-form-field appearance="fill" class="searchBarInput">
+         <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
+         <mat-icon matPrefix class="searchIcon" color="primary">person_search</mat-icon>
+         <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" >
+        </mat-form-field>
+        <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
+      </div>
+ 
+       
+       <div *ngIf="showAdvancedSearch" class="advancedElements">
+           <h2 class="textAdvancedSearch"> Selectați câmpurile după care să se realizeze căutarea</h2>
         <mat-form-field appearance="fill" class="info">
           <mat-label>Facultate</mat-label>
           <mat-select >
@@ -32,18 +27,36 @@
           </mat-select>
         </mat-form-field>
         <button mat-raised-button color="primary" class="searchAdvancedButton"> Caută </button>
+        <button mat-raised-button color="warn" class="searchAdvancedButton" (click)="closeAdvancedSearch()"> Anulează </button>
       </div>
   </div>
 
-  <div *ngIf="showResult">
+  <div class="searchPeople">
     <h2  *ngIf="users.length == 0"> Nu există niciun absolvent</h2>
     <table class="designTable" *ngIf="users.length > 0">      
       <tr *ngFor="let user of users | usersFilter : searchPeople"> 
+          <h2 *ngIf="users.length ==0"> Nu există niciun absolvent cu acest nume</h2>
         <td>
-          {{user.firstName}} {{user.lastName}}
+          <div class="personName">
+              <h2> {{user.firstName}} {{user.lastName}}  </h2>      
+          </div>
+          
+          <div>
+            <button mat-icon-button class="infoButtons">
+              <mat-icon class="material-icons md-36" >school</mat-icon>
+            </button>
+            <button mat-icon-button class="infoButtons">
+              <mat-icon class="material-icons md-36" >work</mat-icon>
+            </button>
+            <button mat-icon-button class="infoButtons">
+              <mat-icon class="material-icons md-36" >list_alt</mat-icon>
+            </button>
+            <button mat-icon-button class="infoButtons">
+              <mat-icon class="material-icons md-36" >badge</mat-icon>
+            </button>
+          </div>
         </td>
       </tr>
     </table>
   </div>
-
 </div>

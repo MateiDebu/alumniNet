@@ -5,13 +5,13 @@
 
 .searchBar{
     margin-left: 1%;
+    padding-top: 2%;
 }
 
 .searchBarInput{
-    width: 83%;
+    width: 90%;
     font-size: 13.5px;
     text-align: left;
-    margin-left: 1%;
 }
 
 .searchButton2{
@@ -33,7 +33,7 @@
 }
 
 .advancedElements{
-    margin-top:6%;
+    margin-top:2%;
 }
 
 hr{
@@ -47,7 +47,9 @@ hr{
 }
 
 .searchAdvancedButton{
-    width: 99%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right:5%;
 }
 
 .textAdvancedSearch{
@@ -77,4 +79,42 @@ hr{
     margin-top:1%;
     padding-bottom: 1%;
     padding-left: 1%;
+}
+
+.studyIcon{
+    margin:2%;
+}
+
+.searchPeople{
+    margin:auto;
+    width: 90%;
+    margin-top:2%;
+    height: auto;
+    max-height: 573px;
+    overflow-y: auto;
+}
+
+.designTable{
+    width: 100%;
+    text-align: center;
+}
+
+td{
+    border:2px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    background-color:#6EDE8A ;
+}
+
+.personName{
+    text-align: center;
+}
+
+.infoButtons{
+    margin-left:5%;
+    margin-right:5%;
+}
+
+.titleAdvanceSearch{
+    text-align: center;
 }

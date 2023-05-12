@@ -18,12 +18,10 @@ export class SearchComponentComponent implements OnInit {
   searchPeople:string='';
   
   showResult=false;
-
   users:User[]=[];
 
   constructor(private dataService: DataService) { 
     this.showAdvancedSearch=false;
-    this.showSearch=true;
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
         this.users=users;
     });
@@ -48,6 +46,11 @@ export class SearchComponentComponent implements OnInit {
 
   searchGraduates(){
     this.showResult=true;
+  }
+
+  closeAdvancedSearch(){
+    this.showAdvancedSearch=false;
+    this.showSearch=true;
   }
 
 }
