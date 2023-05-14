@@ -11,4 +11,5 @@ export class FinishedStudyDetailed{
     learningSchedule?:LearningSchedule;
     specialization?:SpecializationFaculty;
     studyProgram?:StudyProgram;
+    profileId:number=0;
 }

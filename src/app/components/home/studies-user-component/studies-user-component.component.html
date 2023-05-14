@@ -1,1 +1,25 @@
-<p>studies-user-component works!</p>
+<mat-dialog-actions class="buttonActions">
+    <button mat-raised-button  color="warn" [mat-dialog-close]="false"> Închide </button>
+</mat-dialog-actions>
+
+<h2 class="studiesTitle">STUDII EFECTUATE</h2>
+<div  class="allCompForStudies">
+    <br>
+    <table class="designTable" *ngIf="finishedStudies.length > 0">      
+        <tr *ngFor="let finishStudy of finishedStudies"> 
+          <td class="textEditStudies">
+            <div class="firstLineText">
+                <mat-icon class="studyIcon" aria-hidden="false" aria-label="Example home icon" fontIcon="home">school</mat-icon>
+                A învățat la <b>{{' '+finishStudy.specialization?.faculty?.facultyName+' '}} </b> 
+                <button *ngIf="viewMoreButton" mat-icon-button (click)="viewMore()" (click)="setIsActive(finishStudy.finishedStudyId)" class="expandButton"> <mat-icon>expand_more</mat-icon> </button>
+            </div>
+          <div *ngIf="viewMoreInformation && finishStudy.finishedStudyId==active ">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Programul de studii <b>{{' '+finishStudy.studyProgram?.programName+' '}}</b> la <b>{{' '+finishStudy.learningSchedule?.scheduleName+' '}}</b>, 
+            specializarea <b>{{' '+finishStudy.specialization?.specializationName+'.'}}</b> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Promoția <b>{{' '+finishStudy.year}}</b>  
+            <button mat-icon-button (click)="viewLess()" class="expandButton"> <mat-icon>expand_less</mat-icon> </button>
+          </div>
+          </td>
+        </tr>
+      </table>
+</div>

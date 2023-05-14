@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-studies-user-component',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudiesUserComponentComponent implements OnInit {
 
-  constructor() { }
+  finishedStudies:FinishedStudyDetailed[]=[];
+
+  viewMoreInformation=false;
+  viewMoreButton=true;
+  active!:number;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dataService: DataService ) { 
+    this.setFinishedStudies();
+  }
 
   ngOnInit(): void {
+    console.log(this.data.param1);
+  }
+
+  setFinishedStudies(){
+    this.dataService.GetFinishedStudyByProfileId(this.data.param1).subscribe((studies)=>{
+      this.finishedStudies=studies;
+    });
+  }
+
+  viewMore(){
+    this.viewMoreInformation=true;
+    this.viewMoreButton=false;
+  }
+
+  viewLess(){
+    this.viewMoreInformation=false;
+    this.viewMoreButton=true;
+  }
+
+  setIsActive(active:number){
+    this.active=active;
   }
 
 }

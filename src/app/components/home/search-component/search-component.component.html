@@ -38,12 +38,12 @@
           <h2 *ngIf="users.length ==0"> Nu există niciun absolvent cu acest nume</h2>
         <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName ">
           <div class="personName">
-              <h2 > {{user.firstName}} {{user.lastName}}  </h2>      
+              <h2>  {{user.firstName}} {{user.lastName}}  </h2>      
           </div>
           
           <div>
             <button mat-icon-button class="infoButtons">
-              <mat-icon class="material-icons md-36" title="Studii efectuate" (click)="openStudiesForSearchUser()">school</mat-icon>
+              <mat-icon class="material-icons md-36" title="Studii efectuate" (click)="openStudiesForSearchUser(user.profileId)">school</mat-icon>
             </button>
             <button mat-icon-button class="infoButtons">
               <mat-icon class="material-icons md-36" title="Experiență profesională" (click)="openExperienceForSearchUser()">work</mat-icon>

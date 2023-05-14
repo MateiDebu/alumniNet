@@ -307,4 +307,13 @@ export class DataService{
     var param1=new HttpParams().set('postId',postId);
     return this.httpClient.delete(this.appSettings.ApiPath+'Post/DeletePost', {headers: httpOptions.headers, params: param1 });
    }
+
+   //methods for search users
+
+   public GetFinishedStudyByProfileId(id:number):Observable<FinishedStudyDetailed[]>{
+    var httpOptions=this.setHttpHeader();
+    var params1=new HttpParams().set('profileId', id);
+    return this.httpClient.get<FinishedStudyDetailed[]>(this.appSettings.ApiPath + "FinishedStudy/GetFinishedStudyByProfileId" 
+    , {headers:httpOptions.headers,params:params1});
+   }
 }

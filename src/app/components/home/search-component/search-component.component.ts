@@ -3,6 +3,8 @@ import { Faculty } from 'src/app/models/faculty.mode';
 import { Specialization } from 'src/app/models/specialization.mode';
 import { User } from 'src/app/models/user.mode';
 import { DataService } from 'src/app/services/data.service';
+import { StudiesUserComponentComponent } from '../studies-user-component/studies-user-component.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-search-component',
@@ -22,7 +24,7 @@ export class SearchComponentComponent implements OnInit {
 
   currentUser:User = new User();
 
-  constructor(private dataService: DataService) { 
+  constructor(private dataService: DataService,private dialog:MatDialog) { 
     this.showAdvancedSearch=false;
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
         this.users=users;
@@ -59,8 +61,25 @@ export class SearchComponentComponent implements OnInit {
     this.showSearch=true;
   }
 
-  openStudiesForSearchUser(){
+  openStudiesForSearchUser(profileId:number){
 
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.data={
+      param1: profileId
+    }
+
+    dialogConfig.width='650px';
+    dialogConfig.height='400px';
+    dialogConfig.disableClose=true;
+
+    let dialogRef = this.dialog.open(StudiesUserComponentComponent, dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log('Afișarea s-a făcut cu succes');
+      }else
+        console.log('Adaugarea nu s-a putut face');
+      });
   }
 
   openExperienceForSearchUser(){
