@@ -205,11 +205,15 @@ export class DataService{
     return this.httpClient.get<Profile[]>(this.appSettings.ApiPath+'Profile/GetProfileByUserId', httpOptions);
    }
 
+   public GetDescriptionAndPhotoByUserId():Observable<Profile>{
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<Profile>(this.appSettings.ApiPath+"Profile/GetDescriptionAndPhotoByUserId",httpOptions);
+   }
+
    public UpdateProfileByUserId(profile:Profile):Observable<Profile[]>{
     var httpOptions=this.setHttpHeader();
     return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile,httpOptions);
    }
-
 
    public UpdateProfilePictureByUserId(profilePicture:string):Observable<any>{
     var httpOptions=this.setHttpHeader();
@@ -322,6 +326,19 @@ export class DataService{
     var params1=new HttpParams().set('profileId', id);
     return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetExperienceByProfileId" 
     , {headers:httpOptions.headers,params:params1});
+   }
+
+   public GetPostsBySearchUserId(id:string):Observable<Post[]>
+   {
+    var httpOptions=this.setHttpHeader();
+    var params1=new HttpParams().set('searchUserId', id);
+    return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetPostsBySearchUserId",{headers:httpOptions.headers,params:params1});
+   }
+
+   public GetProfileByProfileId(id:number){
+    var httpOptions=this.setHttpHeader();
+    var params1=new HttpParams().set('profileId', id);
+    return this.httpClient.get(this.appSettings.ApiPath+"Post/GetProfileByProfileId",{headers:httpOptions.headers,params:params1});
    }
 
 }

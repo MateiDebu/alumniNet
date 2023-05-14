@@ -8,6 +8,7 @@ import { DataService } from 'src/app/services/data.service';
 import { AddExperienceComponentComponent } from '../add-experience-component/add-experience-component.component';
 import { AddStudiesComponentComponent } from '../add-studies-component/add-studies-component.component';
 import { EditProfileComponentComponent } from '../edit-profile-component/edit-profile-component.component';
+import { Profile } from 'src/app/models/profile.mode';
 
 
 @Component({
@@ -19,13 +20,14 @@ export class HomeComponentComponent implements OnInit {
 
   firstNameUser:string='';
   lastNameUser:string='';
-  description:string='eu sunt din brasov si sunt absolvent al Universitati Transilvania Brasov'
+  description:string='';
 
   user: User = new User;
   studies:FinishedStudy[]=[];
   finishStudyDetailed:FinishedStudyDetailed[]=[];
+  profile:Profile=new Profile;
 
-  showFinishedStudys=false;
+  showFinishedStudies=false;
   showExperience=false;
 
   showSearchPage=false;
@@ -41,6 +43,7 @@ export class HomeComponentComponent implements OnInit {
     this.dataService.GetUserById().subscribe((user:User)=>{
       this.user=user;
      });
+     this.setProfile();
   }
 
   setName(){
@@ -49,8 +52,8 @@ export class HomeComponentComponent implements OnInit {
     return this.firstNameUser+' '+this.lastNameUser;
   }
 
-  openFinishedStudys(){
-    this.showFinishedStudys=true;
+  openFinishedStudies(){
+    this.showFinishedStudies=true;
     this.showExperience=false;
     this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
       this.finishStudyDetailed=finishStudyDetailed;
@@ -59,21 +62,28 @@ export class HomeComponentComponent implements OnInit {
 
   openExperience(){
     this.showExperience=true;
-    this.showFinishedStudys=false;
+    this.showFinishedStudies=false;
     this.viewMoreInformation=false;
   }
 
   close(){
     this.showExperience=false;
-    this.showFinishedStudys=false;
+    this.showFinishedStudies=false;
     this.viewMoreInformation=false;
   }
 
+  setProfile(){
+    this.dataService.GetDescriptionAndPhotoByUserId().subscribe((profile)=>{
+      this.profile=profile;
+    });
+  }
+
   setPath(){
+    return this.profile.profilePicture;
   }
 
   setDescription(){
-    return this.description;
+    return this.profile.description;
   }
 
   goToHomePage(){
@@ -85,7 +95,7 @@ export class HomeComponentComponent implements OnInit {
     this.showSearchPage=true;
     this.showHomePage=false;
     this.showExperience=false;
-    this.showFinishedStudys=false;
+    this.showFinishedStudies=false;
   }
 
   goToLoginPage(){
@@ -103,6 +113,7 @@ export class HomeComponentComponent implements OnInit {
     dialogRef.afterClosed().subscribe( result => {
       if(result){
         console.log('Editarea s-a realizat cu succes');
+        this.setProfile();
       }else
         console.log('S-a renunțat la editarea profilului');
     });
@@ -136,7 +147,7 @@ export class HomeComponentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         console.log('Adaugarea s-a făcut cu succes!');
-        this.showFinishedStudys=false;
+        this.showFinishedStudies=false;
       }else
         console.log('Adaugarea nu s-a putut face');
       });

@@ -24,13 +24,13 @@
                     <p class="descriptionProfile">{{ setDescription() }}</p>
                 </div>
                 <div class="buttonsOpen">
-                    <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudys()">Studii efectuate</button>
+                    <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudies()">Studii efectuate</button>
                     <button mat-raised-button color="primary" class="openButtons" (click)="openExperience()">Experiență profesională</button>
                     <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}" class="buttonProfileText"  color="warn" (click)="openEditProfile()" class="buttonModifyProfile" title="Editare profil">
                         <mat-icon class="material-icons md-20">manage_accounts</mat-icon>
                      </button>
                 </div>
-                <div *ngIf="showFinishedStudys">
+                <div *ngIf="showFinishedStudies">
                     <hr>
                     <h2 class="studiesTitle">STUDII EFECTUATE</h2>
                     <div  class="allCompForStudies">
