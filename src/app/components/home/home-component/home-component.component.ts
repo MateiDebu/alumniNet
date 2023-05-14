@@ -104,7 +104,7 @@ export class HomeComponentComponent implements OnInit {
       if(result){
         console.log('Editarea s-a realizat cu succes');
       }else
-        console.log('Editarea nu s-a putut realiza');
+        console.log('S-a renunțat la editarea profilului');
     });
   }
 

@@ -257,7 +257,7 @@ export class DataService{
 
    public AddNewPostForUser( newPost: Post):Observable<Post[]>{
     var httpOptions=this.setHttpHeader();
-    return this.httpClient.post<Post[]>(this.appSettings.ApiPath+'Post/AddNewPostForUser',<Post>newPost, httpOptions);
+    return this.httpClient.post<Post[]>(this.appSettings.ApiPath+'Post/AddNewPostForUser',newPost, httpOptions);
    }
 
    public UpdatePostImage(id:number, image:string){
@@ -316,4 +316,12 @@ export class DataService{
     return this.httpClient.get<FinishedStudyDetailed[]>(this.appSettings.ApiPath + "FinishedStudy/GetFinishedStudyByProfileId" 
     , {headers:httpOptions.headers,params:params1});
    }
+
+   public GetExperienceByProfileId(id:number):Observable<Experience[]>{
+    var httpOptions=this.setHttpHeader();
+    var params1=new HttpParams().set('profileId', id);
+    return this.httpClient.get<Experience[]>(this.appSettings.ApiPath + "Experience/GetExperienceByProfileId" 
+    , {headers:httpOptions.headers,params:params1});
+   }
+
 }

@@ -1,0 +1,23 @@
+<mat-dialog-actions class="buttonActions">
+    <button mat-raised-button  color="warn" [mat-dialog-close]="false"> Închide </button>
+</mat-dialog-actions>
+
+<h2 class="experienceTitle">EXPERIENȚĂ PROFESIONALĂ</h2>
+
+<div class="allComp">
+    <br>
+    <table class="designTable" *ngIf="experience.length > 0">      
+        <tr *ngFor="let exp of experience"> 
+        <td class="firstColumn">
+          <div class="TextExperienceAndEditButton">
+            <div class="TextExperience">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" class="material-icons" fontIcon="work">work</mat-icon>
+              A lucrat la  <b>{{' '+exp.companyName+' '}}</b>  unde a ocupat funcția de <b>{{' '+exp.jobTitle+' '}}</b>  în perioada  <b *ngIf="exp.endDate!=null">{{exp.startDate + ' - '+ exp.endDate }}</b> 
+              <b  *ngIf="exp.endDate==null">{{exp.startDate + ' - prezent' }}</b>
+            </div>
+         </div>
+        </td>
+     </tr>
+    </table>
+</div>
+            

@@ -22,6 +22,7 @@ import { AddExperienceComponentComponent } from './add-experience-component/add-
 import { AddStudiesComponentComponent } from './add-studies-component/add-studies-component.component';
 import { FilterPipe } from 'src/app/utilities/filter.pipe';
 import { StudiesUserComponentComponent } from './studies-user-component/studies-user-component.component';
+import { ExperienceUserComponentComponent } from './experience-user-component/experience-user-component.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { StudiesUserComponentComponent } from './studies-user-component/studies-
     AddExperienceComponentComponent,
     AddStudiesComponentComponent,
     FilterPipe,
-    StudiesUserComponentComponent
+    StudiesUserComponentComponent,
+    ExperienceUserComponentComponent
   ],
   imports: [
     CommonModule,

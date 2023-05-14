@@ -21,7 +21,6 @@ export class StudiesUserComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data.param1);
   }
 
   setFinishedStudies(){

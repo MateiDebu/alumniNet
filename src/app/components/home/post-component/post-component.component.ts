@@ -159,7 +159,7 @@ export class PostComponentComponent implements OnInit {
     var newPost=new Post();
     newPost.title=this.titlePostAdd;
     newPost.text=this.textPostAdd;
-    newPost.image=this.imageUrlAdd;
+    //newPost.image=this.imageUrlAdd;
     this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
       if(res){
         alert("Postarea a fost adăugată cu succes");
