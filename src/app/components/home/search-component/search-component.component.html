@@ -34,25 +34,25 @@
   <div class="searchPeople">
     <h2  *ngIf="users.length == 0"> Nu există niciun absolvent</h2>
     <table class="designTable" *ngIf="users.length > 0">      
-      <tr *ngFor="let user of users | usersFilter : searchPeople"> 
+      <tr *ngFor="let user of users | usersFilter : searchPeople" > 
           <h2 *ngIf="users.length ==0"> Nu există niciun absolvent cu acest nume</h2>
-        <td>
+        <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName ">
           <div class="personName">
-              <h2> {{user.firstName}} {{user.lastName}}  </h2>      
+              <h2 > {{user.firstName}} {{user.lastName}}  </h2>      
           </div>
           
           <div>
             <button mat-icon-button class="infoButtons">
-              <mat-icon class="material-icons md-36" >school</mat-icon>
+              <mat-icon class="material-icons md-36" title="Studii efectuate" (click)="openStudiesForSearchUser()">school</mat-icon>
             </button>
             <button mat-icon-button class="infoButtons">
-              <mat-icon class="material-icons md-36" >work</mat-icon>
+              <mat-icon class="material-icons md-36" title="Experiență profesională" (click)="openExperienceForSearchUser()">work</mat-icon>
             </button>
             <button mat-icon-button class="infoButtons">
-              <mat-icon class="material-icons md-36" >list_alt</mat-icon>
+              <mat-icon class="material-icons md-36" title="Postări" (click)="openPostsForSearchUser()">list_alt</mat-icon>
             </button>
-            <button mat-icon-button class="infoButtons">
-              <mat-icon class="material-icons md-36" >badge</mat-icon>
+            <button mat-icon-button class="infoButtons" title="Informații persoană" (click)="openProfileForSearchUser()">
+              <mat-icon class="material-icons md-36"  >badge</mat-icon>
             </button>
           </div>
         </td>

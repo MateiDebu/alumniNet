@@ -20,11 +20,17 @@ export class SearchComponentComponent implements OnInit {
   showResult=false;
   users:User[]=[];
 
+  currentUser:User = new User();
+
   constructor(private dataService: DataService) { 
     this.showAdvancedSearch=false;
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
         this.users=users;
     });
+    
+    this.dataService.GetUserById().subscribe((user) =>{
+      this.currentUser=user;
+    })
   }
 
   ngOnInit(): void {
@@ -51,6 +57,22 @@ export class SearchComponentComponent implements OnInit {
   closeAdvancedSearch(){
     this.showAdvancedSearch=false;
     this.showSearch=true;
+  }
+
+  openStudiesForSearchUser(){
+
+  }
+
+  openExperienceForSearchUser(){
+
+  }
+
+  openProfileForSearchUser(){
+
+  }
+
+  openPostsForSearchUser(){
+
   }
 
 }

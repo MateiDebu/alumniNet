@@ -1,7 +1,8 @@
 export class User{
     firstName: string='';
     lastName: string='';
-    isValid:number=0;
+    isValid:number=1;
+    IsAdmin:number=0;
     email:string='';
     profileId:number=0;
 }
