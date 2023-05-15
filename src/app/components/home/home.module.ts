@@ -24,6 +24,7 @@ import { FilterPipe } from 'src/app/utilities/filter.pipe';
 import { StudiesUserComponentComponent } from './studies-user-component/studies-user-component.component';
 import { ExperienceUserComponentComponent } from './experience-user-component/experience-user-component.component';
 import { PostsUserComponentComponent } from './posts-user-component/posts-user-component.component';
+import { ProfileUserComponentComponent } from './profile-user-component/profile-user-component.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PostsUserComponentComponent } from './posts-user-component/posts-user-c
     FilterPipe,
     StudiesUserComponentComponent,
     ExperienceUserComponentComponent,
-    PostsUserComponentComponent
+    PostsUserComponentComponent,
+    ProfileUserComponentComponent
   ],
   imports: [
     CommonModule,

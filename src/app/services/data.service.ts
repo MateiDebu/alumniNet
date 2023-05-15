@@ -335,10 +335,10 @@ export class DataService{
     return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetPostsBySearchUserId",{headers:httpOptions.headers,params:params1});
    }
 
-   public GetProfileByProfileId(id:number){
+   public GetProfileByProfileId(id:number):Observable<Profile>{
     var httpOptions=this.setHttpHeader();
     var params1=new HttpParams().set('profileId', id);
-    return this.httpClient.get(this.appSettings.ApiPath+"Post/GetProfileByProfileId",{headers:httpOptions.headers,params:params1});
+    return this.httpClient.get<Profile>(this.appSettings.ApiPath+"Profile/GetProfileByProfileId",{headers:httpOptions.headers,params:params1});
    }
 
 }

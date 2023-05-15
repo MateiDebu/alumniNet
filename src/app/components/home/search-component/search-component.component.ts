@@ -7,6 +7,7 @@ import { StudiesUserComponentComponent } from '../studies-user-component/studies
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ExperienceUserComponentComponent } from '../experience-user-component/experience-user-component.component';
 import { PostsUserComponentComponent } from '../posts-user-component/posts-user-component.component';
+import { ProfileUserComponentComponent } from '../profile-user-component/profile-user-component.component';
 
 @Component({
   selector: 'app-search-component',
@@ -128,8 +129,26 @@ export class SearchComponentComponent implements OnInit {
   }
 
   
-  openProfileForSearchUser(profileId:number){
+  openProfileForSearchUser(profileId:number, firstName:string, lastName:string){
+    var fullName=firstName+" "+ lastName;
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.data={
+      param1: profileId,
+      param2: fullName
+    }
 
+    dialogConfig.width='500px';
+    dialogConfig.height='500px';
+    dialogConfig.disableClose=true;
+
+    let dialogRef = this.dialog.open(ProfileUserComponentComponent, dialogConfig);
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        console.log('Afișarea s-a făcut cu succes');
+      }else
+        console.log('Afișarea postărlor s-a închis');
+      });
   }
 
 }
