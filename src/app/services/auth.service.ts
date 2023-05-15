@@ -69,7 +69,15 @@ export class AuthService {
       this.loggedIn=true;
       localStorage.setItem('logIn',this.loggedIn.toString());
       localStorage.setItem('fireBaseToken',idToken.toString());
-      this.router.navigate(['home']);
+      this.dataService.GetUserById().subscribe((user:User)=>{
+            if(user.isAdmin==true){
+              console.log('user este admin');
+              this.router.navigate(['admin']);
+            }else{
+              console.log('user nu este admin');
+              this.router.navigate(['home']);
+            }
+      });
     });
     }).catch(() => {
       alert("Adresa de mail sau parola nu sunt valide");

@@ -19,7 +19,6 @@ export class ProfileUserComponentComponent implements OnInit {
   setProfile(){
     this.dataService.GetProfileByProfileId(this.data.param1).subscribe((profile)=>{
       this.profile=profile;
-      console.log(this.profile);
     });
   }
 

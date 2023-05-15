@@ -22,7 +22,6 @@ export class PostsUserComponentComponent implements OnInit {
   setPosts(){
     this.dataService.GetPostsBySearchUserId(this.data.param1).subscribe((posts)=>{
       this.posts=posts;
-      console.log(this.posts);
     });
   }
 

@@ -3,7 +3,7 @@ export class User{
     firstName: string='';
     lastName: string='';
     isValid:number=1;
-    IsAdmin:number=0;
+    isAdmin:boolean=false;
     email:string='';
     profileId:number=0;
 }
