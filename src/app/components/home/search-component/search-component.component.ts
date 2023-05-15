@@ -105,12 +105,13 @@ export class SearchComponentComponent implements OnInit {
   }
   
 
-  openPostsForSearchUser(userId:string){
+  openPostsForSearchUser(userId:string,firstName:string, lastName:string){
+    var fullName=firstName+" "+ lastName;
     const dialogConfig=new MatDialogConfig();
     dialogConfig.data={
-      param1: userId
+      param1: userId,
+      param2: fullName
     }
-    console.log(userId);
 
     dialogConfig.width='650px';
     dialogConfig.height='600px';

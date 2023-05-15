@@ -26,4 +26,8 @@ export class PostsUserComponentComponent implements OnInit {
     });
   }
 
+  getSearchUserName(){
+    return this.data.param2;
+  }
+
 }

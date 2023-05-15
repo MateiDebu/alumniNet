@@ -2,6 +2,7 @@
 <h2>EXPERIENȚĂ PROFESIONALĂ</h2>
 <div class="allComp">
     <br>
+    <h2 *ngIf="experience.length == 0" class="textNotPosts">Nu aveți experiență adaugată</h2>
     <table class="designTable" *ngIf="experience.length > 0">      
         <tr *ngFor="let exp of experience"> 
         <td class="firstColumn">

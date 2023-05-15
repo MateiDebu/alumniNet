@@ -33,7 +33,6 @@ export class PostComponentComponent implements OnInit {
 
   posts:Post[]=[];
   constructor(private dataService:DataService,private dialog:MatDialog) {
-    this.refreshPosts();
   }
 
   ngOnInit(): void {
@@ -47,7 +46,7 @@ export class PostComponentComponent implements OnInit {
       height: '240px',
       disableClose:true,
       data : {
-        title: 'Confirmare ștergere',
+        title:   'Confirmare ștergere',
         message: 'Sigur doriți să ștergeți postarea ?',
       }
     });

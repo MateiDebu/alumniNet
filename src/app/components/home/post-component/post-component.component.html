@@ -25,6 +25,7 @@
              </div>
              <br>
 <div class="designTableDiv" *ngIf="showPosts">
+      <h1 *ngIf="posts.length == 0" class="textNotPosts">Nu aveți postări adaugate</h1>
       <table class="designTable" *ngIf="posts.length > 0">      
         <tr *ngFor="let post of posts "> 
           <td> <div>
