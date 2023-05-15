@@ -37,6 +37,8 @@ export class HomeComponentComponent implements OnInit {
   viewMoreButton=true;
   active!:number;
 
+  viewDescription=true;
+
   constructor(private auth: AuthService, private dataService:DataService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
@@ -104,6 +106,7 @@ export class HomeComponentComponent implements OnInit {
 
   openEditProfile(){
 
+    this.viewDescription=false;
     let dialogRef=this.dialog.open(EditProfileComponentComponent, {
       width: '360px',
       height: '360px',
@@ -114,8 +117,10 @@ export class HomeComponentComponent implements OnInit {
       if(result){
         console.log('Editarea s-a realizat cu succes');
         this.setProfile();
+        this.viewDescription=true;
       }else
         console.log('S-a renunțat la editarea profilului');
+        this.viewDescription=true;
     });
   }
 

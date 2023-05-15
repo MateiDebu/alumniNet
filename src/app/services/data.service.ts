@@ -259,9 +259,9 @@ export class DataService{
     return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetPostsByUserId",httpOptions);
    }
 
-   public AddNewPostForUser( newPost: Post):Observable<Post[]>{
+   public AddNewPostForUser(newPost:Post){
     var httpOptions=this.setHttpHeader();
-    return this.httpClient.post<Post[]>(this.appSettings.ApiPath+'Post/AddNewPostForUser',newPost, httpOptions);
+    return this.httpClient.post(this.appSettings.ApiPath+'Post/AddNewPostForUser',newPost, httpOptions);
    }
 
    public UpdatePostImage(id:number, image:string){

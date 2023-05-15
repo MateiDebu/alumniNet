@@ -151,10 +151,12 @@ export class PostComponentComponent implements OnInit {
   closePost(){
     this.addPost=false;
     this.closeButtonPost=true;
+    this.refreshPosts();
     this.showPosts=true;
   }
 
   addNewPost(){
+    this.showPosts=false;
     var newPost=new Post();
     newPost.title=this.titlePostAdd;
     newPost.text=this.textPostAdd;

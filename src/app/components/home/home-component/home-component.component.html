@@ -21,7 +21,7 @@
                 <h1>{{ setName() }}</h1>
                 <img src="{{ setPath() }}"/>
                 <div class="descriptionComp">
-                    <p class="descriptionProfile">{{ setDescription() }}</p>
+                    <p class="descriptionProfile" *ngIf="viewDescription">{{ setDescription() }}</p>
                 </div>
                 <div class="buttonsOpen">
                     <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudies()">Studii efectuate</button>
