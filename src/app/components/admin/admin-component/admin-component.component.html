@@ -1,1 +1,69 @@
-<p>admin-component works!</p>
+<!DOCTYPE html>
+<header style="background-color:#1a7aa2  ;">
+    <div class="marginTop"></div>
+    <div class="homeButtons"> 
+        <button mat-icon-button class="headerButton">
+            <mat-icon class="material-icons md-40" (click)="goToHomePage()" title="Vizualizează utilizatori">account_circle</mat-icon>
+        </button>
+        <button mat-icon-button class="headerButton">
+            <mat-icon class="material-icons md-40" (click)="goToPostPage()" title="Verificare postări">list_alt</mat-icon>
+        </button>
+          <button mat-icon-button class="headerButton">
+            <mat-icon class="material-icons md-36" (click)="goToLoginPage()" title="Ieșire din cont">logout</mat-icon>
+        </button>
+    </div>
+</header>
+<body>
+    <br>
+    <div *ngIf="showHomePage" class="homePage">
+        <h2 class="titleTable">UTILIZATORI APLICAȚIEI</h2>
+        <h3 *ngIf="users.length == 0">Aplicația nu are utilizatori</h3>
+        <table *ngIf="users.length > 0" class="tableUsersAndStudies">
+            <tr *ngFor="let u of users" >
+                <td  *ngIf="!u.isAdmin" class="firstTableRow">
+                    <div class="nameAndButtonStudies">
+                        <div class="nameBox">
+                            <h3 class="nameUser">  {{u.firstName+' '}}{{u.lastName}} </h3>  
+                        </div>
+                        <div class="buttonBox">
+                            <button mat-raised-button color="primary" class="getStudiesButton" (click)="getStudies(u.profileId)" 
+                            (click)="setActive(u.profileId)">Afișare studii</button>
+                        </div>
+                    </div>
+                    <div *ngIf="active == u.profileId">
+                        <hr style="border:1px solid black;">
+                        <div *ngIf="finishedStudies.length == 0">
+                            <h3  class="notStudies">Nu are încă adăugate studii</h3>
+                        <button mat-icon-button class="closeButton">
+                            <mat-icon class="iconCloseButton" (click)="setCloseStudies()" color="primary" title="Inchide studiile">cancel</mat-icon>
+                        </button>
+                        </div>
+                        <div *ngIf="finishedStudies.length > 0">
+                            <table class="designTable" >      
+                                <tr *ngFor="let finishStudy of finishedStudies"> 
+                                  <td class="textEditStudies">
+                                    <div class="firstLineText">
+                                        <mat-icon class="studyIcon" aria-hidden="false" aria-label="Example home icon" fontIcon="home">school</mat-icon>
+                                        A învățat la <b>{{' '+finishStudy.specialization?.faculty?.facultyName+' '}} </b> 
+                                
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Programul de studii <b>{{' '+finishStudy.studyProgram?.programName+' '}}</b> la <b>{{' '+finishStudy.learningSchedule?.scheduleName+' '}}</b>, 
+                                    specializarea <b>{{' '+finishStudy.specialization?.specializationName+'.'}}</b> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Promoția <b>{{' '+finishStudy.year}}</b>  
+                                   
+                                  </td>
+                                </tr>
+                              </table>
+                              <button mat-icon-button class="closeButton" >
+                                <mat-icon class="iconCloseButton" (click)="setCloseStudies()" color="warn" title="Inchide studiile">cancel</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="showPostPage">
+        <app-posts-control-component></app-posts-control-component>
+    </div>
+</body>

@@ -1,0 +1,97 @@
+body{
+    background: linear-gradient(0deg, #B7EFC5 0%, #1a7aa2 100%)
+}
+
+.marginTop{
+    margin:auto;
+    padding-bottom: 0.5%;
+}
+
+.homeButtons{
+    text-align: center;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    background: radial-gradient(circle at top, #2990bc , #0d8c2d);
+    margin:auto;
+    width: 40%;
+    border-radius: 100px;
+    border:3px solid black;
+}
+
+.headerButton{
+    margin-left:10%;
+    margin-right: 10%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.material-icons.md-40 { 
+    font-size: 38px;
+    color:white;
+}
+
+.material-icons.md-36 { 
+    font-size: 34px;
+    color:white;
+}
+
+.homePage{
+    width: 60%;
+    background: white;
+    margin:auto;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.iconStudies{
+    color:black;
+}
+
+.tableUsersAndStudies{
+    width: 100%;
+}
+
+.titleTable{
+    text-align: center;
+    padding-top:2%; 
+}
+
+.firstTableRow{
+    border:2px solid black;
+    border-radius: 5px;
+}
+
+.nameUser{
+    text-align: left;
+}
+
+.getStudiesButton{
+    width: 40%;
+}
+
+.nameBox{
+    width: 30%;
+    display: inline-block;
+    margin-left:2%;
+}
+.buttonBox{
+    width:40%;
+    padding-top:2% ;
+    display: inline-block;
+}
+
+.notStudies{
+    margin-left:2%;
+}
+
+.studyIcon{
+    margin-left:1%;
+}
+
+.closeButton{
+    margin-left:37%;
+}
+
+.iconCloseButton{
+    font-size:34px;
+}
