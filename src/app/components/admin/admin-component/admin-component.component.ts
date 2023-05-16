@@ -59,4 +59,8 @@ export class AdminComponentComponent implements OnInit {
     this.active=-1;
   }
 
+  openDialogChangeValid(userId:string){
+    
+  }
+
 }

@@ -74,8 +74,19 @@ body{
     display: inline-block;
     margin-left:2%;
 }
+
+.nameBoxValid{
+    width: 10%;
+    display: inline-block;
+}
+
 .buttonBox{
     width:40%;
+    padding-top:2% ;
+    display: inline-block;
+}
+
+.changeBox{
     padding-top:2% ;
     display: inline-block;
 }
@@ -89,7 +100,7 @@ body{
 }
 
 .closeButton{
-    margin-left:37%;
+    margin-left:47%;
 }
 
 .iconCloseButton{
