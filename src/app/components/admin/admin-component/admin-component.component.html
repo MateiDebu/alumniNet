@@ -32,8 +32,8 @@
                             <button mat-raised-button color="primary" class="getStudiesButton" (click)="getStudies(u.profileId)" 
                             (click)="setActive(u.profileId)">Afișare studii</button>
                         </div>
-                        <div class="changeBox">
-                            <button mat-raised-button color="accent" (click)="openDialogChangeValid(u.userId)" >Validează</button>
+                        <div class="changeBox" *ngIf="!u.isValid">
+                            <button mat-raised-button color="accent" (click)="openDialogChangeValid(u.userId,u.firstName,u.lastName)">Validează</button>
                         </div>
                     </div>
                     <div *ngIf="active == u.profileId">

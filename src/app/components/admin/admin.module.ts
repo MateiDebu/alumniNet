@@ -15,11 +15,13 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatMenuModule} from '@angular/material/menu';
 
 import { PostsControlComponentComponent } from './posts-control-component/posts-control-component.component';
+import { ValidationConfirmationComponentComponent } from './validation-confirmation-component/validation-confirmation-component.component';
 
 @NgModule({
   declarations: [
     AdminComponentComponent,
-    PostsControlComponentComponent
+    PostsControlComponentComponent,
+    ValidationConfirmationComponentComponent
   ],
   imports: [
     CommonModule,

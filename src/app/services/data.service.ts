@@ -239,6 +239,12 @@ export class DataService{
     return this.httpClient.get<User[]>(this.appSettings.ApiPath+'User/GetAllUsers',httpOptions);
    }
 
+   public UserValidation(id:string){
+    var httpOptions=this.setHttpHeader();
+    var params1=new HttpParams().set('userId', id);
+    return this.httpClient.put<User>(this.appSettings.ApiPath+'User/UserValidation',{headers:httpOptions.headers,params:params1});
+   }
+
    public GetUserById():Observable<User>{
     var httpOptions=this.setHttpHeader();
     return this.httpClient.get<User>(this.appSettings.ApiPath+'User/GetUserById',httpOptions);
