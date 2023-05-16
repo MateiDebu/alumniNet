@@ -241,8 +241,15 @@ export class DataService{
 
    public UserValidation(id:string){
     var httpOptions=this.setHttpHeader();
-    var params1=new HttpParams().set('userId', id);
-    return this.httpClient.put<User>(this.appSettings.ApiPath+'User/UserValidation',{headers:httpOptions.headers,params:params1});
+    const httpParams =new HttpParams({
+      fromObject:{
+        userId: id,
+      }
+    });
+    return this.httpClient.put<User>(this.appSettings.ApiPath+'User/UserValidation',null,{
+      headers: httpOptions.headers,
+      params: httpParams
+    });
    }
 
    public GetUserById():Observable<User>{

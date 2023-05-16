@@ -15,6 +15,7 @@ export class AdminComponentComponent implements OnInit {
 
   showHomePage=true;
   showPostPage=false;
+  showTableWithUsers=true;
 
   users:User[]=[];
   finishedStudies:FinishedStudyDetailed[]=[];
@@ -62,8 +63,8 @@ export class AdminComponentComponent implements OnInit {
   }
 
   openDialogChangeValid(userId:string,firstName:string, lastName:string){
+
     let fullName=firstName+' '+lastName;
-    console.log(userId);
     const dialogConfig=new MatDialogConfig();
     dialogConfig.data={
       param1: fullName,
@@ -71,23 +72,30 @@ export class AdminComponentComponent implements OnInit {
     }
 
     dialogConfig.width='400px';
-    dialogConfig.height='300px';
+    dialogConfig.height='270px';
     dialogConfig.disableClose=true;
 
     let dialogRef = this.dialog.open(ValidationConfirmationComponentComponent, dialogConfig);
-    
+    this.showTableWithUsers=false;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.dataService.UserValidation(userId).subscribe((res)=>{
           if(res){
             alert('Validarea s-a făcut cu succes');
+            this.showTableWithUsers=true;
+            this.getUsers();
           }else
             alert('Validarea nu s-a putut efectua');
+            this.showTableWithUsers=true;
         });
         console.log('Validarea s-a făcut cu succes');
+       
       }else
         console.log('Validarea a fost anulată');
+        this.showTableWithUsers=true;
       });
+
+      
   }
 
 }
