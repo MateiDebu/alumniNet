@@ -156,25 +156,26 @@ export class PostComponentComponent implements OnInit {
   }
 
   addNewPost(){
-    this.showPosts=false;
-    var newPost=new Post();
+    let newPost=new Post();
     newPost.title=this.titlePostAdd;
     newPost.text=this.textPostAdd;
-    //newPost.image=this.imageUrlAdd;
+    newPost.image=this.imageUrlAdd;
+
     this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
       if(res){
         alert("Postarea a fost adăugată cu succes");
-        this.titlePostAdd='';
-        this.textPostAdd='';
-        this.imageUrlAdd='';
-        this.refreshPosts();
+        this.titlePostAdd ='';
+        this.textPostAdd  ='';
+        this.imageUrlAdd  ='';
       }else{
         alert("Postarea nu a putut fi adăugată");
       }
+
+      this.refreshPosts();
     });
 
     this.closeButtonPost=true;
-    this.showPosts=true;
     this.addPost=false;  
+    this.showPosts=true;
   }
 }

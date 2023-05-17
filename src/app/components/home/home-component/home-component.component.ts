@@ -80,11 +80,11 @@ export class HomeComponentComponent implements OnInit {
     });
   }
 
-  setPath(){
+  getPath(){
     return this.profile.profilePicture;
   }
 
-  setDescription(){
+  getDescription(){
     return this.profile.description;
   }
 

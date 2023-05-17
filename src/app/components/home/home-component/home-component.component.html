@@ -19,10 +19,10 @@
             <div class="profileInformation">
                 <h1>Bine ai venit!</h1>
                 <h1>{{ setName() }}</h1>
-                <img src="{{ setPath() }}"/>
+                <img src=""/>
                 <div class="descriptionComp">
-                    <p *ngIf="setDescription()==''">Adaugă o descriere profilului tău</p>
-                    <p class="descriptionProfile" *ngIf="viewDescription">{{ setDescription() }}</p>
+                    <p *ngIf="getDescription()==''">Adaugă o descriere profilului tău</p>
+                    <p class="descriptionProfile" *ngIf="viewDescription">{{ getDescription() }}</p>
                 </div>
                 <div class="buttonsOpen">
                     <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudies()">Studii efectuate</button>

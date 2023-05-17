@@ -32,7 +32,7 @@ export class AuthService {
       (resolve, reject) =>{
         setTimeout(()=> {
           resolve(this.loggedIn)
-        }, 300);
+        }, 600);
       }
     );
 

@@ -275,7 +275,7 @@ export class DataService{
 
    public AddNewPostForUser(newPost:Post){
     var httpOptions=this.setHttpHeader();
-    return this.httpClient.post(this.appSettings.ApiPath+'Post/AddNewPostForUser',newPost, httpOptions);
+    return this.httpClient.post(this.appSettings.ApiPath+'Post/AddNewPostForUser',<Post>newPost, httpOptions);
    }
 
    public UpdatePostImage(id:number, image:string){
