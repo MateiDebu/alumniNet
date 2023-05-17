@@ -1,1 +1,21 @@
-<p>posts-control-component works!</p>
+<h1 class="titlePosts">VERIFICARE POSTĂRI</h1>
+
+<div class="tableBox">
+    <h2 *ngIf="posts.length == 0">Nu există postări</h2>
+    <table>
+        <tr *ngFor="let post of posts">
+            <td class="firstTableRow">
+                <div class="textBox">
+                    <h3><b>{{post.title}}</b></h3>
+                    <p class="descriptionPost">    {{post.text}}</p>
+                 </div>
+                 <div class="buttonBox">
+                      <button mat-icon-button >
+                        <mat-icon class="material-icons md-36" color="warn" (click)="deletePost(post.postId)" title="Șterge postarea">delete</mat-icon>
+                    </button>
+                 </div>
+                
+            </td>
+        </tr>
+    </table>
+</div>

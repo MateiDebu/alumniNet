@@ -16,12 +16,14 @@ import { MatMenuModule} from '@angular/material/menu';
 
 import { PostsControlComponentComponent } from './posts-control-component/posts-control-component.component';
 import { ValidationConfirmationComponentComponent } from './validation-confirmation-component/validation-confirmation-component.component';
+import { DeleteConfirmationComponentComponent } from './delete-confirmation-component/detele-confirmation-component.component';
 
 @NgModule({
   declarations: [
     AdminComponentComponent,
     PostsControlComponentComponent,
-    ValidationConfirmationComponentComponent
+    ValidationConfirmationComponentComponent,
+    DeleteConfirmationComponentComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,7 @@
+<h2 mat-dialog-title style="text-align: center;">Confirmare ștergere postare</h2>
+<br>
+<mat-dialog-content class="question">{{data.message}}</mat-dialog-content>
+<mat-dialog-actions >
+    <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true">Validează</button>
+    <button mat-raised-button  class="buttonActions"  color="warn" [mat-dialog-close]="false">Anulează</button>
+</mat-dialog-actions>

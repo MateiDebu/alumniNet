@@ -1,0 +1,52 @@
+.titlePosts{
+    text-align: center;
+    color:white;
+}
+
+.tableBox{
+    width:94%;
+    background-color:white;
+    border-radius: 5px;
+    height: 630px;
+    margin-left:2%;
+    margin-right: 2%;
+    Overflow-y:scroll;
+    padding: 1%;
+}
+
+.firstTableRow{
+    border:2px solid black;
+    border-radius: 5px;
+    padding:1%;
+    margin:1%;
+}
+
+.mat-icon{
+    font-size: 30px;
+}
+
+.textBox{
+    display: inline-block;
+    width: auto;
+    margin-right: 2%;
+}
+
+.buttonBox{
+    float:right;
+    margin-top:2%;
+    margin-right:3%;
+
+}
+
+.material-icons.md-36 { 
+    font-size: 34px;
+}
+
+table{
+    width: 100%;
+}
+
+.descriptionPost{
+    text-align: justify;
+    font-size: 15px;
+}

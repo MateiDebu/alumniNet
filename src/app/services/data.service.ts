@@ -264,7 +264,8 @@ export class DataService{
 
    //methods for post
    public GetAllPostsSorted(): Observable<Post[]>{
-    return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetAllPostsSorted");
+    var httpOptions=this.setHttpHeader();
+    return this.httpClient.get<Post[]>(this.appSettings.ApiPath+"Post/GetAllPostsSorted",httpOptions);
    }
 
    public GetPostsByUserId():Observable<Post[]>{
