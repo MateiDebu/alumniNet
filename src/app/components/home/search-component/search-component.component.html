@@ -5,7 +5,7 @@
         <mat-form-field appearance="fill" class="searchBarInput">
          <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
          <mat-icon matPrefix class="searchIcon" color="primary">person_search</mat-icon>
-         <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" >
+         <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" (input)="onSearch()">
         </mat-form-field>
         <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
       </div>
@@ -34,7 +34,7 @@
   <div class="searchPeople">
     <h2  *ngIf="users.length == 0"> Nu există niciun absolvent</h2>
     <table class="designTable" *ngIf="users.length > 0">      
-      <tr *ngFor="let user of users | usersFilter : searchPeople" > 
+      <tr *ngFor="let user of searchR"> 
           <h2 *ngIf="users.length ==0"> Nu există niciun absolvent cu acest nume</h2>
         <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName && !user.isAdmin">
           <div class="personName">

@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ExperienceUserComponentComponent } from '../experience-user-component/experience-user-component.component';
 import { PostsUserComponentComponent } from '../posts-user-component/posts-user-component.component';
 import { ProfileUserComponentComponent } from '../profile-user-component/profile-user-component.component';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-component',
@@ -27,10 +28,13 @@ export class SearchComponentComponent implements OnInit {
 
   currentUser:User = new User();
 
+  searchR:User[]=[];
+
   constructor(private dataService: DataService,private dialog:MatDialog) { 
     this.showAdvancedSearch=false;
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
         this.users=users;
+        this.searchR=users;
     });
     
     this.dataService.GetUserById().subscribe((user) =>{
@@ -42,6 +46,15 @@ export class SearchComponentComponent implements OnInit {
     this.dataService.GetAllFaculties().subscribe(( faculties: Faculty[]) => {
       this.faculties=faculties;
   })
+  }
+
+  onSearch(){
+    const searchResults=this.users.filter(user => 
+      user.firstName.toLowerCase().includes(this.searchPeople.toLowerCase()) ||
+      user.lastName.toLowerCase().includes(this.searchPeople.toLowerCase())
+    );
+     
+    this.searchR=searchResults;
   }
 
   specializationsFaculty(facultyId:number){
