@@ -105,23 +105,21 @@ export class HomeComponentComponent implements OnInit {
   }  
 
   openEditProfile(){
-
-    this.viewDescription=false;
     let dialogRef=this.dialog.open(EditProfileComponentComponent, {
-      width: '360px',
-      height: '360px',
+      width: '400px',
+      height: '400px',
       disableClose:true,
     });
 
+    this.viewDescription=false;
     dialogRef.afterClosed().subscribe( result => {
       if(result){
         console.log('Editarea s-a realizat cu succes');
         this.setProfile();
-        this.viewDescription=true;
       }else
         console.log('S-a renunțat la editarea profilului');
-        this.viewDescription=true;
     });
+    this.viewDescription=true;
   }
 
   openAddExperienceDialog(){

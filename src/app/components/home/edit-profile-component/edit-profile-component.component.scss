@@ -7,17 +7,11 @@
     width: 100%;
     padding: 1%;
     text-align: center;
-    margin-right:1%;
-    
 }
 
 .info{
     width: 90%; 
     margin-top:2%;
-}
-
-#marginButton{
-    margin-bottom: 15px;
 }
 
 .path{
@@ -29,6 +23,31 @@
 }
 
 .buttonActions{
-    width: 40%;
-    margin-left:10%;
+    width: 30%;
+    margin-right: 14%;
+    margin-left:4%
+}
+.buttonActions1{
+    width: 30%;
+    margin-left:15%;
+    margin-right: 3%;
+}
+
+textarea{
+    height: 100px;
+    resize: vertical;
+}
+
+.buttonMoveEdit{
+    width: 50%;
+    margin:2%;
+    
+}
+
+.buttonsMove{
+    text-align: center;
+}
+
+.buttonsDesign{
+   margin:auto;
 }

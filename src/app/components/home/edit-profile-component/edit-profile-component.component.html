@@ -3,26 +3,36 @@
         <h1>Editare profil</h1>
     </div>
 
+    <div class="buttonsMove">
+        <button mat-raised-button  *ngIf="showEditButtonPicture"     class="buttonMoveEdit"  color="accent" (click)="goToEditPicture()"    > Editare poza de profil </button>
+        <button mat-raised-button  *ngIf="showEditButtonDescription" class="buttonMoveEdit"  color="accent" (click)="goToEditDescription()"> Editare descriere      </button>
+    </div>
+   
     <div class="allInformation">
-
-        <div class="generalInformation" >
-
-            <mat-form-field appearance="fill" class="info">
-                <mat-label>Adaugă informații despre tine</mat-label>
-                <textarea matInput placeholder="Eu sunt..." [(ngModel)]="description"></textarea>
-            </mat-form-field>
-                <br>
-                <p>Alege o imagine</p>
-                <div class="path">
-                  <input type="file" >
-                  </div>
-              <br>
+        <div class="generalInformation" *ngIf="showEditDescription">
+             <mat-form-field appearance="fill" class="info">
+                 <mat-label>Adaugă informații despre tine</mat-label>
+                 <textarea matInput [(ngModel)]="description"></textarea>
+             </mat-form-field>
+             <p *ngIf="description=='' " style="text-align: center;">Completați câmpul de mai sus </p>
               <div class="buttonsDesign">
                 <mat-dialog-actions >
-                    <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true" (click)="updateProfile()">Salvează</button>
+                    <button mat-raised-button  class="buttonActions1"  color="primary" [mat-dialog-close]="true" (click)="updateProfileDescription()">Salvează</button>
                     <button mat-raised-button  class="buttonActions"  color="warn"    [mat-dialog-close]="false">Închide</button>
                 </mat-dialog-actions>
               </div> 
         </div>
+        <div class="generalInformation" *ngIf="showEditPicture">
+            <p>Alege o imagine</p>
+                <div class="path">
+                  <input type="file" (change)="onFileSelected($event)" >
+                </div>
+                <div class="buttonsDesign">
+                    <mat-dialog-actions >
+                        <button mat-raised-button  class="buttonActions1"  color="primary" [mat-dialog-close]="true" (click)="updateProfilePicture()">Salvează</button>
+                        <button mat-raised-button  class="buttonActions"   color="warn"    [mat-dialog-close]="false">Închide</button>
+                    </mat-dialog-actions>
+              </div> 
+       </div>
     </div>
 </div>
