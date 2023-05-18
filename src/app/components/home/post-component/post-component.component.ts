@@ -23,8 +23,10 @@ export class PostComponentComponent implements OnInit {
   active:number=0;
 
   closeButtonPost=true;
-  showPosts=true;
+  showClosePosts=false;
+  showPosts=false;
   addPost=false;
+  showButtonShowPosts=true;
 
   imageUrlAdd:string='';
   textPostAdd:string='';
@@ -142,17 +144,32 @@ export class PostComponentComponent implements OnInit {
     }
   }
 
+  openPosts(){
+    this.refreshPosts();
+    this.showPosts=true;
+    this.showClosePosts=true;
+    this.showButtonShowPosts=false;
+  }
+
+   closePosts(){
+    this.showPosts=false;
+    this.showClosePosts=false;
+    this.showButtonShowPosts=true;
+   }
+
   openNewPost(){
     this.addPost=true;
     this.closeButtonPost=false;
     this.showPosts=false;
+    this.showClosePosts=false;
+    this.showButtonShowPosts=false;
   }
 
-  closePost(){
+  closeNewPost(){
     this.addPost=false;
     this.closeButtonPost=true;
     this.refreshPosts();
-    this.showPosts=true;
+    this.showButtonShowPosts=true;
   }
 
   addNewPost(){
@@ -164,18 +181,18 @@ export class PostComponentComponent implements OnInit {
     this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
       if(res){
         alert("Postarea a fost adăugată cu succes");
-        this.titlePostAdd ='';
-        this.textPostAdd  ='';
-        this.imageUrlAdd  ='';
+        
       }else{
         alert("Postarea nu a putut fi adăugată");
       }
-
-      this.refreshPosts();
     });
 
     this.closeButtonPost=true;
+    this.showButtonShowPosts=true;
     this.addPost=false;  
-    this.showPosts=true;
+    this.titlePostAdd ='';
+    this.textPostAdd  ='';
+    this.imageUrlAdd  ='';
+
   }
 }

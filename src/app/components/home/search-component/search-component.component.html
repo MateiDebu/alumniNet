@@ -36,7 +36,7 @@
     <table class="designTable" *ngIf="users.length > 0">      
       <tr *ngFor="let user of users | usersFilter : searchPeople" > 
           <h2 *ngIf="users.length ==0"> Nu există niciun absolvent cu acest nume</h2>
-        <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName ">
+        <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName && !user.isAdmin">
           <div class="personName">
               <h2>  {{user.firstName}} {{user.lastName}}  </h2>      
           </div>
