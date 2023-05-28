@@ -44,7 +44,7 @@ export class ExperienceComponentComponent implements OnInit {
       height: '240px',
       disableClose:true,
       data : {
-        title: 'Confirmare ștergere',
+        title:   'Confirmare ștergere',
         message: 'Sigur doriți să ștergeți experiența selectată?',
       }
     });

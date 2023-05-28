@@ -22,7 +22,6 @@ export class PostsControlComponentComponent implements OnInit {
   getPosts(){
     this.dataService.GetAllPostsSorted().subscribe((posts:Post[])=>{
       this.posts=posts;
-      console.log(this.posts);
     });
   }
 
@@ -30,7 +29,8 @@ export class PostsControlComponentComponent implements OnInit {
 
     const dialogConfig=new MatDialogConfig();
     dialogConfig.data={
-      message: 'Sigur doriți să ștergeți postarea selectată?'
+      message: 'Sigur doriți să ștergeți postarea selectată?',
+      buttonConfirmationText: 'Șterge'
     }
 
     dialogConfig.width='400px';

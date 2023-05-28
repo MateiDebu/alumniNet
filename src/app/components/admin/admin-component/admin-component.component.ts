@@ -68,7 +68,8 @@ export class AdminComponentComponent implements OnInit {
     const dialogConfig=new MatDialogConfig();
     dialogConfig.data={
       param1: fullName,
-      message: 'Sigur doriți să validați utilizatorul?'
+      message: 'Sigur doriți să validați utilizatorul?',
+      buttonConfirmationText:'Validează'
     }
 
     dialogConfig.width='400px';

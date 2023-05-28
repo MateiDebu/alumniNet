@@ -46,17 +46,6 @@ hr{
     margin-top:2%;
 }
 
-.searchAdvancedButton{
-    width: 40%;
-    margin-left: 5%;
-    margin-right:5%;
-}
-
-.textAdvancedSearch{
-   font-size: 100%;
-   text-align: center;
-}
-
 .displayResults{
     width: 65%;
     border:2px solid black;
@@ -115,6 +104,40 @@ td{
     margin-right:5%;
 }
 
-.titleAdvanceSearch{
+.buttonsPosts{
     text-align: center;
+    margin:auto;
+    margin-bottom: 1%;
+    width: 42%;
 }
+
+.postButton{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.tableBox{
+    background-color: white;
+    padding: 1%;
+    border-radius: 10px;
+    margin: auto;
+    width: 70%;
+    height: auto;
+    max-height: 640px;
+    overflow-y: auto;
+}
+
+.firstTableRow{
+    padding: 1.5%;
+}
+
+.validText{
+    font-size: 13px;
+    color:red;
+}
+
+.validBox{
+    margin-top: 0;
+    margin-bottom: 3%;
+}
+

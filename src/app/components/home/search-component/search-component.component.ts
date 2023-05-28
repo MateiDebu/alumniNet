@@ -9,6 +9,8 @@ import { ExperienceUserComponentComponent } from '../experience-user-component/e
 import { PostsUserComponentComponent } from '../posts-user-component/posts-user-component.component';
 import { ProfileUserComponentComponent } from '../profile-user-component/profile-user-component.component';
 import {map} from 'rxjs/operators';
+import { FinishedStudyDetailed } from 'src/app/models/finished-study-detailed.mode';
+import { Post } from 'src/app/models/post.mode';
 
 @Component({
   selector: 'app-search-component',
@@ -19,33 +21,65 @@ export class SearchComponentComponent implements OnInit {
 
   faculties: Faculty[]=[];
   specializations:Specialization[]=[];
-  showAdvancedSearch=false;
-  showSearch=true;
   searchPeople:string='';
+
+  selectFaculty:string='';
+  selectSpecialization:string='';
+
+  showAllPostsButton=true;
+  showAllPosts=false;
+  showCloseButton=false;
+  showSearch=true;
   
   showResult=false;
   users:User[]=[];
+  posts:Post[]=[];
 
   currentUser:User = new User();
 
   searchR:User[]=[];
 
   constructor(private dataService: DataService,private dialog:MatDialog) { 
-    this.showAdvancedSearch=false;
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
         this.users=users;
         this.searchR=users;
     });
     
-    this.dataService.GetUserById().subscribe((user) =>{
-      this.currentUser=user;
-    })
+    this.getCurrentUser();
   }
 
   ngOnInit(): void {
     this.dataService.GetAllFaculties().subscribe(( faculties: Faculty[]) => {
       this.faculties=faculties;
   })
+  }
+
+  getCurrentUser(){
+    this.dataService.GetUserById().subscribe((user) =>{
+      this.currentUser=user;
+    })
+  }
+
+  showPosts(){
+    this.showAllPostsButton=false;
+    this.showAllPosts=true;
+    this.showCloseButton=true;
+    this.showSearch=false;
+    this.getPosts();
+    this.getCurrentUser();
+  }
+
+  closePosts(){
+    this.showAllPostsButton=true;
+    this.showAllPosts=false;
+    this.showCloseButton=false;
+    this.showSearch=true;
+  }
+
+  getPosts(){
+    this.dataService.GetAllPostsSorted().subscribe( (posts:Post[])=>{
+      this.posts=posts;
+    })
   }
 
   onSearch(){
@@ -63,18 +97,8 @@ export class SearchComponentComponent implements OnInit {
     })
   }
 
-  goToAdvancedSearch(){
-    this.showAdvancedSearch=true;
-    this.showSearch=false;
-  }
-
   searchGraduates(){
     this.showResult=true;
-  }
-
-  closeAdvancedSearch(){
-    this.showAdvancedSearch=false;
-    this.showSearch=true;
   }
 
   openStudiesForSearchUser(profileId:number){

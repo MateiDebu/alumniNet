@@ -113,7 +113,6 @@ export class RegisterComponentComponent implements OnInit {
       let newUser=new User();
       newUser.firstName=this.firstNameCheck;
       newUser.lastName=this.lastNameCheck;
-      newUser.email=this.email;
       this.isEmpty();
       if(this.valid && this.empty && this.validConfirmation){
         this.auth.createUser(this.email,this.password,newUser);

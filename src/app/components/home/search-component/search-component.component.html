@@ -1,37 +1,36 @@
 <div class="searchBar">
-  <div class="searchElements">
+
+  <div class="buttonsPosts">
+    <button mat-raised-button *ngIf="showAllPostsButton"    color="primary" (click)="showPosts()"  class="postButton">Toate postările  </button>
+    <button mat-raised-button *ngIf="showCloseButton" color="primary" (click)="closePosts()" class="postButton">Înapoi la căutare</button>
+  </div>
+
+  <div class="tableBox" *ngIf="showAllPosts">
+    <h2 *ngIf="posts.length == 0">Nu există postări</h2>
+    <table>
+        <tr *ngFor="let post of posts">
+            <td class="firstTableRow">
+                <div class="textBox">
+                    <h3 style="text-align: center;"><b>{{post.title}}</b></h3>
+                    <p style="text-align: justify;">    {{post.text}}</p>
+                 </div>
+            </td>
+        </tr>
+    </table>
+  </div>
+  
+  <div class="searchElements" *ngIf="showSearch">
     <div>
-      <div *ngIf="showSearch" style="text-align: center;">
+      <div style="text-align: center;">
         <mat-form-field appearance="fill" class="searchBarInput">
          <mat-label>Te rog introdu numele pe care îl cauți</mat-label>
          <mat-icon matPrefix class="searchIcon" color="primary">person_search</mat-icon>
          <input matInput placeholder="Nume absolvent" type="text" [(ngModel)]="searchPeople" (input)="onSearch()">
         </mat-form-field>
-        <button class="searchButton2" mat-raised-button color="accent" (click)="goToAdvancedSearch()" >Căutare avansată</button>
-      </div>
- 
-       
-       <div *ngIf="showAdvancedSearch" class="advancedElements">
-           <h2 class="textAdvancedSearch"> Selectați câmpurile după care să se realizeze căutarea</h2>
-        <mat-form-field appearance="fill" class="info">
-          <mat-label>Facultate</mat-label>
-          <mat-select >
-            <mat-option *ngFor="let faculty of faculties" value="{{faculty.facultyName}}" (onSelectionChange)="specializationsFaculty(faculty.facultyId)">{{faculty.facultyName}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill" class="info">
-          <mat-label>Specializare</mat-label>
-          <mat-select >
-            <mat-option *ngFor="let s of specializations" value="{{s.specializationName}}">{{s.specializationName}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button mat-raised-button color="primary" class="searchAdvancedButton"> Caută </button>
-        <button mat-raised-button color="warn" class="searchAdvancedButton" (click)="closeAdvancedSearch()"> Anulează </button>
       </div>
   </div>
 
-  <div class="searchPeople">
+  <div class="searchPeople" *ngIf="showSearch">
     <h2  *ngIf="users.length == 0"> Nu există niciun absolvent</h2>
     <table class="designTable" *ngIf="users.length > 0">      
       <tr *ngFor="let user of searchR"> 
@@ -39,6 +38,7 @@
         <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName && !user.isAdmin">
           <div class="personName">
               <h2>  {{user.firstName}} {{user.lastName}}  </h2>      
+              <div class="validBox"><b class="validText" *ngIf="!user.isValid">NECONFIRMAT</b></div>
           </div>
           
           <div>
