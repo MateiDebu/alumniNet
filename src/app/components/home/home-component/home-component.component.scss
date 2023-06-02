@@ -7,6 +7,12 @@ body{
     padding-bottom: 0.5%;
 }
 
+.confirmationMessage{
+    text-align: center;
+    font-size:16px;
+    color:red;
+}
+
 .homeButtons{
     text-align: center;
     padding-top: 0.5%;
@@ -167,11 +173,13 @@ body{
 .descriptionProfile{
     margin-left: 5%;
     margin-top:3%;
+
 }
 
 .descriptionComp{
     width: 50%;
     margin: auto;
+    margin-bottom: 2%;
 }
 
 .textNotPosts{

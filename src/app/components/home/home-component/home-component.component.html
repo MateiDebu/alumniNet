@@ -18,10 +18,11 @@
         <div class="homeText">
             <div class="profileInformation">
                 <h1>Bine ai venit!</h1>
-                <h1>{{ setName() }}</h1>
+                <h1>{{ getName() }}</h1>
+                <h2 *ngIf="!getConfirmation()" class="confirmationMessage">NECONFIRMAT</h2>
                 <img src=""/>
                 <div class="descriptionComp">
-                    <p *ngIf="getDescription()==''">Adaugă o descriere profilului tău</p>
+                    <b *ngIf="getDescription()==''">Adaugă o descriere profilului tău</b>
                     <p class="descriptionProfile" *ngIf="viewDescription">{{ getDescription() }}</p>
                 </div>
                 <div class="buttonsOpen">

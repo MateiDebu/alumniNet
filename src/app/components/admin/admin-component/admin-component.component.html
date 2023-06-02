@@ -16,7 +16,7 @@
 <body>
     <br>
     <div *ngIf="showHomePage" class="homePage">
-        <h2 class="titleTable">UTILIZATORI APLICAȚIEI</h2>
+        <h2 class="titleTable">UTILIZATORII APLICAȚIEI</h2>
         <h3 *ngIf="users.length == 0">Aplicația nu are utilizatori</h3>
         <table *ngIf="users.length > 0 && showTableWithUsers " class="tableUsersAndStudies">
             <tr *ngFor="let u of users" >
@@ -26,7 +26,7 @@
                             <h3 class="nameUser">  {{u.firstName+' '}}{{u.lastName}}  </h3>
                         </div>
                         <div class="nameBoxValid">
-                            <h3>  <b *ngIf="u.isValid">validat</b>  <b *ngIf="!u.isValid">nevalidat</b>  </h3>
+                            <h3>  <b *ngIf="u.isValid">confirmat</b>  <b *ngIf="!u.isValid">neconfirmat</b>  </h3>
                         </div>
                         <div class="buttonBox">
                             <button mat-raised-button color="primary" class="getStudiesButton" (click)="getStudies(u.profileId)" 

@@ -48,10 +48,14 @@ export class HomeComponentComponent implements OnInit {
      this.setProfile();
   }
 
-  setName(){
+  getName(){
     this.firstNameUser=this.user.firstName.charAt(0).toUpperCase()+this.user.firstName.slice(1);
     this.lastNameUser=this.user.lastName.charAt(0).toUpperCase()+this.user.lastName.slice(1);
     return this.firstNameUser+' '+this.lastNameUser;
+  }
+
+  getConfirmation(){
+    return this.user.isValid;
   }
 
   openFinishedStudies(){
