@@ -13,9 +13,11 @@
         </button>
     </div>
 </header>
-<body >
+<body>
+    <div class="marginTop2"> </div>
     <div *ngIf="showHomePage" >
         <div class="homeText">
+            
             <div class="profileInformation">
                 <div >
                     <div>
@@ -34,19 +36,27 @@
                 <div class="descriptionComp" *ngIf="showDescription">
                     <hr class="line">
                     <h2 class="studiesConfirmation" *ngIf="!getConfirmation()"> Contul nu a fost confirmat </h2>
-                    <h2 class="studiesTitle"> DESCRIERE </h2>
+                    
+                    <div >
+                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()"          > Închide </button>
+                        <button mat-raised-button color="accent" class="buttonModified" (click)="openEditProfile()"> Modifică profil </button>
+                    </div>
+                    <br>  <br> <br> <br>
                     <div class="descriptionText">
+                        <h2 class="studiesTitle"> <u> DESCRIERE </u></h2>
+                        <br>
                         <b *ngIf="getDescription()==''"> Adaugă o descriere profilului tău </b>
                         <p class="descriptionProfile" *ngIf="viewDescription"> {{ getDescription() }} </p>
                     </div>
-                    <hr class="line">
-                    <button mat-raised-button color="primary" class="closeButtons"  (click)="close()"> Închide </button>
-                    <button class="buttonModified" mat-raised-button color="accent" (click)="openEditProfile()"> Modifică profil </button>
                 </div>  
 
                 <div *ngIf="showFinishedStudies">
                     <hr class="line">
-                    <h2 class="studiesTitle">STUDII EFECTUATE</h2>
+                    <h2 class="studiesTitle"> <u>STUDII EFECTUATE</u></h2>
+                    <div style="margin-top: 0%;">
+                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
+                        <button class="buttonModified" mat-raised-button color="accent" (click)="openAddStudiesDialog()">Adaugă studii</button>  
+                    </div>
                     <div  class="allCompForStudies">
                         <br>
                         <h2 *ngIf="finishStudyDetailed.length == 0" class="textNotPosts">Nu are studii adaugate</h2>
@@ -68,16 +78,18 @@
                             </tr>
                           </table>
                     </div>
-                    <hr class="line">
-                    <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
-                    <button class="buttonModified" mat-raised-button color="accent" (click)="openAddStudiesDialog()">Adaugă studii</button>  
                 </div>
                
 
                 <div *ngIf="showExperience">
+                    <hr class="line">
+                    <h2 class="studiesTitle"> <u>EXPERIENȚĂ PROFESIONALĂ</u></h2>
+                    <div>
+                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
+                        <button class="buttonModified" mat-raised-button color="accent" (click)="openAddExperienceDialog()">Adaugă experiență</button>
+                    </div>
                       <app-experience-component></app-experience-component>
-                      <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
-                      <button class="buttonModified" mat-raised-button color="accent" (click)="openAddExperienceDialog()">Adaugă o nouă experiență profesională</button>
+                      
                 </div>        
             </div>
             <div class="postsInformation">
