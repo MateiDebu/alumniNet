@@ -1,3 +1,9 @@
+.titlePage{
+    font-weight: bold;
+    font-size:22px;
+    margin-bottom:1.5%;
+}
+
 .designTableDiv{
     Overflow-y:scroll;
     width: 100%;
@@ -11,6 +17,10 @@
 
 .addPostDiv{
     border-radius: 5px;
+}
+
+.line{
+    margin-bottom: 1.5%;
 }
 
 td{
@@ -62,10 +72,12 @@ td{
     font-size: 100%;
 }
 
+
 .buttonPost{
     width: 40%;
     margin-top:2%;
     margin:1%;
+    border-radius: 10px;
 }
 
 .buttonClosePost{

@@ -17,23 +17,32 @@
     <div *ngIf="showHomePage" >
         <div class="homeText">
             <div class="profileInformation">
-                <h1>Bine ai venit!</h1>
-                <h1>{{ getName() }}</h1>
-                <h2 *ngIf="!getConfirmation()" class="confirmationMessage">NECONFIRMAT</h2>
-                <img src=""/>
-                <div class="descriptionComp">
-                    <b *ngIf="getDescription()==''">Adaugă o descriere profilului tău</b>
-                    <p class="descriptionProfile" *ngIf="viewDescription">{{ getDescription() }}</p>
+                <div >
+                    <div>
+                        <h1 class="userName">{{ getName() }}  <hr class="line"> </h1>
+                    </div>
                 </div>
+
                 <div class="buttonsOpen">
-                    <button mat-raised-button color="primary"class="openButtons"  (click)="openFinishedStudies()">Studii efectuate</button>
-                    <button mat-raised-button color="primary" class="openButtons" (click)="openExperience()">Experiență profesională</button>
-                    <button mat-mini-fab [ngStyle]="{transform: 'scale(0.8)'}" class="buttonProfileText"  color="warn" (click)="openEditProfile()" class="buttonModifyProfile" title="Editare profil">
-                        <mat-icon class="material-icons md-20">manage_accounts</mat-icon>
-                     </button>
+                    <button mat-raised-button color="primary" class="openButtons"  (click)="openDescription()"     > Despre      </button>
+                    <button mat-raised-button color="primary" class="openButtons"  (click)="openFinishedStudies()" > Studii      </button>
+                    <button mat-raised-button color="primary" class="openButtons"  (click)="openExperience()"      > Experiență  </button>
+                 
                 </div>
+
+                <div class="descriptionComp" *ngIf="showDescription">
+                    <hr class="line">
+                    <div class="descriptionText">
+                        <b *ngIf="getDescription()==''"> Adaugă o descriere profilului tău </b>
+                        <p class="descriptionProfile" *ngIf="viewDescription"> {{ getDescription() }} </p>
+                    </div>
+                     <hr class="line">
+                    <button mat-raised-button color="primary" class="closeButtons"  (click)="close()"> Închide </button>
+                    <button class="buttonModified" mat-raised-button color="accent" (click)="openEditProfile()"> Modifică profil </button>
+                </div>  
+
                 <div *ngIf="showFinishedStudies">
-                    <hr>
+                    <hr class="line">
                     <h2 class="studiesTitle">STUDII EFECTUATE</h2>
                     <div  class="allCompForStudies">
                         <br>
@@ -56,7 +65,7 @@
                             </tr>
                           </table>
                     </div>
-                    <hr>
+                    <hr class="line">
                     <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
                     <button class="buttonModified" mat-raised-button color="accent" (click)="openAddStudiesDialog()">Adaugă studii</button>  
                 </div>

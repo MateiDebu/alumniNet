@@ -1,8 +1,11 @@
- <h1>Postările tale</h1>
-         <hr>
-         <button *ngIf="showButtonShowPosts" class="buttonPost" mat-raised-button color="primary" (click)="openPosts()">Afișare postări</button>
-         <button *ngIf="showClosePosts"  class="buttonPost" mat-raised-button color="primary" (click)="closePosts()">Închide postările</button>
-         <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="accent"  (click)="openNewPost()">Adaugă o postare</button>
+ <h1 class="titlePage">Postări</h1>
+         <hr class="line">
+        
+          <button *ngIf="showButtonShowPosts" class="buttonPost" mat-raised-button color="primary" (click)="openPosts()">Afișare postări</button>
+          <button *ngIf="showClosePosts"  class="buttonPost" mat-raised-button color="primary"     (click)="closePosts()">Închide postările</button>
+          <button *ngIf="closeButtonPost" class="buttonPost" mat-raised-button color="accent"      (click)="openNewPost()">Adaugă o postare</button>
+      
+         
             <div *ngIf="addPost" class="addPostDiv">
               <div class="formPost">
                  <mat-form-field appearance="fill" class="info">

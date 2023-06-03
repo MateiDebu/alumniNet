@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EditProfileComponentComponent implements OnInit {
 
-  description:string='';
+  description:string=this.data.param1;
   file!:File;
 
   showEditDescription=true;
@@ -17,7 +17,7 @@ export class EditProfileComponentComponent implements OnInit {
   showEditButtonPicture=true;
   showEditButtonDescription=false;
 
-  constructor(private dataService:DataService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dataService:DataService) { console.log(this.data.param1);}
 
   ngOnInit(): void {
   }

@@ -36,9 +36,29 @@ body{
     color:white;
 }
 
+.userName{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top:1%;
+}
+
+.line{
+    width: 97.5%;
+}
+
 .material-icons.md-36 { 
     font-size: 34px;
     color:white;
+}
+
+.descriptionText{
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    background-color:#6EDE8A ;
+    font-size: 16px;
+    margin:auto;
+    padding: 2%;
 }
 
 .profileInformation{
@@ -51,7 +71,7 @@ body{
     text-align: center;
     background-color:white ;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .postsInformation{
@@ -64,7 +84,7 @@ body{
     text-align: center;
     background-color:white ;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .buttonPost{
@@ -73,7 +93,8 @@ body{
 }
 
 .openButtons{
-    width: 40%;
+    width: 25%;
+    border-radius: 10px;
     margin-bottom:2%;
     margin-left:3%;
     margin-right: 3%;
@@ -135,7 +156,7 @@ body{
     width: 100%;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
     background-color:#6EDE8A ;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 
@@ -167,7 +188,6 @@ body{
 }
 .buttonsOpen{
     width: 100%;
-    margin-top:1%;
 }
 
 .descriptionProfile{
@@ -176,13 +196,27 @@ body{
 
 }
 
-.descriptionComp{
-    width: 50%;
-    margin: auto;
-    margin-bottom: 2%;
-}
-
 .textNotPosts{
     text-align: center;
     margin-top: 2%;
+}
+
+@media only screen and (min-width: 1200px) {
+   
+}
+
+ @media only screen and (min-width: 992px) and (max-width:1200px){
+     
+} 
+    
+@media only screen and (min-width: 768px) and (max-width: 992px){
+      
+} 
+    
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+      
+}
+    
+@media only screen and (max-width: 600px) {
+      
 }

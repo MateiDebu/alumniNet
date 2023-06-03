@@ -29,6 +29,7 @@ export class HomeComponentComponent implements OnInit {
 
   showFinishedStudies=false;
   showExperience=false;
+  showDescription=false;
 
   showSearchPage=false;
   showHomePage=true;
@@ -49,8 +50,8 @@ export class HomeComponentComponent implements OnInit {
   }
 
   getName(){
-    this.firstNameUser=this.user.firstName.charAt(0).toUpperCase()+this.user.firstName.slice(1);
-    this.lastNameUser=this.user.lastName.charAt(0).toUpperCase()+this.user.lastName.slice(1);
+    this.firstNameUser=this.user.firstName.toUpperCase();
+    this.lastNameUser=this.user.lastName.toUpperCase();
     return this.firstNameUser+' '+this.lastNameUser;
   }
 
@@ -64,18 +65,25 @@ export class HomeComponentComponent implements OnInit {
     this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
       this.finishStudyDetailed=finishStudyDetailed;
     });
+    this.showDescription=false;
+  }
+
+  openDescription(){
+    this.showDescription=true;
+    this.showExperience=false;
+    this.showFinishedStudies=false;
   }
 
   openExperience(){
     this.showExperience=true;
     this.showFinishedStudies=false;
-    this.viewMoreInformation=false;
+    this.showDescription=false;
   }
 
   close(){
     this.showExperience=false;
     this.showFinishedStudies=false;
-    this.viewMoreInformation=false;
+    this.showDescription=false;
   }
 
   setProfile(){
@@ -109,13 +117,19 @@ export class HomeComponentComponent implements OnInit {
   }  
 
   openEditProfile(){
-    let dialogRef=this.dialog.open(EditProfileComponentComponent, {
-      width: '400px',
-      height: '400px',
-      disableClose:true,
-    });
 
-    this.viewDescription=false;
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.data={
+      param1: this.profile.description
+    }
+
+    dialogConfig.width='450px';
+    dialogConfig.height='450px';
+    dialogConfig.disableClose=true;
+
+    let dialogRef = this.dialog.open(EditProfileComponentComponent, dialogConfig);
+
+    this.showDescription=false;
     dialogRef.afterClosed().subscribe( result => {
       if(result){
         console.log('Editarea s-a realizat cu succes');
@@ -123,7 +137,7 @@ export class HomeComponentComponent implements OnInit {
       }else
         console.log('S-a renunțat la editarea profilului');
     });
-    this.viewDescription=true;
+    this.showDescription=true;
   }
 
   openAddExperienceDialog(){
