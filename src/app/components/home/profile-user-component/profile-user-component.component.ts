@@ -23,7 +23,9 @@ export class ProfileUserComponentComponent implements OnInit {
   }
 
   getProfileDescription(){
-    return this.profile.description;
+    if(this.profile.description!="")
+      return this.profile.description;
+    return "Utilizatorul nu are descriere";
   }
 
   getProfilePicture(){

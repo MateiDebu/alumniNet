@@ -1,8 +1,8 @@
 <div class="searchBar">
 
   <div class="buttonsPosts">
-    <button mat-raised-button *ngIf="showAllPostsButton"    color="primary" (click)="showPosts()"  class="postButton">Toate postările  </button>
-    <button mat-raised-button *ngIf="showCloseButton" color="primary" (click)="closePosts()" class="postButton">Înapoi la căutare</button>
+    <button mat-raised-button *ngIf="showAllPostsButton"    color="primary"  (click)="showPosts()"  class="postButton">Toate postările  </button>
+    <button mat-raised-button *ngIf="showCloseButton"       color="primary"  (click)="closePosts()" class="postButton">Înapoi la căutare</button>
   </div>
 
   <div class="tableBox" *ngIf="showAllPosts">
@@ -11,8 +11,8 @@
         <tr *ngFor="let post of posts">
             <td class="firstTableRow">
                 <div class="textBox">
-                    <h3 style="text-align: center;"><b>{{post.title}}</b></h3>
-                    <p style="text-align: justify;">    {{post.text}}</p>
+                    <h3 style="text-align: center;"><b> {{post.title}}</b></h3>
+                    <p style="text-align: justify;">    {{post.text}} </p>
                  </div>
             </td>
         </tr>
