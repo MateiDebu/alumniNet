@@ -24,6 +24,7 @@
                 </div>
 
                 <div class="buttonsOpen">
+
                     <button mat-raised-button color="primary" class="openButtons"  (click)="openDescription()"     > Despre      </button>
                     <button mat-raised-button color="primary" class="openButtons"  (click)="openFinishedStudies()" > Studii      </button>
                     <button mat-raised-button color="primary" class="openButtons"  (click)="openExperience()"      > Experiență  </button>
@@ -32,11 +33,13 @@
 
                 <div class="descriptionComp" *ngIf="showDescription">
                     <hr class="line">
+                    <h2 class="studiesConfirmation" *ngIf="!getConfirmation()"> Contul nu a fost confirmat </h2>
+                    <h2 class="studiesTitle"> DESCRIERE </h2>
                     <div class="descriptionText">
                         <b *ngIf="getDescription()==''"> Adaugă o descriere profilului tău </b>
                         <p class="descriptionProfile" *ngIf="viewDescription"> {{ getDescription() }} </p>
                     </div>
-                     <hr class="line">
+                    <hr class="line">
                     <button mat-raised-button color="primary" class="closeButtons"  (click)="close()"> Închide </button>
                     <button class="buttonModified" mat-raised-button color="accent" (click)="openEditProfile()"> Modifică profil </button>
                 </div>  

@@ -51,14 +51,17 @@ body{
     color:white;
 }
 
+.descriptionComp{
+}
+
 .descriptionText{
-    width: 95%;
+    width: 92%;
+    font-size: 16px;
+    margin:1% 1% 2% 1%;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
     background-color:#6EDE8A ;
-    font-size: 16px;
-    margin:auto;
-    padding: 2%;
+    padding: 3%;
 }
 
 .profileInformation{
@@ -183,17 +186,16 @@ body{
     margin:0%;
 }
 
+.studiesConfirmation{
+    margin:0%;
+    color:red;
+}
+
 .buttonProfileText{
    float:right;
 }
 .buttonsOpen{
     width: 100%;
-}
-
-.descriptionProfile{
-    margin-left: 5%;
-    margin-top:3%;
-
 }
 
 .textNotPosts{
