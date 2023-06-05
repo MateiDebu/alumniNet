@@ -92,11 +92,9 @@ export class PostComponentComponent implements OnInit {
     if(this.postText!=''){
       this.dataService.UpdatePostText(postId, this.postText).subscribe((res)=>{
         if(res){
-          alert('Schimbarea descrieri s-a realizat cu succes');
           this.postText='';
           this.refreshPosts();
-        }else
-         alert('Schimbarea descrieri nu s-a putut efectua')
+        }
       });
     }else
       this.showMessageError=true;
@@ -105,11 +103,9 @@ export class PostComponentComponent implements OnInit {
     if(this.postTitle!=''){
       this.dataService.UpdatePostTitle(postId, this.postTitle).subscribe((res)=>{
         if(res){
-          alert('Schimbarea titlului s-a realizat cu succes');
           this.postTitle='';
           this.refreshPosts();
-        }else
-         alert('Schimbarea titlului nu s-a putut efectua')
+        }
       });
     }else
       this.showMessageError=true; 
@@ -129,6 +125,14 @@ export class PostComponentComponent implements OnInit {
 
   setIsActive(active:number){
     this.active=active;
+  }
+
+  setTitle(title:string){
+    this.postTitle=title;
+  }
+
+  setText(text:string){
+    this.postText=text;
   }
 
   onFileSelected(event:any){
@@ -174,25 +178,30 @@ export class PostComponentComponent implements OnInit {
 
   addNewPost(){
     let newPost=new Post();
+
     newPost.title=this.titlePostAdd;
     newPost.text=this.textPostAdd;
     newPost.image=this.imageUrlAdd;
 
-    this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
-      if(res){
-        alert("Postarea a fost adăugată cu succes");
-        
-      }else{
-        alert("Postarea nu a putut fi adăugată");
-      }
-    });
+    if(this.titlePostAdd !='' || this.textPostAdd!=''){
+      this.dataService.AddNewPostForUser( newPost ).subscribe((res)=> {
+        if(res){
+          alert("Postarea a fost adăugată cu succes");
+          
+        }else{
+          alert("Postarea nu a putut fi adăugată");
+        }
+      });
 
-    this.closeButtonPost=true;
-    this.showButtonShowPosts=true;
-    this.addPost=false;  
-    this.titlePostAdd ='';
-    this.textPostAdd  ='';
-    this.imageUrlAdd  ='';
+      this.closeButtonPost=true;
+      this.showButtonShowPosts=true;
+      this.addPost=false;  
+      this.titlePostAdd ='';
+      this.textPostAdd  ='';
+      this.imageUrlAdd  ='';
 
+    }
+    else
+      alert("Pentru a adăuga o postare trebuie completat cel puțin un câmp");
   }
 }
