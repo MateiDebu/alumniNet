@@ -26,7 +26,7 @@
 td{
     padding:2%;
     border:2px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #B7EFC5;
 }
 
@@ -41,6 +41,7 @@ td{
 
 .editorsDiv{
     margin:4%;
+    border: 2px solid black;
 }
 
 .closeButtons{
@@ -48,6 +49,7 @@ td{
     margin-right:5%;
     margin-bottom: 2%;
     width: 20;
+    border-radius: 10px;
 }
 
 .updateButtons{
@@ -55,6 +57,7 @@ td{
     float:right;
     margin-right:3%;
     margin-bottom: 2%;
+    border-radius: 10px;
 }
 
 .info{
@@ -70,6 +73,7 @@ td{
     width: 40%;
     margin:1%;
     font-size: 100%;
+    border-radius: 10px;
 }
 
 
@@ -83,6 +87,7 @@ td{
 .buttonClosePost{
     width: 20%;
     margin-top:2%;
+    border-radius: 10px;
 }
 
 .addImage{

@@ -19,11 +19,13 @@
 
 .closeButtons{
     width: 20%;
+    border-radius: 10px;
 }
 
 .buttonModified{
     width: 40%;
     margin-right: 30%;
+    border-radius: 10px;
 }
 
 .info{
@@ -51,6 +53,11 @@
     width: 70%;
     margin:auto;
     margin-top:12%;
+    padding:2%;
+    border:3px solid black;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    border-radius: 10px;
+    text-align: center;
 }
 
 .material-icons.md-20 { 
@@ -68,6 +75,12 @@
 
 .infoDate{
     width: 40%;
+    margin-left:5%;
+    margin-right:5%;
+}
+.infoDate2{
+    width: 40%;
+    margin-right:5%;
     margin-left:5%;
 }
 

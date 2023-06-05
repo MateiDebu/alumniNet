@@ -84,8 +84,10 @@ export class SearchComponentComponent implements OnInit {
 
   onSearch(){
     const searchResults=this.users.filter(user => 
-      user.firstName.toLowerCase().includes(this.searchPeople.toLowerCase()) ||
-      user.lastName.toLowerCase().includes(this.searchPeople.toLowerCase())
+      user.firstName.toLowerCase().includes(this.searchPeople.toLowerCase().trim()) ||
+      user.lastName.toLowerCase().includes(this.searchPeople.toLowerCase().trim()) ||
+      (user.firstName.toLowerCase()+' '+user.lastName.toLowerCase()).includes(this.searchPeople.toLowerCase().trim()) ||
+      (user.lastName.toLowerCase()+' '+user.firstName.toLowerCase()).includes(this.searchPeople.toLowerCase().trim())
     );
      
     this.searchR=searchResults;

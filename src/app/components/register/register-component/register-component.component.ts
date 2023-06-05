@@ -116,8 +116,6 @@ export class RegisterComponentComponent implements OnInit {
       this.isEmpty();
       if(this.valid && this.empty && this.validConfirmation){
         this.auth.createUser(this.email,this.password,newUser);
-        this.email='';
-        this.password='';
       }
       else
          alert('Te rog completeaza toate campurile.')

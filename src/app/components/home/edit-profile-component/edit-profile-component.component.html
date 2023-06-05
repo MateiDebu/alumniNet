@@ -12,7 +12,8 @@
         <div class="generalInformation" *ngIf="showEditDescription">
              <mat-form-field appearance="fill" class="info">
                  <mat-label>Adaugă informații despre tine</mat-label>
-                 <textarea matInput [(ngModel)]="description"></textarea>
+                 <textarea matInput #des [(ngModel)]="description"></textarea>
+                 <mat-hint align ="end">{{des.value.length}} / 2000 </mat-hint>
              </mat-form-field>
              <p *ngIf="description=='' " style="text-align: center;">Completați câmpul de mai sus </p>
               <div class="buttonsDesign">

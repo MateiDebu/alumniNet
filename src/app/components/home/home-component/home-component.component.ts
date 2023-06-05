@@ -70,6 +70,7 @@ export class HomeComponentComponent implements OnInit {
     this.showDescription=true;
     this.showExperience=false;
     this.showFinishedStudies=false;
+    this.setProfile();
   }
 
   openExperience(){
@@ -131,10 +132,8 @@ export class HomeComponentComponent implements OnInit {
     dialogRef.afterClosed().subscribe( result => {
       if(result){
         this.setProfile();
-        this.showDescription=true;
       }else
         this.setProfile();
-        this.showDescription=true;
     });
   }
 
