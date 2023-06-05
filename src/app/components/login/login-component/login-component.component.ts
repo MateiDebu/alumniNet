@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -30,8 +30,6 @@ export class LoginComponentComponent implements OnInit {
     }
 
     this.auth.login(this.email, this.password);
-    this.email='';
-    this.password='';
   }
 
   goToRegister(){
