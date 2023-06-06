@@ -5,7 +5,7 @@ body{
 }
   .pageTitle{
     text-align: center;
-    padding-top: 10%;
+    padding-top: 0%;
     color:white;
   }
 
@@ -15,6 +15,7 @@ body{
 
  .buttonLogIn{
     width: 75%;
+    border-radius: 10px;
  } 
 
 a:link{
@@ -35,20 +36,34 @@ a:link{
 .buttonRegister{
     margin-top: 4%;
     width: 75%;
+    border-radius: 10px;
 }
 
-@media only screen and (min-width: 1200px) {
+.imageBox{
+  margin:auto;
+  text-align: center;
+  margin-bottom: 0%;
+  padding-top: 5%;
+}
+
 .formControl{
-  margin: auto;
-  width: 30%;
   border: 2px solid black;
   border-radius: 10px;
   padding: 3%;
   text-align: center;
   background: white;
 }
+
+@media only screen and (min-width: 1200px) {
+.formControl{
+  margin: auto;
+  width: 30%;
+}
 .pageTitle{
   font-size: 22px;
+}
+img{
+  width: 23%;
 }
 }
 
@@ -57,14 +72,12 @@ a:link{
   .formControl{
     margin: auto;
     width: 35%;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 3%;
-    text-align: center;
-    background: white;
   }
   .pageTitle{
     font-size: 21px;
+  }
+  img{
+    width: 23%;
   }
 } 
 
@@ -73,14 +86,12 @@ a:link{
   .formControl{
     margin: auto;
     width: 45%;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 3%;
-    text-align: center;
-    background: white;
   }
   .pageTitle{
     font-size: 20px;
+  }
+  img{
+    width: 28%;
   }
 } 
 
@@ -88,14 +99,12 @@ a:link{
   .formControl{
     margin: auto;
     width: 60%;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 3%;
-    text-align: center;
-    background: white;
   }
   .pageTitle{
     font-size: 20px;
+  }
+  img{
+    width: 31%;
   }
 }
 
@@ -103,14 +112,12 @@ a:link{
   .formControl{
     margin: auto;
     width: 85%;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 3%;
-    text-align: center;
-    background: white;
   }
   .pageTitle{
     font-size: 18px;
+  }
+  img{
+    width: 40%;
   }
 }
 

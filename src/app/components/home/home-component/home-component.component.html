@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <header style="background-color:#0d8c2d  ;">
-    <div class="marginTop"></div>
     <div class="homeButtons"> 
         <button mat-icon-button >
             <mat-icon class="material-icons md-40" (click)="goToHomePage()" title="Pagina principala" >account_circle</mat-icon>
@@ -18,6 +17,7 @@
     <div *ngIf="showHomePage" >
         <div class="homeText">
             
+
             <div class="profileInformation">
                 <div >
                     <div>
@@ -90,13 +90,24 @@
                     </div>
                       <app-experience-component></app-experience-component>
                       
-                </div>        
+                </div>     
+
             </div>
+
             <div class="postsInformation">
                 <div>
                   <app-post-component></app-post-component>
                 </div>
             </div>
+            <br><br><br><br><br><br><br><br>
+            <div class="imageBox">
+                <a href="https://www.unitbv.ro/" title="Către site-ul Universătăți Transilvania">
+                <img src="/assets/Sigla_unitbv.png" alt="My Image"/>
+                </a>
+            </div>
+
+            
+
         </div>
     </div>
     <div *ngIf="showSearchPage">

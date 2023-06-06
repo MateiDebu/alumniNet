@@ -4,6 +4,10 @@ body{
     background-repeat: repeat;
 }
 
+header{
+    padding: 7px;
+}
+
 .marginTop{
     margin:auto;
     padding-bottom: 0.5%;
@@ -136,17 +140,41 @@ body{
     margin-top: 2%;
 }
 
+.imageBox{
+    text-align: center;
+  }
+  img{
+    width: 30%;
+  }
+
+  .homeButtons{
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    background: radial-gradient(circle at top, #2990bc , #0d8c2d);
+    border-radius: 100px;
+    border:3px solid black;
+}
+
+.profileInformation{
+    text-align: center;
+    background-color:white ;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    border-radius: 10px !important;
+}
+
+.postsInformation{
+    text-align: center;
+    background-color:white ;
+    box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
+    border-radius: 10px !important;
+}
+
 @media only screen and (min-width: 1200px) {
 
     .homeButtons{
-        text-align: center;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
-        background: radial-gradient(circle at top, #2990bc , #0d8c2d);
-        margin:auto;
         width: 40%;
-        border-radius: 100px;
-        border:3px solid black;
     }
     
     .material-icons.md-40 { 
@@ -166,10 +194,6 @@ body{
         width: 48%;
         padding: 0.5%;
         float:left;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
     
     .postsInformation{
@@ -179,10 +203,6 @@ body{
         width: 46%;
         padding: 1%;
         float:right;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
 
 }
@@ -190,14 +210,7 @@ body{
  @media only screen and (min-width: 992px) and (max-width:1200px){
      
     .homeButtons{
-        text-align: center;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
-        background: radial-gradient(circle at top, #2990bc , #0d8c2d);
-        margin:auto;
         width: 38%;
-        border-radius: 100px;
-        border:3px solid black;
     }
     
     .material-icons.md-40 { 
@@ -217,10 +230,6 @@ body{
         width: 48%;
         padding: 0.5%;
         float:left;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
     
     .postsInformation{
@@ -230,24 +239,13 @@ body{
         width: 46%;
         padding: 1%;
         float:right;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
 
 } 
     
 @media only screen and (min-width: 768px) and (max-width: 992px){
     .homeButtons{
-        text-align: center;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
-        background: radial-gradient(circle at top, #2990bc , #0d8c2d);
-        margin:auto;
         width: 40%;
-        border-radius: 100px;
-        border:3px solid black;
     }
 
     .marginTop2{
@@ -271,10 +269,6 @@ body{
         border-radius: 0%;
         width: 80%;
         padding: 0.5%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
     
     .postsInformation{
@@ -284,24 +278,13 @@ body{
         border-radius: 0%;
         width: 80%;
         padding: 1%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
 
 } 
     
 @media only screen and (min-width: 600px) and (max-width: 768px) {
     .homeButtons{
-        text-align: center;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
-        background: radial-gradient(circle at top, #2990bc , #0d8c2d);
-        margin:auto;
         width: 52%;
-        border-radius: 100px;
-        border:3px solid black;
     }
     
     .material-icons.md-40 { 
@@ -325,10 +308,6 @@ body{
         width: 90%;
         height: auto;
         padding: 0.5%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
     
     .postsInformation{
@@ -338,23 +317,12 @@ body{
         border-radius: 0%;
         width: 90%;
         padding: 1%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
 }
     
 @media only screen and (min-width: 463px) and (max-width: 600px)  {
     .homeButtons{
-        text-align: center;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
-        background: radial-gradient(circle at top, #2990bc , #0d8c2d);
-        margin:auto;
         width: 65%;
-        border-radius: 100px;
-        border:3px solid black;
     }
     
     .material-icons.md-40 { 
@@ -378,10 +346,6 @@ body{
         width: 90%;
         height: auto;
         padding: 0.5%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
     
     .postsInformation{
@@ -391,23 +355,12 @@ body{
         border-radius: 0%;
         width: 90%;
         padding: 1%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
 }
 
 @media only screen and  (max-width: 463px)  {
     .homeButtons{
-        text-align: center;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
-        background: radial-gradient(circle at top, #2990bc , #0d8c2d);
-        margin:auto;
         width: 80%;
-        border-radius: 100px;
-        border:3px solid black;
     }
     
     .material-icons.md-40 { 
@@ -431,10 +384,6 @@ body{
         width: 90%;
         height: auto;
         padding: 0.5%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
     
     .postsInformation{
@@ -444,9 +393,5 @@ body{
         border-radius: 0%;
         width: 90%;
         padding: 1%;
-        text-align: center;
-        background-color:white ;
-        box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
-        border-radius: 10px;
     }
 }
