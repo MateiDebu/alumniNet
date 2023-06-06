@@ -5,14 +5,14 @@
     <br>
     <mat-form-field appearance="fill" class="info">
         <mat-label>Anul absolvirii</mat-label>
-        <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="finishStudyYear">
+        <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="finishStudyYear" required>
         <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="info">
         <mat-label>Facultate</mat-label>
         <mat-select >
-          <mat-option *ngFor="let faculty of faculties" value="{{faculty.facultyName}}" (click)="specializationsFaculty(faculty.facultyId)">{{faculty.facultyName}}</mat-option>
+          <mat-option *ngFor="let faculty of faculties" value="{{faculty.facultyName}}" (click)="specializationsFaculty(faculty.facultyId)" required>{{faculty.facultyName}}</mat-option>
         </mat-select>
       </mat-form-field> 
 
@@ -26,7 +26,7 @@
       <mat-form-field appearance="fill" class="info">
         <mat-label>Ciclu de studiu</mat-label>
         <mat-select >
-          <mat-option *ngFor="let studyProgram of studyPrograms" value="{{studyProgram.programName}}" (click)="setStudyProgramId(studyProgram.studyProgramId)">{{studyProgram.programName}}</mat-option>
+          <mat-option *ngFor="let studyProgram of studyPrograms" value="{{studyProgram.programName}}" (click)="setStudyProgramId(studyProgram.studyProgramId)" required>{{studyProgram.programName}}</mat-option>
         </mat-select>
       </mat-form-field>
 

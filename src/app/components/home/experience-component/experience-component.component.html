@@ -16,10 +16,10 @@
                   <mat-icon class="material-icons md-20">edit</mat-icon>
                </button>
               <mat-menu #menu="matMenu">
-               <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateCompany()">Editează firma</button>
-               <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateJob()">Editează poziția acupată</button>
-               <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateDate()">Editează perioada</button>
-               <button mat-menu-item  (click)="openDeleteDialog(exp.experienceId)">Șterge postarea</button>
+               <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateCompany()" (click)="setNameCompany(exp.companyName)" >Editează firma          </button>
+               <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateJob()"     (click)="setJobTitle(exp.jobTitle)"       >Editează poziția acupată</button>
+               <button mat-menu-item  (click)="setIsActive(exp.experienceId)" (click)="showUpdateDate()"     >Editează perioada       </button>
+               <button mat-menu-item  (click)="openDeleteDialog(exp.experienceId)">Șterge experiența</button>
              </mat-menu>
           </div> 
         </div>
@@ -47,6 +47,7 @@
               <button mat-raised-button color="primary" class="closeButtons"  (click)=" closeEditors()">Închide</button>
             </div>
             <div *ngIf="showDateEditor && active==exp.experienceId " class="editorsDiv">
+              <p>Completați câmpul care vă interesează</p>
               <mat-form-field appearance="fill" class="infoDate">
                 <mat-label class="textLabel">Început perioadă</mat-label>
                 <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="startDate">
@@ -61,7 +62,7 @@
               <br>
                <p *ngIf="showMessageError" class="messageError">Te rog să completezi cel puțin un câmp</p>
               <br>
-              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updatePeriod(exp.experienceId)">Actualizează perioada</button>
+              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateStartDate(exp.experienceId)" (click)="updateEndDate(exp.experienceId)">Actualizează perioada</button>
               <button mat-raised-button color="primary" class="closeButtons"  (click)=" closeEditors()">Închide</button>
             </div>
 

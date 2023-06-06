@@ -37,6 +37,14 @@ export class ExperienceComponentComponent implements OnInit {
     });
   }
 
+  setNameCompany(company:string){
+    this.company=company;
+  }
+
+  setJobTitle(jobTitle:string){
+    this.jobTitle=jobTitle;
+  }
+
   openDeleteDialog(id:number){
     
     let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -53,11 +61,8 @@ export class ExperienceComponentComponent implements OnInit {
       if(result){
         this.dataService.DeleteExperience(id).subscribe((res)=>{
           if(res){
-            alert("Ștergerea s-a efectuat cu succes");
             this.getAllExperience();
-          }else
-            alert("Ștergerea nu s-a putut efectua");
-          
+          }
         });
       }});
   }
@@ -99,11 +104,8 @@ export class ExperienceComponentComponent implements OnInit {
     if(this.company!=''){
       this.dataService.UpdateExperienceCompanyName(id, this.company).subscribe((res)=>{
         if(res){
-          alert('Schimbarea numelui companiei s-a realizat cu succes');
-          this.company='';
           this.getAllExperience();
-        }else
-         alert('Schimbarea numelui companiei nu s-a putut efectua')
+        }
       });
     }else
       this.showMessageError=true; 
@@ -113,63 +115,47 @@ export class ExperienceComponentComponent implements OnInit {
     if(this.jobTitle!=''){
       this.dataService.UpdateExperienceJobTitle(id, this.jobTitle).subscribe((res)=>{
         if(res){
-          alert('Schimbarea postului s-a realizat cu succes');
-          this.jobTitle='';
           this.getAllExperience();
-        }else
-         alert('Schimbarea postului nu s-a putut efectua')
+        }
       });
     }else
       this.showMessageError=true; 
    }
 
-  updatePeriod(id:number){
-    var isOkStartDate=false;
-    var isOkEndDate=false;
-    if(this.endDate==null && this.startDate==0){
-      this.showMessageError=true;
-    }else if(this.startDate!=null && this.endDate!=null){
-      this.dataService.UpdateExperienceStartDate(id, this.startDate).subscribe((res)=>{
-        if(res){
-          console.log('Data de început s-a schimbat cu succes');
-          isOkStartDate=true;
-        }else{
-          console.log('Data de început nu s-a putut actualiza');
-        }});
-
-        this.dataService.UpdateExperienceEndDate(id, this.endDate).subscribe((res)=>{
-          if(res){
-            console.log('Data de sfârsit s-a schimbat cu succes');
-            isOkEndDate=true;
-          }else{
-            console.log('Data de sfârsit nu s-a putut actualiza');
-          }});
-
-          if(isOkEndDate && isOkStartDate){
-            alert('Schimbarea de perioadă s-a executat cu succes');
-            this.startDate!;
-            this.endDate!;
-            this.getAllExperience();
-          } else
-            alert('Schimbarea de perioadă nu s-a putut efectua');
-    }else if(this.startDate!=null){
-      this.dataService.UpdateExperienceStartDate(id, this.startDate).subscribe((res)=>{
-        if(res){
-          alert('Data de început s-a schimbat cu succes');
-          this.startDate!;
-          this.getAllExperience();
-          }else{
-          alert('Data de început nu s-a putut actualiza');
-        }});
-    }else if(this.endDate!=null){
-      this.dataService.UpdateExperienceEndDate(id, this.endDate).subscribe((res)=>{
-        if(res){
-          alert('Data de sfârsit s-a schimbat cu succes');
-          this.endDate!;
-          this.getAllExperience();
-        }else{
-          alert('Data de sfârsit nu s-a putut actualiza');
-        }});
-    }
+  updateStartDate(id:number){
+    if(!this.startDate && !this.endDate)
+       this.showMessageError=true;
+      else
+      {
+        if(this.startDate)
+        {
+          this.dataService.UpdateExperienceStartDate(id, this.startDate).subscribe((res)=>{
+            if(res){
+              this.getAllExperience();
+              this.showMessageError=false;
+            }
+          }
+          );
+         }
+      }
   }
+
+  updateEndDate(id:number){
+    if(!this.startDate && !this.endDate)
+       this.showMessageError=true;
+      else
+      {
+        if(this.endDate)
+        {
+          this.dataService.UpdateExperienceEndDate(id, this.endDate).subscribe((res)=>{
+            if(res){
+              this.getAllExperience();
+              this.showMessageError=false;
+            }
+          }
+          );
+         }
+      }
+  }
+
 }
