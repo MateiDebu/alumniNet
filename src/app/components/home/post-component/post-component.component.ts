@@ -159,6 +159,9 @@ export class PostComponentComponent implements OnInit {
     this.showPosts=false;
     this.showClosePosts=false;
     this.showButtonShowPosts=true;
+    this.showTitleEditor=false;
+    this.showTextEditor=false;
+    this.showImageEditor=false;
    }
 
   openNewPost(){

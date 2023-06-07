@@ -8,12 +8,12 @@
          
             <div *ngIf="addPost" class="addPostDiv">
               <div class="formPost">
-                 <mat-form-field appearance="fill" class="info">
+                 <mat-form-field appearance="fill" color="primary" class="info">
                     <mat-label class="textLabel">Titlu postare</mat-label>
                     <input matInput  [(ngModel)]="titlePostAdd" >
                   </mat-form-field>
                   
-                 <mat-form-field appearance="fill" class="info">
+                 <mat-form-field appearance="fill" color="primary" class="info">
                    <mat-label class="textLabel">Adaugă o descriere postări</mat-label>
                     <textarea matInput [(ngModel)]="textPostAdd"></textarea>
                   </mat-form-field>
@@ -53,7 +53,7 @@
                 </mat-menu>
               </div> 
               <div *ngIf="showTitleEditor && active==post.postId " class="editorsDiv">
-                <mat-form-field appearance="fill" class="info">
+                <mat-form-field appearance="fill" color="primary" class="info2">
                   <mat-label class="textLabel">Adaugă noul titlu </mat-label>
                   <input matInput  [(ngModel)]="postTitle"> 
                 </mat-form-field>
@@ -61,11 +61,11 @@
                 <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateTitlePost(post.postId)">Actualizează titlul</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateTitlePost(post.postId)">Actualizează </button>
               </div>
-              <div *ngIf="showTextEditor  && active==post.postId ">
+              <div *ngIf="showTextEditor  && active==post.postId " class="editorsDiv">
                 <br>
-                <mat-form-field appearance="fill" class="info">
+                <mat-form-field appearance="fill" color="primary"  class="info2">
                   <mat-label class="textLabel">Adaugă noua descriere aici</mat-label>
                   <textarea matInput [(ngModel)]="postText" ></textarea>
                 </mat-form-field>
@@ -73,13 +73,13 @@
                 <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateDescriptionPost(post.postId)">Actualizează descrierea</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateDescriptionPost(post.postId)">Actualizează</button>
               </div> 
-              <div *ngIf="showImageEditor  && active==post.postId ">
+              <div *ngIf="showImageEditor  && active==post.postId " class="editorsDiv">
                 <p>imagine aici</p>
                 <br>
                 <button mat-raised-button color="primary" class="closeButtons" (click)=" closeEditors()">Închide</button>
-                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateImagePost(post.postId)">Actualizează poza</button>
+                <button mat-raised-button color="accent"  class="updateButtons"(click)=" updateImagePost(post.postId)">Actualizează </button>
               </div>
           </td>
         </tr>
