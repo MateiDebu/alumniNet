@@ -1,19 +1,22 @@
 <div class="occupationInformation" >
     <p class="titleInfo">Informații despre ocupația actuală</p>
     <hr>
+
+    <p class="textFinishYear">Primele trei câmpuri trebuie completate obligatoriu</p>
+
     <mat-form-field appearance="fill" class="info">
         <mat-label>Nume organizație</mat-label>
-        <input matInput [(ngModel)]="companyName">
+        <input matInput [(ngModel)]="companyName" required>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="info"> 
         <mat-label>Funcție/ocupatie</mat-label>
-        <input matInput [(ngModel)]="jobTitle">
+        <input matInput [(ngModel)]="jobTitle" required>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="info">
         <mat-label>Din anul</mat-label>
-        <input matInput  type="number" [(ngModel)]="startDate">
+        <input matInput  type="number" [(ngModel)]="startDate" required>
       </mat-form-field>
 
       <p class="textFinishYear">Dacă încă lucrați la acest loc de muncă următorul câmp nu trebuie completat</p>
@@ -26,8 +29,9 @@
       <br>
       <div class="buttonsDesign">
         <mat-dialog-actions >
-            <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true" (click)="addNewExperience()">Salvează</button>
-            <button mat-raised-button  class="buttonActions"  color="warn"    [mat-dialog-close]="false">Închide</button>
+            <button mat-raised-button  class="buttonActions"  color="primary" *ngIf="this.jobTitle && this.companyName && this.startDate" [mat-dialog-close]="true" (click)="addNewExperience()">Salvează</button>
+            <div  *ngIf="this.jobTitle=='' || this.companyName=='' || !this.startDate "     style="width: 27%;"></div>
+            <button mat-raised-button  class="buttonActions1"  color="warn"    [mat-dialog-close]="false">Închide</button>
         </mat-dialog-actions>
       </div>
 </div>

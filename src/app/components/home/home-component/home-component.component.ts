@@ -132,8 +132,10 @@ export class HomeComponentComponent implements OnInit {
     dialogRef.afterClosed().subscribe( result => {
       if(result){
         this.setProfile();
+        this.showDescription=true;
       }else
         this.setProfile();
+        this.showDescription=true;
     });
   }
 
@@ -141,16 +143,15 @@ export class HomeComponentComponent implements OnInit {
     
     let dialogRef = this.dialog.open(AddExperienceComponentComponent, {
       width: '420px',
-      height: '520px',
+      height: '540px',
       disableClose:true,
     });
-    
+    this.showExperience=false;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        console.log('Adaugarea s-a făcut cu succes!');
-        this.showExperience=false;
+        this.showExperience=true;
       }else
-        console.log('Adaugarea nu s-a putut face');
+        this.showExperience=true;
       });
   }
 
@@ -161,13 +162,12 @@ export class HomeComponentComponent implements OnInit {
       height: '540px',
       disableClose:true,
     });
-    
+    this.showFinishedStudies=false;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        console.log('Adaugarea s-a făcut cu succes!');
-        this.showFinishedStudies=false;
+        this.showFinishedStudies=true;
       }else
-        console.log('Adaugarea nu s-a putut face');
+        this.showFinishedStudies=true;
       });
   }
 

@@ -37,7 +37,7 @@
           <h2 *ngIf="users.length ==0"> Nu există niciun absolvent cu acest nume</h2>
         <td  *ngIf="currentUser.firstName != user.firstName && currentUser.lastName != user.lastName && !user.isAdmin">
           <div class="personName">
-              <h2>  {{user.firstName}} {{user.lastName}}  </h2>      
+              <h2 style="font-size: 15px;">  {{user.firstName.toUpperCase()}} {{user.lastName.toUpperCase()}}  </h2>      
               <div class="validBox"><b class="validText" *ngIf="!user.isValid">NECONFIRMAT</b></div>
           </div>
           

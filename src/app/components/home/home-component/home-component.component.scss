@@ -87,6 +87,7 @@ body{
 .allCompForStudies{
     width: 100%;
     height: auto;
+    max-height: 490px;
     overflow-y: auto;
 }
 
@@ -177,7 +178,7 @@ header{
 
 @media only screen and (min-width: 1200px) {
     header{
-        padding: 2px;}
+        padding-top: 2px;}
 
     .homeButtons{
         width: 50%;
@@ -187,7 +188,7 @@ header{
       }
 
     img{
-        width: 40%;
+        width: 45%;
       }
     
     .material-icons.md-40 { 
@@ -223,7 +224,7 @@ header{
  @media only screen and (min-width: 992px) and (max-width:1200px){
     
     header{
-        padding: 2px;}
+        padding-top: 2px;}
 
     .homeButtons{
         width: 60%;
@@ -270,7 +271,7 @@ header{
     
 @media only screen and (min-width: 768px) and (max-width: 992px){
     header{
-        padding: 2px;}
+        padding-top: 2px;}
 
     .homeButtons{
         width: 70%;
@@ -320,7 +321,7 @@ header{
     
 @media only screen and (min-width: 600px) and (max-width: 768px) {
     header{
-        padding: 2px;}
+        padding-top: 2px;}
 
     .homeButtons{
         width: 100%;

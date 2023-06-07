@@ -63,12 +63,7 @@ export class AddStudiesComponentComponent implements OnInit {
     finishedStudy.learningScheduleId=this.learningScheduleId;
     finishedStudy.studyProgramId=this.studyProgramId;
     finishedStudy.year=this.finishStudyYear;
-    this.dataService.AddFinishedStudy(finishedStudy).subscribe((res)=>{
-      if(res){
-        alert("Studile au fost adăgate cu succes");
-      }else
-        alert("Toate câmpurile trebuie completate");
-    });
+    this.dataService.AddFinishedStudy(finishedStudy).subscribe();
   }
 
 }

@@ -38,8 +38,9 @@
       </mat-form-field>
 
         <mat-dialog-actions >
-            <button mat-raised-button  class="buttonActions"  color="primary" [mat-dialog-close]="true" (click)="addStudies()">Salvează</button>
-            <button mat-raised-button  class="buttonActions"  color="warn"    [mat-dialog-close]="false">Închide</button>
+            <button mat-raised-button  class="buttonActions"  color="primary" *ngIf="specializationId!=0 && learningScheduleId!=0 && studyProgramId!=0 && finishStudyYear" [mat-dialog-close]="true" (click)="addStudies()">Salvează</button>
+            <div  *ngIf="specializationId==0 || learningScheduleId==0 || studyProgramId==0 || !finishStudyYear"     style="width: 27%;"></div>
+            <button mat-raised-button  class="buttonActions1"  color="warn"    [mat-dialog-close]="false">Închide</button>
         </mat-dialog-actions>
      
 </div>
