@@ -4,10 +4,6 @@ body{
     background-repeat: repeat;
 }
 
-header{
-    padding: 7px;
-}
-
 .marginTop{
     margin:auto;
     padding-bottom: 0.5%;
@@ -140,16 +136,24 @@ header{
     margin-top: 2%;
 }
 
-.imageBox{
-    text-align: center;
-  }
+header{
+    padding: 2px;
+    display: flex;
+    align-items: center;
+}
   img{
-    width: 30%;
+    height: auto;
+  }
+  .elementForSpace{
+    flex-grow: 1; 
   }
 
   .homeButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
     text-align: center;
-    margin: 0 auto;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     background: radial-gradient(circle at top, #2990bc , #0d8c2d);
@@ -172,10 +176,19 @@ header{
 }
 
 @media only screen and (min-width: 1200px) {
+    header{
+        padding: 2px;}
 
     .homeButtons{
-        width: 40%;
+        width: 50%;
     }
+    .elementForSpace{
+        width: 52%;
+      }
+
+    img{
+        width: 40%;
+      }
     
     .material-icons.md-40 { 
         font-size: 38px;
@@ -208,11 +221,23 @@ header{
 }
 
  @media only screen and (min-width: 992px) and (max-width:1200px){
-     
-    .homeButtons{
-        width: 38%;
-    }
     
+    header{
+        padding: 2px;}
+
+    .homeButtons{
+        width: 60%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .elementForSpace{
+        width: 62%;
+      }
+
+    img{
+        width: 50%;
+      }
+
     .material-icons.md-40 { 
         font-size: 36px;
         color:white;
@@ -224,7 +249,7 @@ header{
     }
 
     .profileInformation{
-        margin-top:1%;
+        margin-top:0.5%;
         margin-left: 1%;
         border-radius: 0%;
         width: 48%;
@@ -233,7 +258,7 @@ header{
     }
     
     .postsInformation{
-        margin-top:1%;
+        margin-top:0.5%;
         margin-right: 1%;
         border-radius: 0%;
         width: 46%;
@@ -244,9 +269,20 @@ header{
 } 
     
 @media only screen and (min-width: 768px) and (max-width: 992px){
+    header{
+        padding: 2px;}
+
     .homeButtons{
-        width: 40%;
+        width: 70%;
+        padding: 0.5% 3% 0.5% 3%;
     }
+    .elementForSpace{
+        width: 80%;
+      }
+
+    img{
+        width: 60%;
+      }
 
     .marginTop2{
         margin: auto;
@@ -283,10 +319,20 @@ header{
 } 
     
 @media only screen and (min-width: 600px) and (max-width: 768px) {
+    header{
+        padding: 2px;}
+
     .homeButtons{
-        width: 52%;
+        width: 100%;
     }
-    
+    .elementForSpace{
+        width: 10%;
+      }
+
+    img{
+        width: 60%;
+      }
+
     .material-icons.md-40 { 
         font-size: 31px;
         color:white;
@@ -321,9 +367,21 @@ header{
 }
     
 @media only screen and (min-width: 463px) and (max-width: 600px)  {
+    header{
+        padding: 7px;}
+
     .homeButtons{
-        width: 65%;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
+    .elementForSpace{
+        width: 10%;
+      }
+
+    img{
+        width: 60%;
+      }
     
     .material-icons.md-40 { 
         font-size: 29px;
@@ -359,9 +417,22 @@ header{
 }
 
 @media only screen and  (max-width: 463px)  {
+
+    header{
+        padding: 8px;}
+
     .homeButtons{
-        width: 80%;
+        width: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
     }
+    .elementForSpace{
+        width: 0;
+    }
+
+    img{
+        width: 60%;
+      }
     
     .material-icons.md-40 { 
         font-size: 27px;
