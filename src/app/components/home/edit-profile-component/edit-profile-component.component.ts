@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 
@@ -10,7 +10,6 @@ import { DataService } from 'src/app/services/data.service';
 export class EditProfileComponentComponent implements OnInit {
 
   description:string=this.data.param1;
-  file!:File;
 
   showEditDescription=true;
   showEditPicture=false;
@@ -22,23 +21,28 @@ export class EditProfileComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectedFile!: File;
+
   onFileSelected(event:any){
-    this.file =event.target.files[0];
+    this.selectedFile = event.target.files[0];
   }
 
-  updateProfilePicture(){
-    console.log(this.file);
-    if(this.file){
+
+  uploadSelectedFile(){
+    if(this.selectedFile){
       const formData:FormData =new FormData();
-      formData.append('file',this.file);    
-    this.dataService.UpdateProfilePictureByUserId(formData).subscribe((res)=>{
-      if(res){
-           alert("Poza a fost schimbată cu succes");
-      }else 
-           alert("Poza nu s-a putut actualiza");
-    });
+      formData.append('file',this.selectedFile, this.selectedFile.name);  
+      this.dataService.UpdateProfilePictureByUserId( formData).subscribe((res)=>{
+        if(res){
+             console.log("Poza a fost schimbată cu succes");
+        }else 
+             console.log("Poza nu s-a putut actualiza");
+      });
+    }else{
+      console.error('Niciun fisier nu este selectat');
+    }
   }
-  }
+
 
   updateProfileDescription(){
       if(this.description!=''){

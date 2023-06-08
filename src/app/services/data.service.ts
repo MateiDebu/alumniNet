@@ -216,9 +216,9 @@ export class DataService{
     return this.httpClient.put<Profile[]>(this.appSettings.ApiPath+'Profile/UpdateProfileByUserId',profile,httpOptions);
    }
 
-   public UpdateProfilePictureByUserId(file:FormData):Observable<any>{
+   public UpdateProfilePictureByUserId(file: FormData):Observable<any>{
     var httpOptions=this.setHttpHeader();
-    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',file,httpOptions);
+    return this.httpClient.put(this.appSettings.ApiPath+'Profile/UpdateProfilePictureByUserId',{file},httpOptions);
    }
 
    public UpdateProfileDescriptionByUserId(description:string){

@@ -71,10 +71,8 @@ export class AuthService {
       localStorage.setItem('fireBaseToken',idToken.toString());
       this.dataService.GetUserById().subscribe((user:User)=>{
             if(user.isAdmin==true){
-              console.log('user este admin');
               this.router.navigate(['admin']);
             }else{
-              console.log('user nu este admin');
               this.router.navigate(['home']);
             }
       });
