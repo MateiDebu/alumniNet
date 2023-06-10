@@ -124,7 +124,7 @@ export class HomeComponentComponent implements OnInit {
     }
 
     dialogConfig.width='450px';
-    dialogConfig.height='450px';
+    dialogConfig.height='470px';
     dialogConfig.disableClose=true;
 
     let dialogRef = this.dialog.open(EditProfileComponentComponent, dialogConfig);

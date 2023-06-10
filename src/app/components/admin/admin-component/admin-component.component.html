@@ -23,7 +23,7 @@
                 <td  *ngIf="!u.isAdmin" class="firstTableRow">
                     <div class="nameAndButtonStudies">
                         <div class="nameBox">
-                            <h3 class="nameUser">  {{u.firstName+' '}}{{u.lastName}}  </h3>
+                            <h3 class="nameUser">  {{u.firstName.toUpperCase()+' '}}{{u.lastName.toUpperCase()}}  </h3>
                         </div>
                         <div class="nameBoxValid">
                             <h3 class="textDesignConf">  <b *ngIf="u.isValid">confirmat</b>  <b *ngIf="!u.isValid">neconfirmat</b>  </h3>
@@ -33,7 +33,7 @@
                             (click)="setActive(u.profileId)">Afișare studii</button>
                         </div>
                         <div class="changeBox" *ngIf="!u.isValid">
-                            <button mat-raised-button color="accent" class="validationButton" (click)="openDialogChangeValid(u.userId,u.firstName,u.lastName)">Validează</button>
+                            <button mat-raised-button color="accent" class="validationButton" style="border-radius: 10px;" (click)="openDialogChangeValid(u.userId,u.firstName,u.lastName)">Validează</button>
                         </div>
                     </div>
                     <div *ngIf="active == u.profileId">
