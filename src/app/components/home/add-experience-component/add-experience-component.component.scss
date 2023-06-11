@@ -39,3 +39,7 @@
     color:red;
     text-align: center;
 }
+
+::ng-deep .mat-dialog-container {
+    border-radius: 10px;
+}

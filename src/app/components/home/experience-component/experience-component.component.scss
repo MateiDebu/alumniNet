@@ -23,8 +23,8 @@
 }
 
 .buttonModified{
-    width: 40%;
-    margin-right: 30%;
+    width: 30%;
+    margin-right: 40%;
     border-radius: 10px;
 }
 
@@ -52,7 +52,8 @@
 .editorsDiv{
     width: 70%;
     margin:auto;
-    margin-top:12%;
+    margin-top:16%;
+    margin-bottom: 2%;
     padding:2%;
     border:3px solid black;
     box-shadow: 2px 2px 5px rgba(82, 81, 81, 0.8);
@@ -75,14 +76,15 @@
 
 .infoDate{
     width: 40%;
-    margin-left:5%;
-    margin-right:5%;
+    margin-right:25%;
+    margin-top: 1%;
 }
-.infoDate2{
-    width: 40%;
-    margin-right:5%;
-    margin-left:5%;
+
+.dateButton{
+    width: 100%;
+    border-radius: 10px;
 }
+
 
 .textLabel{
     color:purple;
@@ -95,4 +97,64 @@
 
 .line{
     width: 97.5%;
+}
+
+.divSwitchDate{
+    margin-top:0.5%;
+    float:right; 
+    margin-right: 5%;
+}
+
+@media only screen and (min-width: 463px) and (max-width: 600px)  {
+    .infoDate{
+        width: 90%;
+        margin-top: 1%;
+        margin-left: 5%;
+    
+    }
+   
+    .closeButtons{
+        width: 30%;
+        border-radius: 10px;
+    }
+    
+    .buttonModified{
+        width: 40%;
+        border-radius: 10px;
+    }
+
+    .divSwitchDate{
+        float:right;
+        width: 40%;
+        margin-bottom: 4%;
+        margin-top: 1%;
+        margin-right: 25%;
+    }
+}
+
+@media only screen and  (max-width: 463px)  {
+    .infoDate{
+        width: 90%;
+        margin-top: 1%;
+        margin-left: 5%;
+    }
+   
+    .closeButtons{
+        width: 30%;
+        border-radius: 10px;
+    }
+    
+    .buttonModified{
+        width: 40%;
+        border-radius: 10px;
+    }
+
+    .divSwitchDate{
+        float:right;
+        width: 40%;
+        margin-bottom: 4%;
+        margin-top: 1%;
+        margin-right: 25%;
+    }
+   
 }

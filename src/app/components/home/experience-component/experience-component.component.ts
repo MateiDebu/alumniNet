@@ -18,12 +18,15 @@ export class ExperienceComponentComponent implements OnInit {
   showDateEditor=false;
   showMessageError=false;
 
+  showEndDate=false;
+  showStartDate=true;
+
 
   active:number=0;
   company:string='';
   jobTitle:string='';
-  startDate!:number;
-  endDate!:number;
+  startDate:number | null = null;
+  endDate:number | null = null;
 
   constructor(private dataService:DataService, private dialog:MatDialog) { }
 
@@ -71,18 +74,21 @@ export class ExperienceComponentComponent implements OnInit {
     this.showCompanyEditor=true;
     this.showJobEditor=false;
     this.showDateEditor=false;
+    this.showMessageError=false;
   }
 
   showUpdateJob(){
     this.showJobEditor=true;
     this.showDateEditor=false;
     this.showCompanyEditor=false;
+    this.showMessageError=false;
   }
 
   showUpdateDate(){ 
     this.showDateEditor=true;
     this.showCompanyEditor=false;
     this.showJobEditor=false;
+    this.showMessageError=false;
   }
   
   setIsActive(active:number){
@@ -96,8 +102,9 @@ export class ExperienceComponentComponent implements OnInit {
     this.showDateEditor=false;
     this.company='';
     this.jobTitle='';
-    this.startDate!;
-    this.endDate!;
+    this.startDate=null;
+    this.endDate=null;
+    this.showMessageError=false;
   }
 
   updateCompany(id:number){
@@ -133,6 +140,7 @@ export class ExperienceComponentComponent implements OnInit {
             if(res){
               this.getAllExperience();
               this.showMessageError=false;
+              this.startDate=null;
             }
           }
           );
@@ -151,11 +159,39 @@ export class ExperienceComponentComponent implements OnInit {
             if(res){
               this.getAllExperience();
               this.showMessageError=false;
+              this.endDate=null;
             }
           }
           );
          }
       }
+  }
+
+  restrictInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    const maxLength = 4;
+    const inputValue = input.value;
+  
+    if (inputValue.length > maxLength) {
+      input.value = inputValue.slice(0, maxLength);
+    } else
+       if (!/^\d+$/.test(inputValue)) {
+       input.value = inputValue.replace(/\D/g, '');
+    }
+  }
+
+  openEndDate(){
+    this.showEndDate=true;
+    this.showStartDate=false;
+    this.startDate=null;
+    this.showMessageError=false;
+  }
+
+  openStartDate(){
+    this.showEndDate=false;
+    this.showStartDate=true;
+    this.endDate=null;
+    this.showMessageError=false;
   }
 
 }

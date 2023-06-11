@@ -32,7 +32,7 @@
               <br>
               <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
               <br>
-              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateCompany(exp.experienceId)">Actualizează companie</button>
+              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateCompany(exp.experienceId)">Modifică</button>
               <button mat-raised-button color="primary" class="closeButtons"  (click)=" closeEditors()">Închide</button>
             </div>
             <div *ngIf="showJobEditor && active==exp.experienceId " class="editorsDiv">
@@ -43,33 +43,42 @@
               <br>
               <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
               <br>
-              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateJobTitle(exp.experienceId)">Actualizează postul</button>
+              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateJobTitle(exp.experienceId)">Modifică</button>
               <button mat-raised-button color="primary" class="closeButtons"  (click)=" closeEditors()">Închide</button>
             </div>
             <div *ngIf="showDateEditor && active==exp.experienceId " class="editorsDiv">
-              <p>Completați câmpul care vă interesează</p>
-              <mat-form-field appearance="fill" class="infoDate">
-                <mat-label class="textLabel">Început perioadă</mat-label>
-                <input matInput #yearCheck maxlength="4" type="number" [(ngModel)]="startDate">
-                <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
-              </mat-form-field>
+              <div *ngIf="showStartDate">
+                <mat-form-field appearance="fill" class="infoDate">
+                  <mat-label class="textLabel">Început perioadă</mat-label>
+                  <input matInput #yearCheck type="text" (input)="restrictInput($event)" [(ngModel)]="startDate">
+                  <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
+                </mat-form-field>
+                <div class="divSwitchDate">
+                  <button mat-raised-button color="primary" class="dateButton"  (click)="openEndDate()"><div style="margin-bottom: -15px;">Sfârșitul</div><div>perioadei</div> </button>
+                </div>
+                
+              </div>
+              <div *ngIf="showEndDate">
+                <mat-form-field appearance="fill" class="infoDate">
+                  <mat-label class="textLabel">Sfârșit perioadă</mat-label>
+                  <input matInput #yearCheck2 type="text" (input)="restrictInput($event)" [(ngModel)]="endDate">
+                  <mat-hint align ="end">{{yearCheck2.value.length}} / 4 </mat-hint>
+                </mat-form-field>
+                <div class="divSwitchDate">
+                  <button mat-raised-button color="primary" class="dateButton"  (click)="openStartDate()"><div style="margin-bottom: -15px;">Începutul</div><div>perioadei</div> </button>
+                </div>
+              </div>
 
-              <mat-form-field appearance="fill" class="infoDate2">
-                <mat-label class="textLabel">Sfârșit perioadă</mat-label>
-                <input matInput #yearCheck2 maxlength="4" type="number" [(ngModel)]="endDate">
-                <mat-hint align ="end">{{yearCheck2.value.length}} / 4 </mat-hint>
-              </mat-form-field>
+              
               <br>
-               <p *ngIf="showMessageError" class="messageError">Te rog să completezi cel puțin un câmp</p>
+               <p *ngIf="showMessageError" class="messageError">Te rog să completezi câmpul</p>
               <br>
-              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateStartDate(exp.experienceId)" (click)="updateEndDate(exp.experienceId)">Actualizează perioada</button>
+              <button mat-raised-button color="accent"  class="buttonModified"(click)=" updateStartDate(exp.experienceId)" (click)="updateEndDate(exp.experienceId)">Modifică</button>
               <button mat-raised-button color="primary" class="closeButtons"  (click)=" closeEditors()">Închide</button>
             </div>
-
-          </div>
-              
-        </td>    
+           </div>
+         </td>    
         </tr>
-      </table>
+     </table>
 </div>        
 
