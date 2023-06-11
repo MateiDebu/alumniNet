@@ -42,3 +42,7 @@
     text-align: center;
     margin-top: 2%;
 }
+
+::ng-deep .mat-dialog-container {
+    border-radius: 10px;
+}

@@ -34,3 +34,7 @@ td{
     text-align: center;
     font-size: 20px;
 }
+
+::ng-deep .mat-dialog-container {
+    border-radius: 10px;
+}

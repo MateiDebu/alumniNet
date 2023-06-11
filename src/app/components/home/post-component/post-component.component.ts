@@ -76,16 +76,19 @@ export class PostComponentComponent implements OnInit {
     this.showTitleEditor=true;
     this.showTextEditor=false;
     this.showImageEditor=false;
+    this.showMessageError=false;
   }
   showUpdateTextPost(){
     this.showTextEditor=true;
     this.showImageEditor=false;
     this.showTitleEditor=false;
+    this.showMessageError=false;
   }
   showUpdateImagePost(){
     this.showImageEditor=true;
     this.showTitleEditor=false;
     this.showTextEditor=false;
+    this.showMessageError=false;
   }
 
   updateDescriptionPost(postId:number){
@@ -94,6 +97,7 @@ export class PostComponentComponent implements OnInit {
         if(res){
           this.postText='';
           this.refreshPosts();
+          this.showMessageError=false;
         }
       });
     }else
@@ -105,6 +109,7 @@ export class PostComponentComponent implements OnInit {
         if(res){
           this.postTitle='';
           this.refreshPosts();
+          this.showMessageError=false;
         }
       });
     }else
