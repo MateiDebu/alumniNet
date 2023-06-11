@@ -66,4 +66,17 @@ export class AddStudiesComponentComponent implements OnInit {
     this.dataService.AddFinishedStudy(finishedStudy).subscribe();
   }
 
+  restrictInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    const maxLength = 4;
+    const inputValue = input.value;
+  
+    if (inputValue.length > maxLength) {
+      input.value = inputValue.slice(0, maxLength);
+    } else
+       if (!/^\d+$/.test(inputValue)) {
+       input.value = inputValue.replace(/\D/g, '');
+    }
+  }
+
 }

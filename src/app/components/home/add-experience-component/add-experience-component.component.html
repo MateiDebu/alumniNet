@@ -16,14 +16,16 @@
 
       <mat-form-field appearance="fill" class="info">
         <mat-label>Din anul</mat-label>
-        <input matInput  type="number" [(ngModel)]="startDate" required>
+        <input matInput #yearCheck type="text" (input)="restrictInput($event)" [(ngModel)]="startDate" required>
+        <mat-hint align ="end">{{yearCheck.value.length}} / 4 </mat-hint>
       </mat-form-field>
 
       <p class="textFinishYear">Dacă încă lucrați la acest loc de muncă următorul câmp nu trebuie completat</p>
 
       <mat-form-field appearance="fill" class="info">
         <mat-label>Până în anul</mat-label>
-        <input matInput type="number" [(ngModel)]="endDate">
+        <input matInput #yearCheck2 type="text" (input)="restrictInput($event)" [(ngModel)]="endDate">
+        <mat-hint align ="end">{{yearCheck2.value.length}} / 4 </mat-hint>
       </mat-form-field>
 
       <br>
