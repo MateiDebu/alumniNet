@@ -60,10 +60,14 @@ export class HomeComponentComponent implements OnInit {
   openFinishedStudies(){
     this.showFinishedStudies=true;
     this.showExperience=false;
+    this.showDescription=false;
+    this.getFinishedStudy();
+  }
+
+  getFinishedStudy(){
     this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
       this.finishStudyDetailed=finishStudyDetailed;
     });
-    this.showDescription=false;
   }
 
   openDescription(){
@@ -124,7 +128,7 @@ export class HomeComponentComponent implements OnInit {
     }
 
     dialogConfig.width='450px';
-    dialogConfig.height='470px';
+    dialogConfig.height='480px';
     dialogConfig.disableClose=true;
 
     let dialogRef = this.dialog.open(EditProfileComponentComponent, dialogConfig);
@@ -166,8 +170,10 @@ export class HomeComponentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.showFinishedStudies=true;
+        this.getFinishedStudy();
       }else
         this.showFinishedStudies=true;
+        this.getFinishedStudy();
       });
   }
 

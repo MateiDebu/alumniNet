@@ -46,13 +46,7 @@ export class EditProfileComponentComponent implements OnInit {
 
   updateProfileDescription(){
       if(this.description!=''){
-      this.dataService.UpdateProfileDescriptionByUserId(this.description).subscribe((res)=> {
-        if(res){
-          alert("Descrierea ta a fost actualizată cu succes");
-        }else{
-          alert("Descrierea nu s-a putut actualiza");
-        }
-      });
+      this.dataService.UpdateProfileDescriptionByUserId(this.description).subscribe();
     }
   }
 

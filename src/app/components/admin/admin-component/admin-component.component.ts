@@ -73,7 +73,7 @@ export class AdminComponentComponent implements OnInit {
     }
 
     dialogConfig.width='400px';
-    dialogConfig.height='270px';
+    dialogConfig.height='300px';
     dialogConfig.disableClose=true;
 
     let dialogRef = this.dialog.open(ValidationConfirmationComponentComponent, dialogConfig);
