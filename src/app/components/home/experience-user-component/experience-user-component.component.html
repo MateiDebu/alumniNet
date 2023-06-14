@@ -3,10 +3,10 @@
 </mat-dialog-actions>
 
 <h2 class="experienceTitle">EXPERIENȚĂ PROFESIONALĂ</h2>
-
+<hr style="margin-top:3.5%; margin-bottom:3%">
 <div class="allComp">
     <br>
-    <h1 *ngIf="experience.length == 0" class="textNotPosts">Nu are studii adaugate</h1>
+    <h1 *ngIf="experience.length == 0" class="textNotPosts">Nu are experiență profesională adaugate</h1>
     <table class="designTable" *ngIf="experience.length > 0">      
         <tr *ngFor="let exp of experience"> 
         <td class="firstColumn">

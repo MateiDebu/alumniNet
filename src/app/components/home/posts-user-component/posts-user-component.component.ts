@@ -26,7 +26,7 @@ export class PostsUserComponentComponent implements OnInit {
   }
 
   getSearchUserName(){
-    return this.data.param2;
+    return this.data.param2.toUpperCase();
   }
 
 }

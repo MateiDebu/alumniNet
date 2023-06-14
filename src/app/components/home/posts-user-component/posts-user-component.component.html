@@ -1,9 +1,16 @@
 <mat-dialog-actions class="buttonActions">
     <button mat-raised-button  color="warn" [mat-dialog-close]="false"  style="border-radius: 10px;"> Închide </button>
 </mat-dialog-actions>
-<h2 class="postsTitle">Postările lui {{getSearchUserName()}}</h2>
+
+<h2 class="postsTitle">POSTĂRI {{getSearchUserName()}}</h2>
+<hr style="margin-top:3.5%; margin-bottom:3%">
+
 <div class="designTableDiv">
-    <h1 *ngIf="posts.length == 0" style="text-align: center;">Nu are postări scrise</h1>
+
+  <div *ngIf="posts.length == 0" class="NotTextComp">
+    <h1  style="text-align: center;">Nu are postări publicate</h1>
+    </div>
+    
     <table class="designTable" *ngIf="posts.length > 0">      
       <tr *ngFor="let post of posts "> 
         <td> <div>

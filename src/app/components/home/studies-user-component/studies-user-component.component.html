@@ -3,9 +3,13 @@
 </mat-dialog-actions>
 
 <h2 class="studiesTitle">STUDII EFECTUATE</h2>
+<hr style="margin-top:3.5%; margin-bottom: 0%;">
 <div  class="allCompForStudies">
     <br>
-    <h1 *ngIf="finishedStudies.length == 0" class="textNotPosts">Nu are studii adaugate</h1>
+    <div *ngIf="finishedStudies.length == 0" class="NotPosts">
+      <h1  class="textNotPosts">Nu are studii adaugate</h1>
+    </div>
+    
     <table class="designTable" *ngIf="finishedStudies.length > 0">      
         <tr *ngFor="let finishStudy of finishedStudies"> 
           <td class="textEditStudies">

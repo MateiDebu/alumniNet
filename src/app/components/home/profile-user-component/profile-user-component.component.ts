@@ -23,7 +23,7 @@ export class ProfileUserComponentComponent implements OnInit {
   }
 
   getProfileDescription(){
-    if(this.profile.description!="")
+    if(this.profile.description != "")
       return this.profile.description;
     return "Utilizatorul nu are descriere";
   }
@@ -33,7 +33,7 @@ export class ProfileUserComponentComponent implements OnInit {
   }
 
   getNameSearchUser(){
-     return this.data.param2;
+     return this.data.param2.toUpperCase();
   }
 
 }
