@@ -12,29 +12,31 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./register-component.component.scss']
 })
 export class RegisterComponentComponent implements OnInit {
+
   fac: Faculty[]=[];
   email : string='';
   password :string ='';
-  hide=true;
+  hide = true;
 
-  lastNameCheck:string;
-  firstNameCheck:string;
-  emailCheck:string;
-  passwordCheck:string;
-  passwordRepeatCheck:string;
+  lastNameCheck : string;
+  firstNameCheck : string;
+  emailCheck : string;
+  passwordCheck : string;
+  passwordRepeatCheck : string;
+
   valid: boolean = false;
-  empty:boolean=false;
-  validConfirmation: boolean=false;
-  errorDisplayConfirmPassword:boolean=true;
-  errorDisplayPassword:boolean=true;
-  errorDisplay:boolean=true;
+  empty:boolean = false;
+  validConfirmation: boolean = false;
+  errorDisplayConfirmPassword:boolean = true;
+  errorDisplayPassword:boolean = true;
+  errorDisplay:boolean = true;
 
   constructor( private dataService: DataService,private router:Router, private auth :AuthService) {
-    this.lastNameCheck='';
-    this.firstNameCheck='';
-    this.emailCheck='';
-    this.passwordCheck='';
-    this.passwordRepeatCheck='';
+    this.lastNameCheck = '';
+    this.firstNameCheck = '';
+    this.emailCheck = '';
+    this.passwordCheck = '';
+    this.passwordRepeatCheck = '';
     
    }
 
@@ -63,28 +65,28 @@ export class RegisterComponentComponent implements OnInit {
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
       )
     ){
-      this.valid=true;
-      this.errorDisplayPassword=true;
+      this.valid = true;
+      this.errorDisplayPassword = true;
       return true;
     }
     else
     {
-      this.valid=false;
-      this.errorDisplayPassword=false;
+      this.valid = false;
+      this.errorDisplayPassword = false;
       return false;
     }
   }
 
   passwordComparison(passwordCheck:string,passwordRepeatCheck:string){
     if(passwordCheck === passwordRepeatCheck){
-      this.validConfirmation=true;
-      this.errorDisplayConfirmPassword=true;
+      this.validConfirmation = true;
+      this.errorDisplayConfirmPassword = true;
       return true;
     }
     else
     {
-      this.validConfirmation=false;
-      this.errorDisplayConfirmPassword=false;
+      this.validConfirmation = false;
+      this.errorDisplayConfirmPassword = false;
       return false;
     }
   }
@@ -99,26 +101,25 @@ export class RegisterComponentComponent implements OnInit {
   
     if(this.lastNameCheck=='' || this.firstNameCheck=='' || 
      this.passwordCheck=='' || this.passwordRepeatCheck=='' || this.emailCheck==''){
-      this.empty=false;
-      this.errorDisplay=false;
+      this.empty = false;
+      this.errorDisplay = false;
     }else
     {
-      this.empty=true;
-      this.errorDisplay=true;
+      this.empty = true;
+      this.errorDisplay = true;
     }
   }
   
-
   register(){
-      let newUser=new User();
-      newUser.firstName=this.firstNameCheck;
-      newUser.lastName=this.lastNameCheck;
+      let newUser = new User();
+      newUser.firstName = this.firstNameCheck;
+      newUser.lastName = this.lastNameCheck;
       this.isEmpty();
       if(this.valid && this.empty && this.validConfirmation){
         this.auth.createUser(this.email,this.password,newUser);
       }
       else
-         alert('Te rog completeaza toate campurile.')
+         alert('Te rog completează toate câmpurile.')
   }
 
   goToLoginPage(){

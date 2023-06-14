@@ -11,20 +11,20 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog-component/co
 })
 export class ExperienceComponentComponent implements OnInit {
 
-  experience:Experience[]=[];
+  experience: Experience[] = [];
 
-  showCompanyEditor:boolean=false;
-  showJobEditor=false;
-  showDateEditor=false;
-  showMessageError=false;
+  showCompanyEditor:boolean = false;
+  showJobEditor = false;
+  showDateEditor = false;
+  showMessageError = false;
 
-  showEndDate=false;
-  showStartDate=true;
+  showEndDate = false;
+  showStartDate = true;
 
 
-  active:number=0;
-  company:string='';
-  jobTitle:string='';
+  active:number = 0;
+  company:string = '';
+  jobTitle:string = '';
   startDate:number | null = null;
   endDate:number | null = null;
 
@@ -36,16 +36,16 @@ export class ExperienceComponentComponent implements OnInit {
 
   getAllExperience(){
     this.dataService.GetAllExperiencesForUser().subscribe((experience:Experience[])=>{
-      this.experience=experience;
+      this.experience = experience;
     });
   }
 
   setNameCompany(company:string){
-    this.company=company;
+    this.company = company;
   }
 
   setJobTitle(jobTitle:string){
-    this.jobTitle=jobTitle;
+    this.jobTitle = jobTitle;
   }
 
   openDeleteDialog(id:number){
@@ -71,67 +71,67 @@ export class ExperienceComponentComponent implements OnInit {
   }
 
   showUpdateCompany(){
-    this.showCompanyEditor=true;
-    this.showJobEditor=false;
-    this.showDateEditor=false;
-    this.showMessageError=false;
+    this.showCompanyEditor = true;
+    this.showJobEditor     = false;
+    this.showDateEditor    = false;
+    this.showMessageError  = false;
   }
 
   showUpdateJob(){
-    this.showJobEditor=true;
-    this.showDateEditor=false;
-    this.showCompanyEditor=false;
-    this.showMessageError=false;
+    this.showJobEditor     = true;
+    this.showDateEditor    = false;
+    this.showCompanyEditor = false;
+    this.showMessageError  = false;
   }
 
   showUpdateDate(){ 
-    this.showDateEditor=true;
-    this.showCompanyEditor=false;
-    this.showJobEditor=false;
-    this.showMessageError=false;
+    this.showDateEditor    = true;
+    this.showCompanyEditor = false;
+    this.showJobEditor     = false;
+    this.showMessageError  = false;
   }
   
   setIsActive(active:number){
-    this.active=active;
+    this.active = active;
   }
 
   closeEditors(){
-    this.showMessageError=false;
-    this.showCompanyEditor=false;
-    this.showJobEditor=false;
-    this.showDateEditor=false;
-    this.company='';
-    this.jobTitle='';
-    this.startDate=null;
-    this.endDate=null;
-    this.showMessageError=false;
+    this.showMessageError  = false;
+    this.showCompanyEditor = false;
+    this.showJobEditor     = false;
+    this.showDateEditor    = false;
+    this.company           ='';
+    this.jobTitle          ='';
+    this.startDate         = null;
+    this.endDate           = null;
+    this.showMessageError  = false;
   }
 
   updateCompany(id:number){
-    if(this.company!=''){
+    if(this.company != ''){
       this.dataService.UpdateExperienceCompanyName(id, this.company).subscribe((res)=>{
         if(res){
           this.getAllExperience();
         }
       });
     }else
-      this.showMessageError=true; 
+      this.showMessageError = true; 
    }
 
   updateJobTitle(id:number){
-    if(this.jobTitle!=''){
+    if(this.jobTitle != ''){
       this.dataService.UpdateExperienceJobTitle(id, this.jobTitle).subscribe((res)=>{
         if(res){
           this.getAllExperience();
         }
       });
     }else
-      this.showMessageError=true; 
+      this.showMessageError = true; 
    }
 
   updateStartDate(id:number){
     if(!this.startDate && !this.endDate)
-       this.showMessageError=true;
+       this.showMessageError = true;
       else
       {
         if(this.startDate)
@@ -139,8 +139,8 @@ export class ExperienceComponentComponent implements OnInit {
           this.dataService.UpdateExperienceStartDate(id, this.startDate).subscribe((res)=>{
             if(res){
               this.getAllExperience();
-              this.showMessageError=false;
-              this.startDate=null;
+              this.showMessageError = false;
+              this.startDate = null;
             }
           }
           );
@@ -150,7 +150,7 @@ export class ExperienceComponentComponent implements OnInit {
 
   updateEndDate(id:number){
     if(!this.startDate && !this.endDate)
-       this.showMessageError=true;
+       this.showMessageError = true;
       else
       {
         if(this.endDate)
@@ -158,8 +158,8 @@ export class ExperienceComponentComponent implements OnInit {
           this.dataService.UpdateExperienceEndDate(id, this.endDate).subscribe((res)=>{
             if(res){
               this.getAllExperience();
-              this.showMessageError=false;
-              this.endDate=null;
+              this.showMessageError = false;
+              this.endDate = null;
             }
           }
           );
@@ -181,17 +181,16 @@ export class ExperienceComponentComponent implements OnInit {
   }
 
   openEndDate(){
-    this.showEndDate=true;
-    this.showStartDate=false;
-    this.startDate=null;
-    this.showMessageError=false;
+    this.showEndDate      = true;
+    this.showStartDate    = false;
+    this.startDate        = null;
+    this.showMessageError = false;
   }
 
   openStartDate(){
-    this.showEndDate=false;
-    this.showStartDate=true;
-    this.endDate=null;
-    this.showMessageError=false;
+    this.showEndDate      = false;
+    this.showStartDate    = true;
+    this.endDate          = null;
+    this.showMessageError = false;
   }
-
 }

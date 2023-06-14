@@ -13,56 +13,56 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class AddStudiesComponentComponent implements OnInit {
 
-  specializationId:number=0;
-  learningScheduleId:number=0;
-  studyProgramId:number=0;
+  specializationId:number = 0;
+  learningScheduleId:number = 0;
+  studyProgramId:number = 0;
   finishStudyYear!:number;
 
-  faculties: Faculty[]=[];
-  specializations:Specialization[]=[];
-  learningSchedules: LearningSchedule[]=[];
-  studyPrograms: StudyProgram[]=[];
+  faculties: Faculty[] = [];
+  specializations: Specialization[] = [];
+  learningSchedules: LearningSchedule[] = [];
+  studyPrograms: StudyProgram[] = [];
 
   constructor(private dataService : DataService) { }
 
   ngOnInit(): void {
     this.dataService.GetAllFaculties().subscribe(( faculties: Faculty[]) => {
-      this.faculties=faculties;
+      this.faculties = faculties;
     })
  
-    this.dataService.GetAllLearningSchedule().subscribe((learningSchedules:LearningSchedule[])=>{
-     this.learningSchedules=learningSchedules;
+    this.dataService.GetAllLearningSchedule().subscribe((learningSchedules: LearningSchedule[])=>{
+     this.learningSchedules = learningSchedules;
     })
  
     this.dataService.GetAllStudyProgram().subscribe((studyPrograms: StudyProgram[])=>{
-     this.studyPrograms=studyPrograms;
+     this.studyPrograms = studyPrograms;
     })
   }
 
   specializationsFaculty(facultyId:number){
-    this.dataService.GetSpecializationsByFacultyId(facultyId).subscribe((specializations : Specialization[]) => {
-      this.specializations=specializations;
+    this.dataService.GetSpecializationsByFacultyId(facultyId).subscribe((specializations: Specialization[]) => {
+      this.specializations = specializations;
     })
   }
 
   setSpecializationId(id:number){
-    this.specializationId=id;
+    this.specializationId = id;
   }
 
   setLearningScheduleId(id:number){
-    this.learningScheduleId=id;
+    this.learningScheduleId = id;
   }
 
   setStudyProgramId(id:number){
-    this.studyProgramId=id;
+    this.studyProgramId = id;
   }
 
   addStudies(){
-    var finishedStudy=new FinishedStudy();
-    finishedStudy.specializationId=this.specializationId;
-    finishedStudy.learningScheduleId=this.learningScheduleId;
-    finishedStudy.studyProgramId=this.studyProgramId;
-    finishedStudy.year=this.finishStudyYear;
+    var finishedStudy = new FinishedStudy();
+    finishedStudy.specializationId = this.specializationId;
+    finishedStudy.learningScheduleId = this.learningScheduleId;
+    finishedStudy.studyProgramId = this.studyProgramId;
+    finishedStudy.year = this.finishStudyYear;
     this.dataService.AddFinishedStudy(finishedStudy).subscribe();
   }
 
@@ -78,5 +78,4 @@ export class AddStudiesComponentComponent implements OnInit {
        input.value = inputValue.replace(/\D/g, '');
     }
   }
-
 }

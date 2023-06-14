@@ -9,14 +9,14 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EditProfileComponentComponent implements OnInit {
 
-  description:string=this.data.param1;
+  description:string = this.data.param1;
 
-  showEditDescription=true;
-  showEditPicture=false;
-  showEditButtonPicture=true;
-  showEditButtonDescription=false;
+  showEditDescription = true;
+  showEditPicture = false;
+  showEditButtonPicture = true;
+  showEditButtonDescription = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dataService:DataService) { console.log(this.data.param1);}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dataService:DataService) {}
 
   ngOnInit(): void {
   }
@@ -27,10 +27,9 @@ export class EditProfileComponentComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-
   uploadSelectedFile(){
     if(this.selectedFile){
-      const formData:FormData =new FormData();
+      const formData:FormData = new FormData();
       formData.append('file',this.selectedFile, this.selectedFile.name);  
       this.dataService.UpdateProfilePictureByUserId( formData).subscribe((res)=>{
         if(res){
@@ -43,25 +42,23 @@ export class EditProfileComponentComponent implements OnInit {
     }
   }
 
-
   updateProfileDescription(){
-      if(this.description!=''){
+      if(this.description != ''){
       this.dataService.UpdateProfileDescriptionByUserId(this.description).subscribe();
     }
   }
 
   goToEditDescription(){
-    this.showEditButtonDescription=false;
-    this.showEditDescription=true;
-    this.showEditButtonPicture=true;
-    this.showEditPicture=false;
+    this.showEditButtonDescription = false;
+    this.showEditDescription = true;
+    this.showEditButtonPicture = true;
+    this.showEditPicture = false;
   }
 
   goToEditPicture(){
-    this.showEditButtonDescription=true;
-    this.showEditDescription=false;
-    this.showEditButtonPicture=false;
-    this.showEditPicture=true;
+    this.showEditButtonDescription = true;
+    this.showEditDescription = false;
+    this.showEditButtonPicture = false;
+    this.showEditPicture = true;
   }
-
 }

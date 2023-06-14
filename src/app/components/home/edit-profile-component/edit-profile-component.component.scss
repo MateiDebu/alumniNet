@@ -56,3 +56,7 @@ textarea{
 .buttonsDesign{
    margin:auto;
 }
+
+::ng-deep .mat-dialog-container {
+    border-radius: 10px;
+}

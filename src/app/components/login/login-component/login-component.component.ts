@@ -38,11 +38,12 @@ export class LoginComponentComponent implements OnInit {
 
   forgetPassword(){
     if(this.email == ''){
-      alert('Adresa de mail nu este buna');
+      alert('Adresa de mail nu este bună');
     }else
-    this.auth.recoverPassword(this.email);
+      this.auth.recoverPassword(this.email);
   }
 
   ngOnInit(): void {
   }
+  
 }

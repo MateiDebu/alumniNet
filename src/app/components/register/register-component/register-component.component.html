@@ -1,6 +1,7 @@
 <body style="background: linear-gradient(0deg, #B7EFC5 0%, #0d8c2d 100%)">
   <h1 class="pageTitle">ÎNREGISTRARE</h1>
   <div class="formControl">
+
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Prenume</mat-label>
@@ -14,12 +15,14 @@
         <input matInput required #lastNameCheck (keyup)="setLastName(lastNameCheck.value)">
       </mat-form-field>
     </div>
+
     <div class="inputField">
         <mat-form-field appearance="fill">
             <mat-label>Introduceți email-ul</mat-label>
-            <input class="inputText" matInput placeholder="pat@example.com" required #emailCheck (keyup)="setEmail(emailCheck.value)" name="email" [(ngModel)]="email">
+            <input class="inputText" matInput placeholder="text@example.com" required #emailCheck (keyup)="setEmail(emailCheck.value)" name="email" [(ngModel)]="email">
         </mat-form-field>
     </div>
+
     <div class="inputField">
         <mat-form-field appearance="fill">
           <mat-label>Introduceți parola</mat-label>
@@ -29,6 +32,7 @@
           <div>Parola trebuie să fie formată din minim șase litere, cel puțin una mică și una mare, cel puțin o cifră și cel puțin un simbol special! </div>
           <br>
       </div>
+
     </div>
     <div class="inputField">
         <mat-form-field appearance="fill">
@@ -48,6 +52,7 @@
           <div>Atenție! Toate câmpurile trebuie completate!</div>
       </div>
     </div>
+
     <hr>
     <button class="buttonLogIn" type="button"  mat-raised-button color="accent" (click)="goToLoginPage()">Înapoi la pagina de autentificare</button>
 </div>

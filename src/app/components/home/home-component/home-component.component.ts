@@ -18,24 +18,24 @@ import { Profile } from 'src/app/models/profile.mode';
 })
 export class HomeComponentComponent implements OnInit {
 
-  firstNameUser:string='';
-  lastNameUser:string='';
-  description:string='';
+  firstNameUser:string = '';
+  lastNameUser:string = '';
+  description:string = '';
 
   user: User = new User;
-  studies:FinishedStudy[]=[];
-  finishStudyDetailed:FinishedStudyDetailed[]=[];
-  profile:Profile=new Profile;
+  studies:FinishedStudy[] = [];
+  finishStudyDetailed:FinishedStudyDetailed[] = [];
+  profile:Profile = new Profile;
 
-  showFinishedStudies=false;
-  showExperience=false;
-  showDescription=false;
+  showFinishedStudies = false;
+  showExperience = false;
+  showDescription = false;
 
-  showSearchPage=false;
-  showHomePage=true;
+  showSearchPage = false;
+  showHomePage = true;
 
-  viewMoreInformation=false;
-  viewMoreButton=true;
+  viewMoreInformation = false;
+  viewMoreButton = true;
   active!:number;
 
   constructor(private auth: AuthService, private dataService:DataService,private dialog:MatDialog) { }
@@ -48,8 +48,8 @@ export class HomeComponentComponent implements OnInit {
   }
 
   getName(){
-    this.firstNameUser=this.user.firstName.toUpperCase();
-    this.lastNameUser=this.user.lastName.toUpperCase();
+    this.firstNameUser = this.user.firstName.toUpperCase();
+    this.lastNameUser = this.user.lastName.toUpperCase();
     return this.firstNameUser+' '+this.lastNameUser;
   }
 
@@ -58,40 +58,40 @@ export class HomeComponentComponent implements OnInit {
   }
 
   openFinishedStudies(){
-    this.showFinishedStudies=true;
-    this.showExperience=false;
-    this.showDescription=false;
+    this.showFinishedStudies = true;
+    this.showExperience = false;
+    this.showDescription = false;
     this.getFinishedStudy();
   }
 
   getFinishedStudy(){
     this.dataService.GetFinishedStudyByUserId().subscribe((finishStudyDetailed:FinishedStudyDetailed[])=>{
-      this.finishStudyDetailed=finishStudyDetailed;
+      this.finishStudyDetailed = finishStudyDetailed;
     });
   }
 
   openDescription(){
-    this.showDescription=true;
-    this.showExperience=false;
-    this.showFinishedStudies=false;
+    this.showDescription = true;
+    this.showExperience = false;
+    this.showFinishedStudies = false;
     this.setProfile();
   }
 
   openExperience(){
-    this.showExperience=true;
-    this.showFinishedStudies=false;
-    this.showDescription=false;
+    this.showExperience = true;
+    this.showFinishedStudies = false;
+    this.showDescription = false;
   }
 
   close(){
-    this.showExperience=false;
-    this.showFinishedStudies=false;
-    this.showDescription=false;
+    this.showExperience = false;
+    this.showFinishedStudies = false;
+    this.showDescription = false;
   }
 
   setProfile(){
     this.dataService.GetDescriptionAndPhotoByUserId().subscribe((profile)=>{
-      this.profile=profile;
+      this.profile = profile;
     });
   }
 
@@ -104,15 +104,15 @@ export class HomeComponentComponent implements OnInit {
   }
 
   goToHomePage(){
-    this.showSearchPage=false;
-    this.showHomePage=true;
+    this.showSearchPage = false;
+    this.showHomePage = true;
   }
 
   goToSearchPage(){
-    this.showSearchPage=true;
-    this.showHomePage=false;
-    this.showExperience=false;
-    this.showFinishedStudies=false;
+    this.showSearchPage = true;
+    this.showHomePage = false;
+    this.showExperience = false;
+    this.showFinishedStudies = false;
   }
 
   goToLoginPage(){
@@ -121,25 +121,25 @@ export class HomeComponentComponent implements OnInit {
 
   openEditProfile(){
 
-    this.showDescription=false;
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.data={
+    this.showDescription = false;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
       param1: this.profile.description
     }
 
-    dialogConfig.width='450px';
-    dialogConfig.height='480px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '450px';
+    dialogConfig.height = '430px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(EditProfileComponentComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe( result => {
       if(result){
         this.setProfile();
-        this.showDescription=true;
+        this.showDescription = true;
       }else
         this.setProfile();
-        this.showDescription=true;
+        this.showDescription = true;
     });
   }
 
@@ -148,14 +148,14 @@ export class HomeComponentComponent implements OnInit {
     let dialogRef = this.dialog.open(AddExperienceComponentComponent, {
       width: '420px',
       height: '540px',
-      disableClose:true,
+      disableClose: true,
     });
-    this.showExperience=false;
+    this.showExperience = false;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.showExperience=true;
+        this.showExperience = true;
       }else
-        this.showExperience=true;
+        this.showExperience = true;
       });
   }
 
@@ -164,31 +164,30 @@ export class HomeComponentComponent implements OnInit {
     let dialogRef = this.dialog.open(AddStudiesComponentComponent, {
       width: '440px',
       height: '540px',
-      disableClose:true,
+      disableClose: true,
     });
-    this.showFinishedStudies=false;
+    this.showFinishedStudies = false;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.showFinishedStudies=true;
+        this.showFinishedStudies = true;
         this.getFinishedStudy();
       }else
-        this.showFinishedStudies=true;
+        this.showFinishedStudies = true;
         this.getFinishedStudy();
       });
   }
 
   viewMore(){
-    this.viewMoreInformation=true;
-    this.viewMoreButton=false;
+    this.viewMoreInformation = true;
+    this.viewMoreButton = false;
   }
 
   viewLess(){
-    this.viewMoreInformation=false;
-    this.viewMoreButton=true;
+    this.viewMoreInformation = false;
+    this.viewMoreButton = true;
   }
 
   setIsActive(active:number){
-    this.active=active;
+    this.active = active;
   }
-
 }

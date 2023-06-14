@@ -5,3 +5,7 @@
     width: 35%;
     border-radius: 10px;
 }
+
+::ng-deep .mat-dialog-container {
+    border-radius: 10px;
+}

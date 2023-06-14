@@ -11,20 +11,20 @@ export class AddExperienceComponentComponent implements OnInit {
 
   constructor(private dataService:DataService) { }
 
-  ngOnInit(): void {
-  }
-
-  companyName:string='';
-  jobTitle:string='';
+  companyName:string = '';
+  jobTitle:string = '';
   startDate!:number;
   endDate!: number;
 
+  ngOnInit(): void {
+  }
+
   addNewExperience(){
-      var experience=new Experience();
-      experience.companyName=this.companyName;
-      experience.jobTitle=this.jobTitle;
-      experience.startDate=this.startDate;
-      experience.endDate=this.endDate;
+      var experience = new Experience();
+      experience.companyName = this.companyName;
+      experience.jobTitle = this.jobTitle;
+      experience.startDate = this.startDate;
+      experience.endDate = this.endDate;
       this.dataService.AddNewExperienceForUser(experience).subscribe();
   }
 
@@ -40,5 +40,4 @@ export class AddExperienceComponentComponent implements OnInit {
        input.value = inputValue.replace(/\D/g, '');
     }
   }
-
 }

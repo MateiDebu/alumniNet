@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <header style="background-color:#0d8c2d  ;">
+
     <div class="imageBox">
         <a href="https://www.unitbv.ro/" title="Către site-ul Universătăți Transilvania">
         <img src="/assets/Sigla_unitbv.png" alt="My Image"/>
         </a>
     </div>
+
     <div class="homeButtons"> 
         <button mat-icon-button >
-            <mat-icon class="material-icons md-40" (click)="goToHomePage()" title="Pagina principala" >account_circle</mat-icon>
+            <mat-icon class="material-icons md-40" (click)="goToHomePage()" title="Pagina principală"  >account_circle</mat-icon>
         </button>
           <button mat-icon-button >
             <mat-icon class="material-icons md-40" (click)="goToSearchPage()" title="Căutare absolvenți">person_search</mat-icon>
         </button>
           <button mat-icon-button >
-            <mat-icon class="material-icons md-36" (click)="goToLoginPage()" title="Ieșire din cont">logout</mat-icon>
+            <mat-icon class="material-icons md-36" (click)="goToLoginPage()" title="Ieșire din cont"    >logout       </mat-icon>
         </button>
     </div>
+
     <div class="elementForSpace"></div> 
+
 </header>
+
 <body>
     <div class="marginTop2"> </div>
     <div *ngIf="showHomePage" >
@@ -55,12 +60,14 @@
                 </div>  
 
                 <div *ngIf="showFinishedStudies">
+
                     <hr class="line">
                     <h2 class="studiesTitle"> <u>STUDII EFECTUATE</u></h2>
                     <div style="margin-top: 0%;">
-                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
-                        <button class="buttonModified" mat-raised-button color="accent" (click)="openAddStudiesDialog()">Adaugă studii</button>  
+                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()"               >Închide       </button>
+                        <button class="buttonModified" mat-raised-button color="accent" (click)="openAddStudiesDialog()">Adaugă studii </button>  
                     </div>
+
                     <div  class="allCompForStudies">
                         <br>
                         <h2 *ngIf="finishStudyDetailed.length == 0" class="textNotPosts">Nu are studii adaugate</h2>
@@ -82,6 +89,7 @@
                             </tr>
                           </table>
                     </div>
+
                 </div>
                
 
@@ -89,14 +97,12 @@
                     <hr class="line">
                     <h2 class="studiesTitle"> <u>EXPERIENȚĂ PROFESIONALĂ</u></h2>
                     <div>
-                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()">Închide</button>
+                        <button mat-raised-button color="primary" class="closeButtons"  (click)="close()"                  >Închide          </button>
                         <button class="buttonModified" mat-raised-button color="accent" (click)="openAddExperienceDialog()">Adaugă experiență</button>
                     </div>
                       <app-experience-component></app-experience-component>
-                      
-                </div>     
-
-            </div>
+                    </div>     
+                </div>
 
             <div class="postsInformation">
                 <div>

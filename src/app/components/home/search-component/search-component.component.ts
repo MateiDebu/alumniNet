@@ -19,30 +19,30 @@ import { Post } from 'src/app/models/post.mode';
 })
 export class SearchComponentComponent implements OnInit {
 
-  faculties: Faculty[]=[];
-  specializations:Specialization[]=[];
-  searchPeople:string='';
+  faculties: Faculty[] = [];
+  specializations: Specialization[] = [];
+  searchPeople: string = '';
 
-  selectFaculty:string='';
-  selectSpecialization:string='';
+  selectFaculty:string = '';
+  selectSpecialization:string = '';
 
-  showAllPostsButton=true;
-  showAllPosts=false;
-  showCloseButton=false;
-  showSearch=true;
+  showAllPostsButton = true;
+  showAllPosts = false;
+  showCloseButton = false;
+  showSearch = true;
   
-  showResult=false;
-  users:User[]=[];
-  posts:Post[]=[];
+  showResult = false;
+  users: User[] = [];
+  posts: Post[] = [];
 
   currentUser:User = new User();
 
-  searchR:User[]=[];
+  searchR: User[] = [];
 
   constructor(private dataService: DataService,private dialog:MatDialog) { 
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
-        this.users=users;
-        this.searchR=users;
+        this.users = users;
+        this.searchR = users;
     });
     
     this.getCurrentUser();
@@ -50,35 +50,35 @@ export class SearchComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.GetAllFaculties().subscribe(( faculties: Faculty[]) => {
-      this.faculties=faculties;
+      this.faculties = faculties;
   })
   }
 
   getCurrentUser(){
     this.dataService.GetUserById().subscribe((user) =>{
-      this.currentUser=user;
+      this.currentUser = user;
     })
   }
 
   showPosts(){
-    this.showAllPostsButton=false;
-    this.showAllPosts=true;
-    this.showCloseButton=true;
-    this.showSearch=false;
+    this.showAllPostsButton = false;
+    this.showAllPosts       = true;
+    this.showCloseButton    = true;
+    this.showSearch         = false;
     this.getPosts();
     this.getCurrentUser();
   }
 
   closePosts(){
-    this.showAllPostsButton=true;
-    this.showAllPosts=false;
-    this.showCloseButton=false;
-    this.showSearch=true;
+    this.showAllPostsButton = true;
+    this.showAllPosts       = false;
+    this.showCloseButton    = false;
+    this.showSearch         = true;
   }
 
   getPosts(){
     this.dataService.GetAllPostsSorted().subscribe( (posts:Post[])=>{
-      this.posts=posts;
+      this.posts = posts;
     })
   }
 
@@ -90,17 +90,17 @@ export class SearchComponentComponent implements OnInit {
       (user.lastName.toLowerCase()+' '+user.firstName.toLowerCase()).includes(this.searchPeople.toLowerCase().trim())
     );
      
-    this.searchR=searchResults;
+    this.searchR = searchResults;
   }
 
   specializationsFaculty(facultyId:number){
     this.dataService.GetSpecializationsByFacultyId(facultyId).subscribe((specializations : Specialization[]) => {
-      this.specializations=specializations;
+      this.specializations = specializations;
     })
   }
 
   searchGraduates(){
-    this.showResult=true;
+    this.showResult = true;
   }
 
   openStudiesForSearchUser(profileId:number){
@@ -110,18 +110,12 @@ export class SearchComponentComponent implements OnInit {
       param1: profileId
     }
 
-    dialogConfig.width='650px';
-    dialogConfig.height='400px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '650px';
+    dialogConfig.height = '400px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(StudiesUserComponentComponent, dialogConfig);
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        console.log('Afișarea s-a făcut cu succes');
-      }else
-        console.log('Afișarea studiilor s-a închis');
-      });
+    dialogRef.afterClosed().subscribe();
   }
 
   openExperienceForSearchUser(profileId:number){
@@ -130,64 +124,48 @@ export class SearchComponentComponent implements OnInit {
       param1: profileId
     }
 
-    dialogConfig.width='650px';
-    dialogConfig.height='400px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '650px';
+    dialogConfig.height = '400px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(ExperienceUserComponentComponent, dialogConfig);
     
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        console.log('Afișarea s-a făcut cu succes');
-      }else
-        console.log('Afișarea experienței s-a închis');
-      });
+    dialogRef.afterClosed().subscribe();
   }
   
 
   openPostsForSearchUser(userId:string,firstName:string, lastName:string){
-    var fullName=firstName+" "+ lastName;
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.data={
+    var fullName = firstName +" "+ lastName;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
       param1: userId,
       param2: fullName
     }
 
-    dialogConfig.width='650px';
-    dialogConfig.height='600px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '650px';
+    dialogConfig.height = '600px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(PostsUserComponentComponent, dialogConfig);
     
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        console.log('Afișarea s-a făcut cu succes');
-      }else
-        console.log('Afișarea postărlor s-a închis');
-      });
+    dialogRef.afterClosed().subscribe();
   }
 
   
   openProfileForSearchUser(profileId:number, firstName:string, lastName:string){
-    var fullName=firstName+" "+ lastName;
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.data={
+    var fullName = firstName+" "+ lastName;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
       param1: profileId,
       param2: fullName
     }
 
-    dialogConfig.width='500px';
-    dialogConfig.height='500px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '500px';
+    dialogConfig.height = '500px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(ProfileUserComponentComponent, dialogConfig);
     
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        console.log('Afișarea s-a făcut cu succes');
-      }else
-        console.log('Afișarea postărlor s-a închis');
-      });
+    dialogRef.afterClosed().subscribe();
   }
-
 }
