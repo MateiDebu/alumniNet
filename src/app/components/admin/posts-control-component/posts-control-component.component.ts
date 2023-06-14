@@ -11,31 +11,30 @@ import { DeleteConfirmationComponentComponent } from '../delete-confirmation-com
 })
 export class PostsControlComponentComponent implements OnInit {
 
-  posts:Post[]=[];
+  posts: Post[] = [];
   constructor(private dataService: DataService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getPosts();
-    
   }
 
   getPosts(){
     this.dataService.GetAllPostsSorted().subscribe((posts:Post[])=>{
-      this.posts=posts;
+      this.posts = posts;
     });
   }
 
   deletePost(postId:number){
 
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.data={
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
       message: 'Sigur doriți să ștergeți postarea selectată?',
       buttonConfirmationText: 'Șterge'
     }
 
-    dialogConfig.width='400px';
-    dialogConfig.height='270px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '400px';
+    dialogConfig.height = '270px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(DeleteConfirmationComponentComponent, dialogConfig);
   

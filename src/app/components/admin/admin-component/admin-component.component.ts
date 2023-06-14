@@ -13,12 +13,12 @@ import { ValidationConfirmationComponentComponent } from '../validation-confirma
 })
 export class AdminComponentComponent implements OnInit {
 
-  showHomePage=true;
-  showPostPage=false;
-  showTableWithUsers=true;
+  showHomePage       = true;
+  showPostPage       = false;
+  showTableWithUsers = true;
 
-  users:User[]=[];
-  finishedStudies:FinishedStudyDetailed[]=[];
+  users: User[] = [];
+  finishedStudies: FinishedStudyDetailed[] = [];
 
   active!:number;
 
@@ -33,70 +33,67 @@ export class AdminComponentComponent implements OnInit {
   }
 
   goToHomePage(){
-    this.showHomePage=true;
-    this.showPostPage=false;
+    this.showHomePage = true;
+    this.showPostPage = false;
   }
 
   goToPostPage() {
-    this.showHomePage=false;
-    this.showPostPage=true;
+    this.showHomePage = false;
+    this.showPostPage = true;
   }
 
   getUsers(){
     this.dataService.GetAllUsers().subscribe((users:User[])=>{
-      this.users=users;
+      this.users = users;
     });
   }
 
   getStudies(profileId:number){
     this.dataService.GetFinishedStudyByProfileId(profileId).subscribe((finishedStudies:FinishedStudyDetailed[])=>{
-        this.finishedStudies=finishedStudies;
+        this.finishedStudies = finishedStudies;
     });
   }
 
   setActive(active:number){
-    this.active=active;
+    this.active = active;
   }
 
   setCloseStudies(){
-    this.active=-1;
+    this.active = -1;
   }
 
   openDialogChangeValid(userId:string,firstName:string, lastName:string){
 
-    let fullName=firstName+' '+lastName;
-    const dialogConfig=new MatDialogConfig();
-    dialogConfig.data={
+    let fullName = firstName+' '+lastName;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
       param1: fullName,
       message: 'Sigur doriți să validați utilizatorul?',
-      buttonConfirmationText:'Validează'
+      buttonConfirmationText: 'Validează'
     }
 
-    dialogConfig.width='400px';
-    dialogConfig.height='300px';
-    dialogConfig.disableClose=true;
+    dialogConfig.width = '400px';
+    dialogConfig.height = '300px';
+    dialogConfig.disableClose = true;
 
     let dialogRef = this.dialog.open(ValidationConfirmationComponentComponent, dialogConfig);
-    this.showTableWithUsers=false;
+    this.showTableWithUsers = false;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.dataService.UserValidation(userId).subscribe((res)=>{
           if(res){
             alert('Validarea s-a făcut cu succes');
-            this.showTableWithUsers=true;
+            this.showTableWithUsers = true;
             this.getUsers();
           }else
             alert('Validarea nu s-a putut efectua');
-            this.showTableWithUsers=true;
+            this.showTableWithUsers = true;
         });
         console.log('Validarea s-a făcut cu succes');
        
       }else
         console.log('Validarea a fost anulată');
-        this.showTableWithUsers=true;
+        this.showTableWithUsers = true;
       });
-
-      
   }
-
 }
