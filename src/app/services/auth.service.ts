@@ -12,37 +12,36 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  app=initializeApp(environment.firebase)
-  auth=getAuth(this.app);
-  userToken:string='';
+  app = initializeApp(environment.firebase)
+  auth = getAuth(this.app);
+  userToken:string = '';
   loggedIn!:boolean;
 
   constructor(private dataService:DataService,private router:Router) {
-    this.loggedIn=Boolean(localStorage.getItem('logIn'));    
+    this.loggedIn = Boolean(localStorage.getItem('logIn'));    
     this.setTokenReloadPage();
     dataService.setTokenUser(this.userToken);
   }
 
   setTokenReloadPage(){
-    var tokenFireBase=localStorage.getItem('fireBaseToken');
+    var tokenFireBase = localStorage.getItem('fireBaseToken');
     this.userToken = tokenFireBase !== null ? tokenFireBase : '';}
 
   isAuthenticated(){
-    const promise=new Promise(
+    const promise = new Promise(
       (resolve, reject) =>{
         setTimeout(()=> {
           resolve(this.loggedIn)
         }, 100);
       }
     );
-
     return promise;
   }
 
   createUser(email:string, password:string, newUser:User){
     createUserWithEmailAndPassword(this.auth,email,password).then(userCredential =>{
         userCredential.user?.getIdToken().then((idToken)=>{
-        this.dataService.userToken=idToken;
+        this.dataService.userToken = idToken;
         this.dataService.AddUser(newUser).subscribe(res=>{
           if(res)
           {
@@ -50,10 +49,10 @@ export class AuthService {
           }
           else
           {
-              alert("Inregistrare esuata");
+              alert("Inregistrare eșuata");
           }
       });
-        console.log("Inregistrare cu succes");
+        console.log("Înregistrare cu succes");
       })
     }) 
     .catch(error => {
@@ -64,13 +63,13 @@ export class AuthService {
   login(email:string, password:string){
     signInWithEmailAndPassword(this.auth,email,password).then(userCredential => {
       userCredential.user?.getIdToken().then((idToken)=>{
-      this.userToken=idToken;
-      this.dataService.userToken=idToken;
-      this.loggedIn=true;
+      this.userToken = idToken;
+      this.dataService.userToken = idToken;
+      this.loggedIn = true;
       localStorage.setItem('logIn',this.loggedIn.toString());
       localStorage.setItem('fireBaseToken',idToken.toString());
       this.dataService.GetUserById().subscribe((user:User)=>{
-            if(user.isAdmin==true){
+            if(user.isAdmin == true){
               this.router.navigate(['admin']);
             }else{
               this.router.navigate(['home']);
@@ -92,7 +91,7 @@ export class AuthService {
   }
 
   logout(){
-    this.loggedIn=false;
+    this.loggedIn = false;
     this.router.navigate(['login']);
     localStorage.clear();
   }

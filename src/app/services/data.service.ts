@@ -11,7 +11,6 @@ import { User } from "../models/user.mode";
 import { StudyProgram } from "../models/study-program.mode";
 import { LearningSchedule } from "../models/learning-schedule.mode";
 import { Post } from "../models/post.mode";
-import { map } from 'rxjs/operators';
 import { FinishedStudyDetailed } from "../models/finished-study-detailed.mode";
 
 
@@ -20,21 +19,19 @@ import { FinishedStudyDetailed } from "../models/finished-study-detailed.mode";
 })
 
 export class DataService{
-    constructor( private httpClient : HttpClient, private appSettings:AppSetting){
-      
-    }
+    constructor( private httpClient : HttpClient, private appSettings:AppSetting){}
 
-    userToken:string='';
+    userToken:string = '';
     setTokenUser(userToken:string){
-      this.userToken=userToken;
+      this.userToken = userToken;
     }
 
     setHttpHeader(){
-      var headers =new HttpHeaders({
+      var headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.userToken}`
       });
-      var requestOptions={headers:headers};
+      var requestOptions = {headers:headers};
       return requestOptions;
     }
     
